@@ -412,7 +412,10 @@
    маски нет — и кружок рисует вырез. Пересчёт при смене ширины экрана.
    Заодно Figma не обрезает вложенные блоки по скруглённым углам родителя
    (overflow:hidden), поэтому блок, упёртый в такой угол, получает то же
-   скругление — в браузере это ничего не меняет. */
+   скругление — в браузере это ничего не меняет.
+   Плавные затухания краёв (mask с linear-gradient: лента, фото людей,
+   карта) Figma тоже теряет — их заменяем накладкой с градиентом в цвет
+   фона поверх элемента: на сплошном фоне это тот же вид, и в браузере, и в Figma. */
 (function () {
   function bgBehind(el) {
     for (var p = el.parentElement; p; p = p.parentElement) {
@@ -455,12 +458,48 @@
       if (set) ch.setAttribute("data-cut-r", "");
     });
   }
+  /* Маска «чёрный — виден, прозрачный — скрыт» → накладка «прозрачный — виден,
+     цвет фона — скрыт». Слои маски пересекаются (intersect), накладки — складываются:
+     итоговая видимость та же. */
+  function fade(el, mask, cs) {
+    var layers = mask.split(/,\s*(?=linear-gradient)/).length;
+    var comp = cs.maskComposite || cs.webkitMaskComposite || "add";
+    if (layers > 1 && !/intersect|source-in/.test(comp)) return;
+    var bg = bgBehind(el).match(/\d+(\.\d+)?/g);
+    if (!bg) return;
+    var over = mask.replace(/rgba?\(0, 0, 0(?:, ([\d.]+))?\)/g, function (m, a) {
+      var v = a === undefined ? 1 : +a;
+      return "rgba(" + bg[0] + ", " + bg[1] + ", " + bg[2] + ", " + (1 - v) + ")";
+    });
+    var d = document.createElement("div");
+    d.className = "cut-fade"; d.setAttribute("aria-hidden", "true");
+    el.parentNode.insertBefore(d, el.nextSibling);
+    /* координаты по раскладке (offsetLeft/Top), а не по экрану — анимации появления не сбивают */
+    var op = d.offsetParent, x = 0, y = 0, n = el;
+    while (n && n !== op) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; if (n && n !== op) { x += n.clientLeft; y += n.clientTop; } }
+    if (n !== op) { d.remove(); return; }
+    d.style.cssText = "position:absolute;pointer-events:none;margin:0;padding:0;border:0;" +
+      (cs.zIndex !== "auto" ? "z-index:" + cs.zIndex + ";" : "") +
+      "left:" + x + "px;top:" + y + "px;width:" + el.offsetWidth + "px;height:" + el.offsetHeight + "px;" +
+      "border-radius:" + cs.borderRadius + ";background:" + over;
+    el.style.webkitMask = el.style.mask = "none"; el.setAttribute("data-cut-fade", "");
+    el._cutWH = el.offsetWidth + "x" + el.offsetHeight;
+    if (ro) ro.observe(el);
+  }
+  var ro = window.ResizeObserver ? new ResizeObserver(function (es) {
+    if (es.some(function (e) { var t = e.target; return t._cutWH && t._cutWH !== t.offsetWidth + "x" + t.offsetHeight; })) later();
+  }) : null;
   function build() {
     document.querySelectorAll(".cut-dot").forEach(function (d) { d.remove(); });
     document.querySelectorAll("[data-cut-r]").forEach(function (el) {
       ["TopLeft", "TopRight", "BottomRight", "BottomLeft"].forEach(function (k) { el.style["border" + k + "Radius"] = ""; });
       el.removeAttribute("data-cut-r");
     });
+    document.querySelectorAll(".cut-fade").forEach(function (d) { d.remove(); });
+    document.querySelectorAll("[data-cut-fade]").forEach(function (el) {
+      el.style.webkitMask = el.style.mask = ""; el.removeAttribute("data-cut-fade");
+    });
+    var fades = [];
     document.querySelectorAll("[data-cut-sh]").forEach(function (el) { el.style.boxShadow = ""; el.removeAttribute("data-cut-sh"); });
     document.querySelectorAll("[data-cut-pos]").forEach(function (el) { el.style.position = ""; el.removeAttribute("data-cut-pos"); });
     document.querySelectorAll(".cut-off-b,.cut-off-a").forEach(function (el) { el.classList.remove("cut-off-b", "cut-off-a"); });
@@ -478,6 +517,9 @@
           list.forEach(function (c) { dot(el, c.x, c.y, c.r, bg); });
         }
       }
+      /* 4. Затухание краёв — запомнить, накладки ставим после обхода */
+      if (mask.indexOf("linear-gradient") > -1 && mask.indexOf("radial-gradient") < 0 &&
+          cs.overflowX !== "auto" && cs.overflowX !== "scroll" && el.getBoundingClientRect().width) fades.push([el, mask, cs]);
       /* 3. Скругления родителя — дочерним блокам в его углах */
       if (cs.overflow !== "visible" && cs.borderRadius && cs.borderRadius !== "0px") corners(el, cs);
       /* 2. Псевдоэлементы, которые рисуют вырезы закрашенными кругами (телефон) */
@@ -493,6 +535,7 @@
         el.classList.add(k === "before" ? "cut-off-b" : "cut-off-a");
       });
     });
+    fades.forEach(function (f) { fade(f[0], f[1], f[2]); });
   }
   var st = document.createElement("style");
   st.textContent = ".cut-off-b::before,.cut-off-a::after{background:none !important}";
