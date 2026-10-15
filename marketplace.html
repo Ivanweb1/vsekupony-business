@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/business.css?v=20261013c">
-<link rel="stylesheet" href="assets/marketplace.css?v=20261015a">
+<link rel="stylesheet" href="assets/marketplace.css?v=20261015c">
 </head>
 <body>
 
@@ -258,7 +258,8 @@
   <!-- Сколько стоит. Цены в ТЗ нет. Промокод партнёра и «Размещу без кода» убраны —
        фиксация «Без партнёров на лендинге» (решение 15.10.2026) -->
   <section class="bz-sec bz-sec--alt" id="price">
-    <div class="wrap">
+    <div class="wrap bz-split">
+      <div>
       <div class="bz-head">
         <span class="bz-num">04</span>
         <h2>Дешевле, чем один день внутренней рекламы</h2>
@@ -268,6 +269,31 @@
       <div class="bz-actions">
         <a class="btn btn--primary" href="#final">Рассчитать в&nbsp;кабинете</a>
         <a class="btn btn--ghost" href="#pilot">Сначала пилот</a>
+      </div>
+      </div>
+
+      <!-- Справа: месяц размещения против дня внутренней рекламы. Цены в ТЗ нет — плашка под цифру -->
+      <div class="mp-price mp-price--side">
+        <div class="mp-price__col">
+          <span class="mp-price__k">Внутренняя реклама маркетплейса</span>
+          <b class="mp-price__big">1 день</b>
+          <ul>
+            <li>оплата за&nbsp;показы или клики</li>
+            <li>только посетители площадки</li>
+            <li>ставки растут вместе с&nbsp;конкурентами</li>
+          </ul>
+        </div>
+        <div class="mp-price__col mp-price__col--us">
+          <span class="mp-price__k">Купон на&nbsp;«Всекупонах»</span>
+          <b class="mp-price__big">1 месяц</b>
+          <ul>
+            <li>фиксированная цена за&nbsp;размещение</li>
+            <li>все города присутствия сервиса</li>
+            <li>сайт + ВК, ОК, Telegram, MAX</li>
+            <li>код покупателю&nbsp;— бесплатно</li>
+          </ul>
+          <span class="mp-price__sum">[цена размещения, ₽ за&nbsp;месяц]</span>
+        </div>
       </div>
     </div>
   </section>

@@ -166,6 +166,8 @@
 .mp-price__col--us{background:var(--ink);color:#fff;border-color:var(--ink)}
 .mp-price__col--us .mp-price__k{color:#a9a7a3}
 .mp-price__col--us ul{color:#e8e7e4}
+.mp-price--side{margin-top:0;grid-template-columns:1fr 1fr;align-items:stretch}
+.mp-price--side .mp-price__big{font-size:clamp(40px,4.4vw,60px)}
 .mp-price__sum{margin-top:22px;align-self:flex-start;padding:8px 14px;border-radius:var(--r-sm);border:1.5px dashed #8d8b87;font-size:14px;color:#c9c8c5}
 
 /* ---------- Честные правила ---------- */
@@ -180,6 +182,8 @@
 /* ---------- Форма в два шага ---------- */
 .mp-form fieldset{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0;padding:0;border:0;min-width:0}
 .mp-form fieldset[hidden]{display:none}
+.mp-form fieldset > *,.mp-form input,.mp-form select{min-width:0}
+.mp-form input,.mp-form select{width:100%}
 .mp-form__step{grid-column:1/-1;font-size:13px;color:var(--ink-3);margin-top:-8px}
 .mp-form select{height:48px;padding:0 10px;border-radius:var(--r-sm);border:1.5px solid var(--line);background:var(--surface);font:inherit;font-size:15px;color:var(--ink);outline:none}
 .mp-form select:focus{border-color:var(--ink);background:#fff}
@@ -191,6 +195,7 @@
    Адаптив
    ========================================================================== */
 @media (max-width:1240px){
+  #price .bz-split{grid-template-columns:1fr;gap:40px}
   .bz-nav{gap:18px;font-size:13px}
 }
 @media (max-width:1000px){
