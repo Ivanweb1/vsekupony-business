@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/business.css?v=20261013c">
-<link rel="stylesheet" href="assets/marketplace.css?v=20261015c">
+<link rel="stylesheet" href="assets/marketplace.css?v=20261015d">
 </head>
 <body>
 
@@ -119,48 +119,38 @@
     </div>
   </section>
 
-  <!-- 5. Простота создания — главный блок страницы.
-       Слева — что делает селлер (2 действия), справа — живое демо мастера:
-       ссылка → сервис сам подтягивает карточку → готовый купон.
-       Демо проигрывается само при прокрутке, ссылку можно вставить свою. -->
-  <section class="bz-sec bz-sec--dark" id="easy">
+  <!-- 5. Как это работает — четыре шага из ТЗ и демо мастера в одном блоке.
+       Слева шаги, во втором — что делаете вы и что сервис делает сам;
+       справа — живое демо мастера /seller/coupons/new/marketplace/. -->
+  <section class="bz-sec bz-sec--dark" id="how">
     <div class="wrap">
       <div class="bz-head">
         <span class="bz-num">02</span>
-        <h2>Вставьте ссылку на&nbsp;карточку&nbsp;— купон соберётся сам</h2>
+        <h2>От&nbsp;карточки до&nbsp;кода&nbsp;— четыре шага</h2>
       </div>
       <p class="bz-text mp-easy__lead">Не&nbsp;нужно делать баннер, писать текст и&nbsp;загружать фото. Нейросеть берёт всё из&nbsp;вашей карточки на&nbsp;маркетплейсе. От&nbsp;вас&nbsp;— площадка, ссылка и&nbsp;промокод.</p>
 
       <div class="mp-easy">
-        <!-- Слева: что делаете вы / что делает сервис -->
-        <div class="mp-split">
-          <div class="mp-split__col">
-            <span class="mp-split__k">Вы</span>
-            <ol class="mp-you">
-              <li><b>Выбираете площадку</b><span>WB, Ozon, Яндекс Маркет или другую</span></li>
-              <li><b>Вставляете ссылку</b><span>на&nbsp;карточку товара или артикул</span></li>
-              <li><b>Указываете промокод</b><span>и&nbsp;размер скидки</span></li>
-            </ol>
-          </div>
-          <div class="mp-split__col mp-split__col--auto">
-            <span class="mp-split__k">Сервис сам</span>
-            <ul class="mp-auto">
-              <li>забирает фото товара</li>
-              <li>берёт название и&nbsp;цену</li>
-              <li>ставит категорию на&nbsp;витрине</li>
-              <li>пишет текст купона</li>
-              <li>публикует на&nbsp;всю Россию</li>
-              <li>отправляет в&nbsp;соцсети</li>
-            </ul>
-          </div>
-          <div class="mp-tally">
-            <b><span>3</span> действия ваши</b>
-            <b><span>6</span> делает сервис</b>
-          </div>
-        </div>
+        <ol class="mp-flow">
+          <li><p>Регистрируетесь на&nbsp;сервисе.</p></li>
+          <li class="is-key">
+            <p>В&nbsp;личном кабинете выбираете тип «Маркетплейс», указываете площадку, ссылку на&nbsp;карточку или артикул. Нейросеть сама извлечёт из&nbsp;маркетплейса изображение карточки и&nbsp;информацию о&nbsp;ней.</p>
+            <div class="mp-flow__auto">
+              <span class="mp-flow__k">Сервис сам</span>
+              <ul class="mp-auto">
+                <li>забирает фото товара</li>
+                <li>берёт название и&nbsp;цену</li>
+                <li>ставит категорию на&nbsp;витрине</li>
+                <li>пишет текст купона</li>
+              </ul>
+            </div>
+          </li>
+          <li><p>Публикуете на&nbsp;всю Россию, а&nbsp;сервис автоматически ретранслирует ваше предложение в&nbsp;социальные сети, максимально увеличив охват.</p></li>
+          <li><p>Покупатель забирает код там, где ему удобно, и&nbsp;переходит на&nbsp;вашу карточку товара.</p></li>
+        </ol>
 
         <!-- Справа: демо мастера /seller/coupons/new/marketplace/ -->
-        <div class="mp-wiz" data-wiz>
+        <div class="mp-wiz" id="easy" data-wiz>
           <div class="mp-wiz__bar"><i></i><i></i><i></i><span>vsekupony.ru/seller/coupons/new/marketplace/</span></div>
           <div class="mp-wiz__body">
             <p class="mp-wiz__step"><em>Шаг 1</em> Площадка и&nbsp;ссылка на&nbsp;карточку или артикул</p>
@@ -206,41 +196,8 @@
         </div>
       </div>
 
-      <div class="bz-launch__foot">
-        <p class="bz-text"><b>Площадка, ссылка и&nbsp;промокод</b>&nbsp;— больше ничего готовить не&nbsp;нужно.</p>
-        <a class="btn btn--light" href="#final">Открыть мастер маркетплейса</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6. Как это работает: четыре шага из ТЗ -->
-  <section class="bz-sec" id="how">
-    <div class="wrap">
-      <div class="bz-head">
-        <span class="bz-num">03</span>
-        <h2>От карточки до кода — четыре шага</h2>
-      </div>
-      <ol class="bz-steps bz-steps--4 mp-steps">
-        <li>
-          <span class="bz-steps__n">1</span>
-          <p>Регистрируетесь на&nbsp;сервисе.</p>
-        </li>
-        <li>
-          <span class="bz-steps__n">2</span>
-          <p>В&nbsp;личном кабинете выбираете тип «Маркетплейс», указываете площадку, ссылку на&nbsp;карточку или артикул. Нейросеть сама извлечёт из&nbsp;маркетплейса изображение карточки и&nbsp;информацию о&nbsp;ней.</p>
-        </li>
-        <li>
-          <span class="bz-steps__n">3</span>
-          <p>Публикуете на&nbsp;всю Россию, а&nbsp;сервис автоматически ретранслирует ваше предложение в&nbsp;социальные сети, максимально увеличив охват.</p>
-        </li>
-        <li>
-          <span class="bz-steps__n">4</span>
-          <p>Покупатель забирает код там, где ему удобно, и&nbsp;переходит на&nbsp;вашу карточку товара.</p>
-        </li>
-      </ol>
-
       <!-- Статистика в кабинете: какие цифры видит селлер -->
-      <div class="mp-stat">
+      <div class="mp-stat mp-sec-stat">
         <div class="mp-stat__t">
           <p class="bz-text">В&nbsp;личном кабинете вы&nbsp;в&nbsp;режиме онлайн можете наблюдать за&nbsp;статистикой просмотров и&nbsp;переходов.</p>
         </div>
@@ -249,8 +206,9 @@
         <p class="mp-stat__note">Цифры&nbsp;— пример для прототипа</p>
       </div>
 
-      <div class="bz-actions">
-        <a class="btn btn--primary" href="#final">Открыть мастер маркетплейса</a>
+      <div class="bz-launch__foot">
+        <p class="bz-text"><b>Площадка, ссылка и&nbsp;промокод</b>&nbsp;— больше ничего готовить не&nbsp;нужно.</p>
+        <a class="btn btn--light" href="#final">Открыть мастер маркетплейса</a>
       </div>
     </div>
   </section>
@@ -261,7 +219,7 @@
     <div class="wrap bz-split">
       <div>
       <div class="bz-head">
-        <span class="bz-num">04</span>
+        <span class="bz-num">03</span>
         <h2>Дешевле, чем один день внутренней рекламы</h2>
       </div>
       <p class="bz-text">Ваше размещение увидят во&nbsp;всех городах присутствия сервиса, а&nbsp;мы&nbsp;усилим охваты через наши специализированные сообщества в&nbsp;ВК, MAX, Telegram, ОК. Внешние переходы&nbsp;— элемент «поведенческого фактора», как и&nbsp;лайки и&nbsp;корзины,&nbsp;— это стимулирует ранжирование карточки.</p>
@@ -302,7 +260,7 @@
   <section class="bz-sec" id="channels">
     <div class="wrap">
       <div class="bz-head">
-        <span class="bz-num">05</span>
+        <span class="bz-num">04</span>
         <h2>Раздел «Маркетплейс» + пакет каналов</h2>
         <p class="bz-text">Где видно купон:</p>
       </div>
@@ -335,7 +293,7 @@
       <div class="bz-pilot__num"><b>0&nbsp;₽</b><span>первое размещение бесплатно, ориентир&nbsp;— 1&nbsp;месяц</span></div>
       <div>
         <div class="bz-head">
-          <span class="bz-num">06</span>
+          <span class="bz-num">05</span>
           <h2>Первое размещение — по&nbsp;условиям пилота</h2>
         </div>
         <p class="bz-text">Для новых клиентов&nbsp;— первое размещение бесплатно (ориентир 1&nbsp;месяц).</p>
@@ -350,7 +308,7 @@
   <section class="bz-sec" id="rules">
     <div class="wrap">
       <div class="bz-head">
-        <span class="bz-num">07</span>
+        <span class="bz-num">06</span>
         <h2>Что обещаем — и&nbsp;чего нет</h2>
       </div>
       <div class="mp-rules">
@@ -385,7 +343,7 @@
     <div class="wrap bz-faq">
       <div class="bz-faq__aside">
         <div class="bz-head">
-          <span class="bz-num">08</span>
+          <span class="bz-num">07</span>
           <h2>Вопросы и&nbsp;ответы</h2>
         </div>
         <div class="bz-actions bz-actions--col">

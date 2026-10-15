@@ -51,6 +51,16 @@
 .mp-auto{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;font-size:15px;color:#e8e7e4}
 .mp-auto li{display:flex;gap:10px;align-items:baseline}
 .mp-auto li::before{content:"✓";flex:none;font-weight:700;color:#fff}
+.mp-flow{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;counter-reset:f}
+.mp-flow > li{position:relative;padding:20px 22px 20px 70px;border-radius:var(--r-lg);background:var(--dark-2);border:1px solid #3a3936;counter-increment:f}
+.mp-flow > li::before{content:counter(f);position:absolute;left:22px;top:18px;width:32px;height:32px;border-radius:50%;background:#fff;color:var(--ink);font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center}
+.mp-flow > li > p{font-size:16px;line-height:1.45;color:#e8e7e4}
+.mp-flow > li.is-key{border-color:#fff}
+.mp-flow__auto{margin-top:14px;padding:14px 16px;border-radius:var(--r-md);border:1px dashed #5a5955}
+.mp-flow__k{display:block;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#a9a7a3;margin-bottom:10px}
+.mp-flow__auto .mp-auto{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;font-size:14px}
+.mp-sec-stat{margin-top:40px;color:var(--ink)}
+.bz-sec--dark .mp-sec-stat .bz-text{color:var(--ink-2)}
 .mp-tally{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .mp-tally b{display:flex;align-items:baseline;gap:10px;padding:16px 24px;border-radius:var(--r-md);background:#fff;color:var(--ink);font-size:15px}
 .mp-tally b span{font-size:44px;letter-spacing:-.04em;line-height:1}
@@ -210,6 +220,10 @@
   .mp-hero__card p{font-size:13px}
   .mp-easy__lead{font-size:16px;margin-bottom:28px}
   .mp-split{grid-template-columns:1fr}
+  .mp-flow > li{padding:16px 16px 16px 56px}
+  .mp-flow > li::before{left:14px;top:14px;width:28px;height:28px;font-size:13px}
+  .mp-flow > li > p{font-size:15px}
+  .mp-flow__auto .mp-auto{grid-template-columns:1fr}
   .mp-tally{grid-template-columns:1fr 1fr}
   .mp-tally b{flex-direction:column;gap:4px;padding:14px 16px;font-size:13px}
   .mp-tally b span{font-size:34px}
