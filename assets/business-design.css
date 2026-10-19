@@ -1947,10 +1947,10 @@ html.is-modal{overflow:hidden}
 .ft__bottom{align-items:center}
 .ft__docs{display:flex;flex-wrap:wrap;gap:8px 24px;margin-left:auto}
 .ft__docs span{color:#a9a9a9}
-/* Широкий экран: нижняя строка — по сетке колонок, документы под «Сервисом» */
+/* Широкий экран: документы — одной строкой. Если помещаются в ширину трёх
+   колонок — начинаются под «Сервисом», если нет — прижаты к правому краю */
 @media (min-width:1241px){
-  .ft__bottom{display:grid;grid-template-columns:minmax(0,5fr) repeat(3,minmax(0,2fr));gap:8px var(--gut,18px);align-items:start}
-  .ft__docs{grid-column:2 / -1;margin:0}
+  .ft__docs{flex:none;flex-wrap:nowrap;white-space:nowrap;min-width:calc((100% - 3 * var(--gut,18px)) * 6 / 11 + 2 * var(--gut,18px))}
 }
 @media (max-width:1000px){
   .ft__bottom{flex-direction:column;align-items:flex-start;gap:14px}
