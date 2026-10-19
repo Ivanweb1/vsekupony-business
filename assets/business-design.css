@@ -1821,7 +1821,7 @@ html.is-modal{overflow:hidden}
 .qd__head p{margin-top:6px;font-size:15px;line-height:1.45;color:var(--ink-2)}
 .qd__body{display:flex;flex-direction:column;gap:14px;padding:22px 30px 6px}
 .qd__body label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:var(--ink-2)}
-.qd__body input:not([type=radio]),.qd__body textarea{width:100%;height:50px;padding:0 16px;border:2px solid var(--line);border-radius:var(--r-sm,12px);background:var(--surface);
+.qd__body input:not([type=radio]):not([type=checkbox]),.qd__body textarea{width:100%;height:50px;padding:0 16px;border:2px solid var(--line);border-radius:var(--r-sm,12px);background:var(--surface);
   font:inherit;font-size:16px;color:var(--ink);outline:none;transition:border-color .2s var(--ease),background .2s var(--ease)}
 .qd__body textarea{height:auto;min-height:104px;padding:12px 16px;resize:vertical;line-height:1.45}
 .qd__body input:focus,.qd__body textarea:focus{border-color:var(--brand);background:#fff}
@@ -1913,7 +1913,7 @@ html.is-modal{overflow:hidden}
 .final__text{justify-content:center}.final__cta{margin-top:0}
 /* Согласие на обработку данных — чекбокс слева, по левому краю формы */
 .form__agree{grid-column:1/-1;display:flex !important;flex-direction:row !important;align-items:center;gap:10px !important;cursor:pointer;font-size:14px !important;color:var(--ink-2)}
-.form__agree input{position:absolute;opacity:0;pointer-events:none}
+.form__agree input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
 .form__agree i{display:grid;place-items:center;flex:none;width:22px;height:22px;border:2px solid var(--line-strong);border-radius:6px;background:#fff;transition:background .15s,border-color .15s}
 .form__agree i::after{content:"";width:10px;height:6px;margin-top:-2px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg);opacity:0}
 .form__agree input:checked + i{background:var(--brand);border-color:var(--brand)}
@@ -1947,6 +1947,11 @@ html.is-modal{overflow:hidden}
 .ft__bottom{align-items:center}
 .ft__docs{display:flex;flex-wrap:wrap;gap:8px 24px;margin-left:auto}
 .ft__docs span{color:#a9a9a9}
+/* Широкий экран: нижняя строка — по сетке колонок, документы под «Сервисом» */
+@media (min-width:1241px){
+  .ft__bottom{display:grid;grid-template-columns:minmax(0,5fr) repeat(3,minmax(0,2fr));gap:8px var(--gut,18px);align-items:start}
+  .ft__docs{grid-column:2 / -1;margin:0}
+}
 @media (max-width:1000px){
   .ft__bottom{flex-direction:column;align-items:flex-start;gap:14px}
   .ft__docs{margin:0;flex-direction:column;gap:10px}
