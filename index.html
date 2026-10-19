@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/business-design.css?v=20261022s">
+<link rel="stylesheet" href="assets/business-design.css?v=20261019clean">
 <link rel="icon" href="assets/brand/logo-red.png">
 </head>
 <body>
@@ -22,7 +22,7 @@
      фото в ленте, иконки и счётчики — business-design.js.
      =================================================================== -->
 
-<!-- 1. Шапка -->
+<!-- Шапка -->
 <header class="hd">
   <div class="wrap hd__in">
     <a class="logo" href="#top" aria-label="ВСЕКУПОНЫ — сервис специальных предложений">
@@ -58,7 +58,7 @@
 
   <!-- Мобильное меню: разделы, контакты и кнопки -->
   <div class="mnav" id="mnav" hidden data-mnav>
-    <nav class="mnav__links" aria-label="Разделы">
+    <nav class="mnav__links" aria-label="Разделы (мобильное меню)">
       <a href="#demand">Спрос</a>
       <a href="#how">Как это работает</a>
       <a href="#ai">AI-помощник</a>
@@ -82,7 +82,7 @@
 
 <main id="top">
 
-  <!-- 3. Первый экран -->
+  <!-- Первый экран -->
   <section class="hero">
     <div class="wrap hero__in">
       <div class="hero__text">
@@ -116,80 +116,81 @@
            и поверх него действия покупателей: уведомление сменяется само
            (business-design.js), карточка спроса — та же цифра, что в блоке «Спрос» -->
       <div class="hero__vis hx" aria-hidden="true">
-       <div class="hx__stage">
-        <div class="hx__win">
-          <div class="hx__bar"><i></i><i></i><i></i><span><b>vsekupony.ru</b>/lipetsk</span></div>
-          <div class="hx__app">
-            <div class="hx__top">
-              <span class="hx__brand"><img class="hx__logo" src="assets/brand/logo-red.png" alt=""><b>Все<br>купоны</b></span>
-              <span class="hx__city"><i data-ic="pin"></i>Липецк<em data-ic="chev"></em></span>
-              <span class="hx__search"><i data-ic="search"></i>Найти скидку: кафе, маникюр, фитнес…</span>
+        <div class="hx__stage">
+          <div class="hx__win">
+            <div class="hx__bar"><i></i><i></i><i></i><span><b>vsekupony.ru</b>/lipetsk</span></div>
+            <div class="hx__app">
+              <div class="hx__top">
+                <span class="hx__brand"><img class="hx__logo" src="assets/brand/logo-red.png" alt=""><b>Все<br>купоны</b></span>
+                <span class="hx__city"><i data-ic="pin"></i>Липецк<em data-ic="chev"></em></span>
+                <span class="hx__search"><i data-ic="search"></i>Найти скидку: кафе, маникюр, фитнес…</span>
+              </div>
+              <div class="hx__cats"><span class="is-on">Все</span><span>Кафе</span><span>Красота</span><span>Фитнес</span><span>Детям</span><span>Авто</span></div>
+              <div class="hx__feed" data-hx-feed>
+                <div class="hx__track">
+                  <div class="hx__grid">
+                    <div class="hx__c is-hot" data-hx-card="0">
+                      <div class="hx__ph" style="background-image:url('assets/coupons/coffee.jpg');background-position:center 72%"><em>1+1</em></div>
+                      <b>Капучино по&nbsp;будням</b><span>Кофейня «Пример»</span>
+                      <small><i data-ic="ticket"></i>забрали <u data-hx-count="0">214</u></small>
+                    </div>
+                    <div class="hx__c" data-hx-card="1">
+                      <div class="hx__ph" style="background-image:url('assets/coupons/manikyur-rose.jpg');background-position:70% 30%"><em>−20%</em></div>
+                      <b>Маникюр с&nbsp;покрытием</b><span>Студия «Пример»</span>
+                      <small><i data-ic="ticket"></i>забрали <u data-hx-count="1">168</u></small>
+                    </div>
+                    <div class="hx__c" data-hx-card="2">
+                      <div class="hx__ph" style="background-image:url('assets/coupons/fitness.jpg');background-position:35% 76%"><em>0&nbsp;₽</em></div>
+                      <b>Первая тренировка</b><span>Фитнес-клуб «Пример»</span>
+                      <small><i data-ic="ticket"></i>забрали <u data-hx-count="2">97</u></small>
+                    </div>
+                    <div class="hx__c" data-hx-card="3">
+                      <div class="hx__ph" style="background-image:url('assets/coupons/avto-steel.jpg');background-position:35% 62%"><em>−30%</em></div>
+                      <b>Шиномонтаж</b><span>Автосервис «Пример»</span>
+                      <small><i data-ic="ticket"></i>забрали <u data-hx-count="3">76</u></small>
+                    </div>
+                    <div class="hx__c" data-hx-card="4">
+                      <div class="hx__ph" style="background-image:url('assets/coupons/eda-cool.jpg');background-position:center 45%"><em>349&nbsp;₽</em></div>
+                      <b>Завтрак до&nbsp;12:00</b><span>Кафе «Пример»</span>
+                      <small><i data-ic="ticket"></i>забрали <u data-hx-count="4">131</u></small>
+                    </div>
+                    <div class="hx__c" data-hx-card="5">
+                      <div class="hx__ph" style="background-image:url('assets/coupons/beauty.jpg');background-position:center 55%"><em>подарок</em></div>
+                      <b>Помада к&nbsp;покупке</b><span>Магазин «Пример»</span>
+                      <small><i data-ic="ticket"></i>забрали <u data-hx-count="5">88</u></small>
+                    </div>
+                    <div class="hx__c" data-hx-card="6">
+                      <div class="hx__ph" style="background-image:url('assets/coupons/razvlecheniya-blue.jpg');background-position:center 60%"><em>1+1</em></div>
+                      <b>Боулинг: час в&nbsp;подарок</b><span>Клуб «Пример»</span>
+                      <small><i data-ic="ticket"></i>забрали <u data-hx-count="6">64</u></small>
+                    </div>
+                    <div class="hx__c" data-hx-card="7">
+                      <div class="hx__ph" style="background-image:url('assets/coupons/pitomtsy-brown.jpg');background-position:center 55%"><em>−15%</em></div>
+                      <b>Груминг для&nbsp;собак</b><span>Салон «Пример»</span>
+                      <small><i data-ic="ticket"></i>забрали <u data-hx-count="7">52</u></small>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="hx__cats"><span class="is-on">Все</span><span>Кафе</span><span>Красота</span><span>Фитнес</span><span>Детям</span><span>Авто</span></div>
-            <div class="hx__feed" data-hx-feed><div class="hx__track">
-            <div class="hx__grid">
-              <div class="hx__c is-hot" data-hx-card="0">
-                <div class="hx__ph" style="background-image:url('assets/coupons/coffee.jpg');background-position:center 72%"><em>1+1</em></div>
-                <b>Капучино по&nbsp;будням</b><span>Кофейня «Пример»</span>
-                <small><i data-ic="ticket"></i>забрали <u data-hx-count="0">214</u></small>
-              </div>
-              <div class="hx__c" data-hx-card="1">
-                <div class="hx__ph" style="background-image:url('assets/coupons/manikyur-rose.jpg');background-position:70% 30%"><em>−20%</em></div>
-                <b>Маникюр с&nbsp;покрытием</b><span>Студия «Пример»</span>
-                <small><i data-ic="ticket"></i>забрали <u data-hx-count="1">168</u></small>
-              </div>
-              <div class="hx__c" data-hx-card="2">
-                <div class="hx__ph" style="background-image:url('assets/coupons/fitness.jpg');background-position:35% 76%"><em>0&nbsp;₽</em></div>
-                <b>Первая тренировка</b><span>Фитнес-клуб «Пример»</span>
-                <small><i data-ic="ticket"></i>забрали <u data-hx-count="2">97</u></small>
-              </div>
-              <div class="hx__c" data-hx-card="3">
-                <div class="hx__ph" style="background-image:url('assets/coupons/avto-steel.jpg');background-position:35% 62%"><em>−30%</em></div>
-                <b>Шиномонтаж</b><span>Автосервис «Пример»</span>
-                <small><i data-ic="ticket"></i>забрали <u data-hx-count="3">76</u></small>
-              </div>
-              <div class="hx__c" data-hx-card="4">
-                <div class="hx__ph" style="background-image:url('assets/coupons/eda-cool.jpg');background-position:center 45%"><em>349&nbsp;₽</em></div>
-                <b>Завтрак до&nbsp;12:00</b><span>Кафе «Пример»</span>
-                <small><i data-ic="ticket"></i>забрали <u data-hx-count="4">131</u></small>
-              </div>
-              <div class="hx__c" data-hx-card="5">
-                <div class="hx__ph" style="background-image:url('assets/coupons/beauty.jpg');background-position:center 55%"><em>подарок</em></div>
-                <b>Помада к&nbsp;покупке</b><span>Магазин «Пример»</span>
-                <small><i data-ic="ticket"></i>забрали <u data-hx-count="5">88</u></small>
-              </div>
-              <div class="hx__c" data-hx-card="6">
-                <div class="hx__ph" style="background-image:url('assets/coupons/razvlecheniya-blue.jpg');background-position:center 60%"><em>1+1</em></div>
-                <b>Боулинг: час в&nbsp;подарок</b><span>Клуб «Пример»</span>
-                <small><i data-ic="ticket"></i>забрали <u data-hx-count="6">64</u></small>
-              </div>
-              <div class="hx__c" data-hx-card="7">
-                <div class="hx__ph" style="background-image:url('assets/coupons/pitomtsy-brown.jpg');background-position:center 55%"><em>−15%</em></div>
-                <b>Груминг для&nbsp;собак</b><span>Салон «Пример»</span>
-                <small><i data-ic="ticket"></i>забрали <u data-hx-count="7">52</u></small>
-              </div>
-            </div>
-            </div></div>
+          </div>
+
+          <div class="hx__ev hx__ev--top" data-hx-ev="1">
+            <span class="ava" style="background-image:url('social-kit/photos/people/dmitry.jpg')"></span>
+            <div><b>Дмитрий забрал код</b><span>−30% на&nbsp;шиномонтаж · только что</span></div>
+            <i class="hx__ok" data-ic="check"></i>
+          </div>
+          <div class="hx__ev" data-hx-ev="0">
+            <span class="ava" style="background-image:url('social-kit/photos/people/anna.jpg')"></span>
+            <div><b>Анна забрала код</b><span>1+1 на&nbsp;капучино · только что</span></div>
+            <i class="hx__ok" data-ic="check"></i>
           </div>
         </div>
-
-        <div class="hx__ev hx__ev--top" data-hx-ev="1">
-          <span class="ava" style="background-image:url('social-kit/photos/people/dmitry.jpg')"></span>
-          <div><b>Дмитрий забрал код</b><span>−30% на&nbsp;шиномонтаж · только что</span></div>
-          <i class="hx__ok" data-ic="check"></i>
-        </div>
-        <div class="hx__ev" data-hx-ev="0">
-          <span class="ava" style="background-image:url('social-kit/photos/people/anna.jpg')"></span>
-          <div><b>Анна забрала код</b><span>1+1 на&nbsp;капучино · только что</span></div>
-          <i class="hx__ok" data-ic="check"></i>
-        </div>
-
-       </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. Живая аудитория -->
+  <!-- Живая аудитория -->
   <section class="sec" id="demand">
     <div class="wrap">
       <div class="head">
@@ -248,21 +249,21 @@
     </div>
   </section>
 
-  <!-- 5. Спрос на выгоду — красный слайд, как в деке -->
+  <!-- Спрос на выгоду — красный слайд, как в деке -->
   <section class="sec sec--red">
     <div class="wrap">
-<div class="hrow">
-      <div class="head">
-        <h2>Люди <span class="tag tag--w">каждый день</span> ищут купон, скидку и&nbsp;промокод</h2>
-        <a class="btn btn--white head__cta" href="#final">Разместить предложение</a>
-      </div>
-      <div class="hrow__txt"><p class="text">Запросы «купон», «акция», «скидка», «промокод»&nbsp;— это интерес к&nbsp;выгоде, который не&nbsp;нужно «прогревать с&nbsp;нуля».</p>
-      <p class="text">По&nbsp;Яндекс Вордстат&nbsp;— около 20&nbsp;миллионов таких запросов в&nbsp;месяц по&nbsp;России. ВСЕКУПОНЫ собирают этот спрос в&nbsp;понятный локальный канал: предложение → код → визит к&nbsp;вам.</p></div>
+      <div class="hrow">
+        <div class="head">
+          <h2>Люди <span class="tag tag--w">каждый день</span> ищут купон, скидку и&nbsp;промокод</h2>
+          <a class="btn btn--white head__cta" href="#final">Разместить предложение</a>
+        </div>
+        <div class="hrow__txt">
+          <p class="text">Запросы «купон», «акция», «скидка», «промокод»&nbsp;— это интерес к&nbsp;выгоде, который не&nbsp;нужно «прогревать с&nbsp;нуля».</p>
+          <p class="text">По&nbsp;Яндекс Вордстат&nbsp;— около 20&nbsp;миллионов таких запросов в&nbsp;месяц по&nbsp;России. ВСЕКУПОНЫ собирают этот спрос в&nbsp;понятный локальный канал: предложение → код → визит к&nbsp;вам.</p>
+        </div>
       </div>
 
-      <!-- Содержание — из прототипа: 20 млн, четыре запроса, путь к визиту.
-           Без скриншота: цифра, запросы и путь к визиту на красном -->
-      <!-- Купон: основная часть — спрос, корешок — путь к визиту -->
+      <!-- Купон: основная часть — 20 млн и четыре запроса, корешок — путь к визиту -->
       <div class="wcp">
         <div class="wcp__main">
           <div class="wcp__big">
@@ -292,13 +293,13 @@
     </div>
   </section>
 
-  <!-- 6. Как это работает -->
+  <!-- Как это работает -->
   <section class="sec" id="how">
     <div class="wrap">
       <div class="hrow hrow--wide">
-      <div class="head">
-        <h2>От предложения до визита&nbsp;— <span class="tag">четыре простых шага</span></h2>
-      </div>
+        <div class="head">
+          <h2>От предложения до визита&nbsp;— <span class="tag">четыре простых шага</span></h2>
+        </div>
       </div>
 
       <ol class="path path--ui">
@@ -340,7 +341,7 @@
     </div>
   </section>
 
-  <!-- 7. Форматы -->
+  <!-- Форматы -->
   <section class="sec sec--gray" id="formats">
     <div class="wrap">
       <div class="fhead">
@@ -371,7 +372,7 @@
     </div>
   </section>
 
-  <!-- 8. AI-помощник -->
+  <!-- AI-помощник -->
   <section class="sec" id="ai">
     <div class="wrap">
       <div class="head ai-h">
@@ -456,7 +457,7 @@
     </div>
   </section>
 
-  <!-- 9. Запуск -->
+  <!-- Запуск -->
   <section class="sec sec--red" id="launch">
     <div class="wrap">
       <div class="head">
@@ -503,14 +504,14 @@
     </div>
   </section>
 
-  <!-- 10. Каналы -->
+  <!-- Каналы -->
   <section class="sec" id="channels">
     <div class="wrap">
-<div class="hrow">
-      <div class="head">
-        <h2>Клиенты находят вас там, <span class="tag">где им удобно</span></h2>
-      </div>
-      <p class="text">Ваше предложение увидят там, где ищут выгоду. Публикацию на&nbsp;сайте, в&nbsp;поиске и&nbsp;в&nbsp;соцсетях мы берём на&nbsp;себя — одно размещение работает сразу во&nbsp;всех каналах.</p>
+      <div class="hrow">
+        <div class="head">
+          <h2>Клиенты находят вас там, <span class="tag">где им удобно</span></h2>
+        </div>
+        <p class="text">Ваше предложение увидят там, где ищут выгоду. Публикацию на&nbsp;сайте, в&nbsp;поиске и&nbsp;в&nbsp;соцсетях мы берём на&nbsp;себя — одно размещение работает сразу во&nbsp;всех каналах.</p>
       </div>
       <!-- Три канала — одно и то же предложение: сверху мини-интерфейс канала
            (витрина, выдача поиска, пост в соцсети), снизу — подпись -->
@@ -557,21 +558,21 @@
     </div>
   </section>
 
-  <!-- 11. Выгода — таблица со слайда 11 дека v4, в цвете -->
+  <!-- Выгода — таблица со слайда 11 дека v4, в цвете -->
   <section class="sec sec--gray" id="benefit">
     <div class="wrap">
-<div class="hrow">
-      <div class="head">
-        <h2>Реклама дорогой <span class="tag">быть не&nbsp;должна</span></h2>
-      </div>
-      <p class="text">Сопоставили ВСЕКУПОНЫ с&nbsp;основными рекламными каналами: цена, охват, скорость, измеримость, масштабирование, удобство и&nbsp;бюджет на&nbsp;старте.</p>
+      <div class="hrow">
+        <div class="head">
+          <h2>Реклама дорогой <span class="tag">быть не&nbsp;должна</span></h2>
+        </div>
+        <p class="text">Сопоставили ВСЕКУПОНЫ с&nbsp;основными рекламными каналами: цена, охват, скорость, измеримость, масштабирование, удобство и&nbsp;бюджет на&nbsp;старте.</p>
       </div>
 
       <div class="cmp">
         <div class="cmp__lg"><span><i class="g"></i>выгодно</span><span><i class="y"></i>средне</span><span><i class="n"></i>невыгодно</span></div>
         <div class="cmp__scroll">
           <table class="cmp__t" id="cmpTable">
-            <thead><tr><th></th><th>Цена</th><th>Охват</th><th>Скорость</th><th>Измеримость</th><th>Масштабирование</th><th>Удобство</th><th>Бюджет</th></tr></thead>
+            <thead><tr><th scope="col"></th><th scope="col">Цена</th><th scope="col">Охват</th><th scope="col">Скорость</th><th scope="col">Измеримость</th><th scope="col">Масштабирование</th><th scope="col">Удобство</th><th scope="col">Бюджет</th></tr></thead>
             <tbody></tbody>
           </table>
         </div>
@@ -587,15 +588,17 @@
     </div>
   </section>
 
-  <!-- 12. Команда -->
+  <!-- Команда -->
   <section class="sec">
     <div class="wrap">
-<div class="hrow">
-      <div class="head">
-        <h2>Сервис разработан <span class="tag">предпринимателями</span></h2>
-      </div>
-      <div class="hrow__txt"><p class="text">Мы сами из&nbsp;бизнеса и&nbsp;знаем, как трудно и&nbsp;дорого подобрать рабочий рекламный канал — и&nbsp;удержать результат. <b>Особенно сейчас.</b></p>
-      <p class="text">Поэтому ВСЕКУПОНЫ собраны просто: понятное предложение, понятные каналы, понятная статистика.</p></div>
+      <div class="hrow">
+        <div class="head">
+          <h2>Сервис разработан <span class="tag">предпринимателями</span></h2>
+        </div>
+        <div class="hrow__txt">
+          <p class="text">Мы сами из&nbsp;бизнеса и&nbsp;знаем, как трудно и&nbsp;дорого подобрать рабочий рекламный канал — и&nbsp;удержать результат. <b>Особенно сейчас.</b></p>
+          <p class="text">Поэтому ВСЕКУПОНЫ собраны просто: понятное предложение, понятные каналы, понятная статистика.</p>
+        </div>
       </div>
 
       <div class="team">
@@ -607,14 +610,14 @@
     </div>
   </section>
 
-  <!-- 13. География — карта со слайда 8 дека v4 -->
+  <!-- География — карта со слайда 8 дека v4 -->
   <section class="sec sec--gray">
     <div class="wrap">
-<div class="hrow">
-      <div class="head">
-        <h2>Сейчас&nbsp;— Липецк. Дальше&nbsp;— <span class="tag">вся Россия</span></h2>
-      </div>
-      <p class="text">Работаем в&nbsp;Липецке и&nbsp;Липецкой области. Готовим расширение сервиса и&nbsp;запуск предложений в&nbsp;новых городах и&nbsp;регионах по&nbsp;всей России.</p>
+      <div class="hrow">
+        <div class="head">
+          <h2>Сейчас&nbsp;— Липецк. Дальше&nbsp;— <span class="tag">вся Россия</span></h2>
+        </div>
+        <p class="text">Работаем в&nbsp;Липецке и&nbsp;Липецкой области. Готовим расширение сервиса и&nbsp;запуск предложений в&nbsp;новых городах и&nbsp;регионах по&nbsp;всей России.</p>
       </div>
 
       <div class="geo">
@@ -643,7 +646,7 @@
     </div>
   </section>
 
-  <!-- 14. Пилот — большой купон -->
+  <!-- Пилот — большой купон -->
   <section class="sec sec--red" id="pilot">
     <div class="wrap">
       <div class="pilot">
@@ -669,7 +672,7 @@
     </div>
   </section>
 
-  <!-- 15. FAQ: 19 вопросов, первые пять — от заказчика (13.10.2026) -->
+  <!-- FAQ: 19 вопросов, первые пять — от заказчика (13.10.2026) -->
   <section class="sec" id="faq">
     <div class="wrap faq">
       <div class="faq__aside">
@@ -790,7 +793,7 @@
     </div>
   </section>
 
-  <!-- 16. Финал -->
+  <!-- Финал -->
   <section class="sec sec--gray" id="final">
     <div class="wrap final">
       <div class="final__text">
@@ -807,12 +810,12 @@
 
       <form class="form" id="leadForm" novalidate>
         <div class="form__head"><p class="form__title">Или оставьте заявку</p><p class="form__sub">Перезвоним, поможем выбрать формат и&nbsp;разместить первое предложение.</p></div>
-        <label><span>Компания</span><input name="company" required placeholder="ООО или ИП"></label>
+        <label><span>Компания</span><input name="company" required placeholder="ООО или ИП" autocomplete="organization"></label>
         <label><span>Сфера</span><input name="sphere" required placeholder="Например, кофейня"></label>
-        <label><span>Город</span><input name="city" required value="Липецк"></label>
-        <label><span>Имя</span><input name="name" required></label>
+        <label><span>Город</span><input name="city" required value="Липецк" autocomplete="address-level2"></label>
+        <label><span>Имя</span><input name="name" required autocomplete="name"></label>
         <label><span>Телефон / Telegram</span><input name="contact" required placeholder="+7 или @username"></label>
-        <label><span>Email</span><input name="email" type="email"></label>
+        <label><span>Email</span><input name="email" type="email" autocomplete="email"></label>
         <label class="form__agree"><input type="checkbox" name="agree" data-agree><i></i><span>Соглашаюсь с&nbsp;<a href="https://ivanweb1.github.io/coupon-prototype/docs.html">обработкой персональных данных</a></span></label>
         <button class="btn btn--red btn--lg" type="submit">Отправить заявку</button>
         <div class="form__done bz-form__done" hidden>
@@ -826,7 +829,7 @@
 
 </main>
 
-<!-- 17. Подвал -->
+<!-- Подвал -->
 <footer class="ft">
   <div class="wrap">
     <div class="ft__grid">
@@ -863,7 +866,6 @@
         <span>Политика cookie</span>
         <span>Пользовательское соглашение</span>
       </span>
-
     </div>
   </div>
 </footer>
@@ -882,7 +884,7 @@
     </div>
 
     <div class="qd__body">
-      <label><span>Как к&nbsp;вам обращаться</span><input name="name" required placeholder="Имя"></label>
+      <label><span>Как к&nbsp;вам обращаться</span><input name="name" required placeholder="Имя" autocomplete="name"></label>
       <label><span>Телефон или Telegram</span><input name="contact" required placeholder="+7 или @username"></label>
       <fieldset class="qd__ch">
         <legend>Как удобнее ответить</legend>
@@ -915,7 +917,7 @@
   <button class="btn btn--red" type="button" data-cookie-ok>Хорошо</button>
 </div>
 
-<script src="assets/business.js?v=20261013b"></script>
-<script src="assets/business-design.js?v=20261014figma2"></script>
+<script src="assets/business.js?v=20261019clean"></script>
+<script src="assets/business-design.js?v=20261019clean"></script>
 </body>
 </html>

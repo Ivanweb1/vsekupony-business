@@ -57,8 +57,7 @@
     el.dataset.faces.split(",").forEach(function (n, k) { photo(el.children[k], PEOPLE + n + ".jpg"); });
   });
 
-  // Живая лента с фото — те же люди и купоны, что на слайде дека
-  // События — как на слайде «Сейчас в Липецке» дека v4: кто, что сделал,
+  // Живая лента — как на слайде «Сейчас в Липецке» дека v4: кто, что сделал,
   // какой купон и где. Значок на аватаре — действие.
   var EVENTS = [
     ["maria",  "took", "Мария забрала купон",    "−20% на маникюр · Студия «Пример»"],
@@ -123,8 +122,6 @@
     }).join("");
   }
 })();
-
-/* Шапка при прокрутке не сворачивается — закреплена целиком (sticky в CSS) */
 
 /* Купон Вордстата: на узком экране вырезы — ровно на линии отрыва корешка */
 (function () {
@@ -402,146 +399,4 @@
     Array.prototype.slice.call(m.children).forEach(function (c) { if (!c.classList.contains("map__ins")) z.appendChild(c); });
     m.insertBefore(z, m.firstChild);
   });
-})();
-
-/* Вырезы купонов — настоящими кружками для экспорта в Figma.
-   В вёрстке вырезы сделаны CSS-маской (radial-gradient) и псевдоэлементами
-   с radial-gradient — Figma-импорт этого не понимает и рисует карточку без
-   вырезов. Поэтому в каждый вырез кладём кружок цвета фона под карточкой:
-   в браузере его прячет та же маска (внешний вид не меняется), а в Figma
-   маски нет — и кружок рисует вырез. Пересчёт при смене ширины экрана.
-   Заодно Figma не обрезает вложенные блоки по скруглённым углам родителя
-   (overflow:hidden), поэтому блок, упёртый в такой угол, получает то же
-   скругление — в браузере это ничего не меняет.
-   Плавные затухания краёв (mask с linear-gradient: лента, фото людей,
-   карта) Figma тоже теряет — их заменяем накладкой с градиентом в цвет
-   фона поверх элемента: на сплошном фоне это тот же вид, и в браузере, и в Figma. */
-(function () {
-  function bgBehind(el) {
-    for (var p = el.parentElement; p; p = p.parentElement) {
-      var c = getComputedStyle(p).backgroundColor;
-      if (c && c !== "transparent" && !/rgba\(.*,\s*0\)$/.test(c)) return c;
-    }
-    return "#fff";
-  }
-  function dot(host, x, y, r, color) {
-    var d = document.createElement("i");
-    d.className = "cut-dot"; d.setAttribute("aria-hidden", "true");
-    d.style.cssText = "position:absolute;z-index:5;pointer-events:none;border-radius:50%;margin:0;padding:0;" +
-      "left:" + x + ";top:" + y + ";width:" + 2 * r + "px;height:" + 2 * r + "px;translate:-50% -50%;background:" + color;
-    host.appendChild(d);
-  }
-  /* «radial-gradient(14px at 62% 0px, …)» → [{r, x, y, color}] */
-  function circles(img) {
-    var out = [], re = /radial-gradient\((\d+(?:\.\d+)?)px at ((?:calc\([^)]*\)\)?|min\([^)]*\)|[^ ,]+)) ((?:calc\([^)]*\)\)?|[^ ,]+)),\s*(rgba?\([^)]*\)|[a-z]+)/g, m;
-    while ((m = re.exec(img))) out.push({ r: +m[1], x: m[2], y: m[3], color: m[4] });
-    return out;
-  }
-  function opaque(c) { return !/^transparent$/.test(c) && !/rgba\([^)]*,\s*0\)/.test(c); }
-  function px(v, size) { return /%$/.test(v) ? parseFloat(v) / 100 * size : parseFloat(v); }
-
-  function corners(el, cs) {
-    var R = el.getBoundingClientRect();
-    if (!R.width) return;
-    Array.prototype.forEach.call(el.children, function (ch) {
-      if (ch.classList.contains("cut-dot")) return;
-      var r = ch.getBoundingClientRect(), ccs = getComputedStyle(ch), set = false;
-      if (!r.width || !r.height) return;
-      [["TopLeft", r.left - R.left, r.top - R.top], ["TopRight", R.right - r.right, r.top - R.top],
-       ["BottomRight", R.right - r.right, R.bottom - r.bottom], ["BottomLeft", r.left - R.left, R.bottom - r.bottom]]
-        .forEach(function (c) {
-          var pr = cs["border" + c[0] + "Radius"];
-          if (Math.abs(c[1]) < 1.5 && Math.abs(c[2]) < 1.5 && /^[\d.]+px$/.test(pr) && parseFloat(pr) > 0 && parseFloat(ccs["border" + c[0] + "Radius"]) === 0) {
-            ch.style["border" + c[0] + "Radius"] = pr; set = true;
-          }
-        });
-      if (set) ch.setAttribute("data-cut-r", "");
-    });
-  }
-  /* Маска «чёрный — виден, прозрачный — скрыт» → накладка «прозрачный — виден,
-     цвет фона — скрыт». Слои маски пересекаются (intersect), накладки — складываются:
-     итоговая видимость та же. */
-  function fade(el, mask, cs) {
-    var layers = mask.split(/,\s*(?=linear-gradient)/).length;
-    var comp = cs.maskComposite || cs.webkitMaskComposite || "add";
-    if (layers > 1 && !/intersect|source-in/.test(comp)) return;
-    var bg = bgBehind(el).match(/\d+(\.\d+)?/g);
-    if (!bg) return;
-    var over = mask.replace(/rgba?\(0, 0, 0(?:, ([\d.]+))?\)/g, function (m, a) {
-      var v = a === undefined ? 1 : +a;
-      return "rgba(" + bg[0] + ", " + bg[1] + ", " + bg[2] + ", " + (1 - v) + ")";
-    });
-    var d = document.createElement("div");
-    d.className = "cut-fade"; d.setAttribute("aria-hidden", "true");
-    el.parentNode.insertBefore(d, el.nextSibling);
-    /* координаты по раскладке (offsetLeft/Top), а не по экрану — анимации появления не сбивают */
-    var op = d.offsetParent, x = 0, y = 0, n = el;
-    while (n && n !== op) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; if (n && n !== op) { x += n.clientLeft; y += n.clientTop; } }
-    if (n !== op) { d.remove(); return; }
-    d.style.cssText = "position:absolute;pointer-events:none;margin:0;padding:0;border:0;" +
-      (cs.zIndex !== "auto" ? "z-index:" + cs.zIndex + ";" : "") +
-      "left:" + x + "px;top:" + y + "px;width:" + el.offsetWidth + "px;height:" + el.offsetHeight + "px;" +
-      "border-radius:" + cs.borderRadius + ";background:" + over;
-    el.style.webkitMask = el.style.mask = "none"; el.setAttribute("data-cut-fade", "");
-    el._cutWH = el.offsetWidth + "x" + el.offsetHeight;
-    if (ro) ro.observe(el);
-  }
-  var ro = window.ResizeObserver ? new ResizeObserver(function (es) {
-    if (es.some(function (e) { var t = e.target; return t._cutWH && t._cutWH !== t.offsetWidth + "x" + t.offsetHeight; })) later();
-  }) : null;
-  function build() {
-    document.querySelectorAll(".cut-dot").forEach(function (d) { d.remove(); });
-    document.querySelectorAll("[data-cut-r]").forEach(function (el) {
-      ["TopLeft", "TopRight", "BottomRight", "BottomLeft"].forEach(function (k) { el.style["border" + k + "Radius"] = ""; });
-      el.removeAttribute("data-cut-r");
-    });
-    document.querySelectorAll(".cut-fade").forEach(function (d) { d.remove(); });
-    document.querySelectorAll("[data-cut-fade]").forEach(function (el) {
-      el.style.webkitMask = el.style.mask = ""; el.removeAttribute("data-cut-fade");
-    });
-    var fades = [];
-    document.querySelectorAll("[data-cut-sh]").forEach(function (el) { el.style.boxShadow = ""; el.removeAttribute("data-cut-sh"); });
-    document.querySelectorAll("[data-cut-pos]").forEach(function (el) { el.style.position = ""; el.removeAttribute("data-cut-pos"); });
-    document.querySelectorAll(".cut-off-b,.cut-off-a").forEach(function (el) { el.classList.remove("cut-off-b", "cut-off-a"); });
-    document.querySelectorAll("body *").forEach(function (el) {
-      if (el.classList.contains("cut-dot")) return;
-      var cs = getComputedStyle(el), mask = cs.maskImage || cs.webkitMaskImage || "";
-      /* 1. Маска с круглыми вырезами: кружок цвета фона под карточкой */
-      if (mask.indexOf("radial-gradient") > -1 && !opaque(circles(mask)[0] ? circles(mask)[0].color : "x")) {
-        var list = circles(mask);
-        if (list.length) {
-          if (cs.position === "static") { el.style.position = "relative"; el.setAttribute("data-cut-pos", ""); }
-          var bg = bgBehind(el);
-          /* тень маска всё равно срезает — в Figma она вылезла бы из-под карточки */
-          if (cs.boxShadow !== "none") { el.style.boxShadow = "none"; el.setAttribute("data-cut-sh", ""); }
-          list.forEach(function (c) { dot(el, c.x, c.y, c.r, bg); });
-        }
-      }
-      /* 4. Затухание краёв — запомнить, накладки ставим после обхода */
-      if (mask.indexOf("linear-gradient") > -1 && mask.indexOf("radial-gradient") < 0 &&
-          cs.overflowX !== "auto" && cs.overflowX !== "scroll" && el.getBoundingClientRect().width) fades.push([el, mask, cs]);
-      /* 3. Скругления родителя — дочерним блокам в его углах */
-      if (cs.overflow !== "visible" && cs.borderRadius && cs.borderRadius !== "0px") corners(el, cs);
-      /* 2. Псевдоэлементы, которые рисуют вырезы закрашенными кругами (телефон) */
-      ["before", "after"].forEach(function (k) {
-        var ps = getComputedStyle(el, "::" + k);
-        if (ps.content === "none" || ps.backgroundImage.indexOf("radial-gradient") < 0) return;
-        var list = circles(ps.backgroundImage).filter(function (c) { return opaque(c.color); });
-        if (!list.length) return;
-        var w = parseFloat(ps.width), h = parseFloat(ps.height);
-        var l = ps.left !== "auto" ? parseFloat(ps.left) : el.clientWidth - parseFloat(ps.right) - w;
-        var t = ps.top !== "auto" ? parseFloat(ps.top) : el.clientHeight - parseFloat(ps.bottom) - h;
-        list.forEach(function (c) { dot(el, l + px(c.x, w) + "px", t + px(c.y, h) + "px", c.r, c.color); });
-        el.classList.add(k === "before" ? "cut-off-b" : "cut-off-a");
-      });
-    });
-    fades.forEach(function (f) { fade(f[0], f[1], f[2]); });
-  }
-  var st = document.createElement("style");
-  st.textContent = ".cut-off-b::before,.cut-off-a::after{background:none !important}";
-  document.head.appendChild(st);
-  var tm;
-  function later() { clearTimeout(tm); tm = setTimeout(build, 150); }
-  if (document.readyState === "complete") build(); else window.addEventListener("load", build);
-  window.addEventListener("resize", later);
 })();
