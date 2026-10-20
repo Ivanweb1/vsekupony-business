@@ -2549,3 +2549,58 @@ html.is-modal{overflow:hidden}
 .qd__foot--end{justify-content:flex-end}
 @media (max-width:720px){.qd__doc{padding:16px 20px 0}}
 .form .form__wide{grid-column:1/-1}
+
+/* Подвал v2: о сервисе · разделы в две колонки · контакты */
+.ft .ft__grid{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) auto;gap:40px 64px;align-items:start}
+.ft__about{max-width:440px}
+.ft__pilot{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:var(--r-pill);background:#2a2a2a;color:#e6e6e6;font-size:14px;font-weight:500}
+.ft__pilot::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px rgba(224,64,58,.25)}
+.ft__pilot b{color:#fff;font-weight:700}
+.ft__nav nav{display:grid;grid-template-columns:repeat(2,max-content);gap:12px 40px}
+.ft__nav nav a{padding:0;color:#cfcfcf}
+.ft__nav nav a:hover{color:#fff}
+.ft .ft__ct{min-width:0}
+.ft__ct .ft__soc{gap:10px;margin-top:8px}
+.ft__ct .ft__soc a{width:40px;height:40px;border-radius:12px;transition:transform .2s var(--ease)}
+.ft__ct .ft__soc a:hover{transform:translateY(-2px)}
+.ft__bottom{justify-content:space-between}
+.ft__bottom .ft__up{display:inline-flex;align-items:center;gap:6px}
+@media (max-width:1100px){
+  .ft .ft__grid{grid-template-columns:1fr 1fr;gap:36px 40px}
+  .ft__about{grid-column:1/-1;max-width:none}
+}
+@media (max-width:720px){
+  .ft .ft__grid{grid-template-columns:1fr;gap:32px}
+  .ft__nav nav{gap:12px 24px}
+  .ft__about .btn{align-self:stretch}
+}
+.ft .ft__grid{grid-template-columns:minmax(0,1fr) auto auto;gap:40px clamp(48px,7vw,120px)}
+@media (max-width:1100px){.ft .ft__grid{grid-template-columns:1fr auto}}
+@media (max-width:720px){.ft .ft__grid{grid-template-columns:1fr}.ft .ft__bottom{flex-direction:row !important;align-items:center !important;justify-content:space-between}}
+
+/* Финал: соцсети в карточке контактов и три шага до размещения */
+.final__socli{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+.final__socli > span:first-child{font-size:13px;color:rgba(255,255,255,.8)}
+.final__soc{display:flex;gap:8px}
+.final__soc a{display:block !important;width:36px;height:36px;padding:0 !important;border-radius:10px;overflow:hidden;transition:transform .2s var(--ease)}
+.final__soc a:hover{transform:translateY(-2px)}
+.final__soc svg,.final__soc img{display:block;width:100%;height:100%}
+.final__steps{list-style:none;align-self:stretch;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:18px 0 0;padding:0}
+.final__steps li{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:var(--r-md);background:rgba(255,255,255,.12);font-size:14px;font-weight:500;line-height:1.3;color:#fff}
+.final__steps em{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#fff;color:var(--brand);font-style:normal;font-size:13px;font-weight:700}
+.final__text .final__cta{margin-top:22px}
+@media (max-width:560px){.final__steps{grid-template-columns:1fr}.final__steps li{flex-direction:row;align-items:center;padding:10px 14px}}
+.final__ct .final__soc{display:flex;flex-direction:row;gap:8px}
+.final__ct .final__socli{display:flex}
+.final__text .final__cta{flex-wrap:wrap;gap:14px 20px}
+.final__text .final__cta .small{white-space:normal}
+@media (min-width:1001px){.final__steps li{padding:12px 14px;gap:8px}}
+.final__text .final__cta{margin-top:20px;padding-top:0}
+.final__socli > span:first-child{white-space:nowrap}
+@media (max-width:1200px){.final__steps{grid-template-columns:1fr}.final__steps li{flex-direction:row;align-items:center;padding:10px 14px}}
+.ft .ft__bottom{flex-direction:row !important;align-items:center !important;justify-content:space-between}
+/* Мобильная раскладка пилота: дата под заголовком, без повтора в левой части */
+@media (max-width:720px){
+  .pilot__r > .pilot__start{order:1;align-self:flex-start;margin:14px 22px 0}
+  .pilot__l .pilot__k--date{display:none}
+}
