@@ -2604,3 +2604,14 @@ html.is-modal{overflow:hidden}
   .pilot__r > .pilot__start{order:1;align-self:flex-start;margin:14px 22px 0}
   .pilot__l .pilot__k--date{display:none}
 }
+/* Подвал: три колонки по всей ширине, равные промежутки */
+@media (min-width:1101px){
+  .ft .ft__grid{grid-template-columns:minmax(0,440px) auto auto;justify-content:space-between;column-gap:48px}
+  .ft__nav nav{column-gap:clamp(40px,4vw,72px)}
+}
+/* Подвал: четыре колонки, равные промежутки */
+.ft__nav a{padding:0}
+@media (min-width:1101px){.ft .ft__grid{grid-template-columns:minmax(0,440px) auto auto auto}}
+@media (max-width:1100px){.ft .ft__grid{grid-template-columns:1fr 1fr auto}}
+@media (max-width:720px){.ft .ft__grid{grid-template-columns:1fr 1fr}.ft .ft__ct{grid-column:1/-1}}
+.ft__ct .ft__soc a{padding:0 !important;border-radius:10px;overflow:hidden}
