@@ -34,18 +34,4 @@
     }).join(""));
   });
 
-  // Форма заявки: проверка обязательных полей и экран «отправлено».
-  var form = document.getElementById("leadForm");
-  if (form) {
-    form.addEventListener("submit", function (ev) {
-      ev.preventDefault();
-      var ok = true;
-      form.querySelectorAll("input[required]").forEach(function (inp) {
-        var bad = !inp.value.trim();
-        inp.classList.toggle("is-error", bad);
-        if (bad && ok) { inp.focus(); ok = false; }
-      });
-      if (ok) form.querySelector(".bz-form__done").hidden = false;
-    });
-  }
 })();

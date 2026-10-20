@@ -224,52 +224,94 @@
   btn.addEventListener("click", function () { list.classList.add("is-all"); btn.remove(); });
 })();
 
-/* Поп-ап «Задать вопрос» */
-(function () {
-  var dlg = document.getElementById("ask"); if (!dlg || !dlg.showModal) return;
-  var form = dlg.querySelector("[data-ask-form]"), done = dlg.querySelector(".qd__done");
-  function open(e) {
-    if (e) e.preventDefault();
-    form.reset(); done.hidden = true; form.classList.remove("is-done");
-    form.querySelectorAll(".is-error").forEach(function (f) { f.classList.remove("is-error"); });
-    dlg.showModal(); document.documentElement.classList.add("is-modal");
-  }
-  function close() { dlg.close(); }
-  dlg.addEventListener("close", function () { document.documentElement.classList.remove("is-modal"); });
-  document.querySelectorAll("[data-ask-open]").forEach(function (a) { a.addEventListener("click", open); });
-  dlg.querySelectorAll("[data-ask-close]").forEach(function (b) { b.addEventListener("click", close); });
-  dlg.addEventListener("click", function (e) { if (e.target === dlg) close(); });
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var bad = false;
-    form.querySelectorAll("[required]").forEach(function (f) {
-      var err = !f.value.trim(); f.classList.toggle("is-error", err); if (err && !bad) { bad = true; f.focus(); }
-    });
-    var agree = form.querySelector("[data-agree]");
-    if (agree && !agree.checked) { agree.closest(".form__agree").classList.add("is-error"); if (!bad) { bad = true; agree.focus(); } }
-    if (bad) return;
-    done.hidden = false; form.classList.add("is-done");
-  });
-})();
-
-/* Форма заявки: без согласия на обработку данных не отправляем
-   (проверка до общего обработчика из business.js) */
+/* Форма заявки: проверка полей, маска телефона, согласие.
+   Ловим submit на фазе захвата — общий обработчик из business.js не нужен */
 (function () {
   var form = document.getElementById("leadForm"); if (!form) return;
-  var box = form.querySelector("[data-agree]"); if (!box) return;
-  var lbl = box.closest(".form__agree");
+  var box = form.querySelector("[data-agree]"), lbl = box.closest(".form__agree");
+
+  // мат и спам: корни ругательств, ссылки, повтор символов, «клавиатурный» мусор
+  var BAD = /(^|[^а-яё])(х[уy][йеёияю]|п[иi][зz]д|[её]б[аеиоуы]|бля|сук[аи]|муд[аио]|пид[оа]р|г[ао]вн|дерьм|залуп|шлюх)/i;
+  var SPAM = /(https?:|www\.|\.(ru|com|net|org|рф|io|xyz)\b|@|<|>|\$|(.)\3{3,}|[a-z]{6,}\d|\d{6,})/i;
+  function txt(v) {
+    if (v.length < 2) return "Слишком коротко";
+    if (!/[а-яёa-z]/i.test(v)) return "Нужны буквы";
+    if (BAD.test(v)) return "Без нецензурных слов, пожалуйста";
+    if (SPAM.test(v)) return "Похоже на спам — без ссылок и лишних символов";
+    return "";
+  }
+  var CHECK = {
+    text: txt,
+    name: function (v) {
+      if (!/^[а-яёa-z][а-яёa-z\s-]{1,39}$/i.test(v)) return "Только буквы, от 2 символов";
+      return txt(v);
+    },
+    phone: function (v) { return v.replace(/\D/g, "").length === 11 ? "" : "Введите номер полностью: +7 и 10 цифр"; },
+    email: function (v) { return /^[^\s@]+@[^\s@]+\.[a-zа-яё]{2,}$/i.test(v) ? "" : "Проверьте адрес почты"; }
+  };
+  function check(f) {
+    var v = f.value.trim(), msg = !v ? "Заполните поле" : CHECK[f.dataset.check](v);
+    f.classList.toggle("is-error", !!msg);
+    var err = f.closest("label").querySelector(".form__err"); if (err) err.textContent = msg;
+    return !msg;
+  }
+  var fields = form.querySelectorAll("[data-check]");
+  fields.forEach(function (f) {
+    f.addEventListener("blur", function () { if (f.value.trim()) check(f); });
+    f.addEventListener("input", function () { if (f.classList.contains("is-error")) check(f); });
+  });
+
+  // телефон: только цифры, маска +7 (999) 999-99-99
+  var tel = form.querySelector("[data-phone]");
+  // ввод с 8 или 7 в начале — это код страны, заменяем на +7
+  function mask(v, prev) {
+    var d = v.replace(/\D/g, "");
+    if (!d) return "";
+    if (/^\+7/.test(v)) {
+      d = d.slice(1);
+      if (prev.replace(/\D/g, "").length <= 1 && (d[0] === "8" || d[0] === "7")) d = d.slice(1);
+    } else if (d[0] === "8" || d[0] === "7") d = d.slice(1);
+    d = d.slice(0, 10);
+    var r = "+7";
+    if (d.length) r += " (" + d.slice(0, 3);
+    if (d.length >= 3) r += ")";
+    if (d.length > 3) r += " " + d.slice(3, 6);
+    if (d.length > 6) r += "-" + d.slice(6, 8);
+    if (d.length > 8) r += "-" + d.slice(8, 10);
+    return r;
+  }
+  var prev = "";
+  tel.addEventListener("input", function (e) {
+    var v = tel.value;
+    // стёрли скобку или дефис — стираем и цифру перед ними, иначе маска вернёт символ обратно
+    if (e.inputType && e.inputType.indexOf("delete") === 0 && v.replace(/\D/g, "") === prev.replace(/\D/g, "")) v = v.replace(/\d(?=\D*$)/, "");
+    tel.value = v.replace(/\D/g, "").length <= 1 ? (e.inputType && e.inputType.indexOf("delete") === 0 ? "" : mask(v, prev)) : mask(v, prev);
+    prev = tel.value;
+  });
+  tel.addEventListener("focus", function () { if (!tel.value) tel.value = prev = "+7"; });
+  tel.addEventListener("blur", function () { if (tel.value === "+7") tel.value = prev = ""; });
+
   box.addEventListener("change", function () { lbl.classList.remove("is-error"); });
   form.addEventListener("submit", function (e) {
-    if (box.checked) return;
     e.preventDefault(); e.stopImmediatePropagation();
-    lbl.classList.add("is-error"); box.focus();
+    var first = null;
+    fields.forEach(function (f) { if (!check(f) && !first) first = f; });
+    if (!box.checked) { lbl.classList.add("is-error"); if (!first) first = box; }
+    if (first) { first.focus(); return; }
+    form.querySelector(".form__done").hidden = false;
   }, true);
-})();
 
-/* Поп-ап: снять подсветку согласия при отметке */
-(function () {
-  var box = document.querySelector("#ask [data-agree]"); if (!box) return;
-  box.addEventListener("change", function () { box.closest(".form__agree").classList.remove("is-error"); });
+  // Поп-ап с текстом согласия
+  var dlg = document.getElementById("consent");
+  if (dlg && dlg.showModal) {
+    form.querySelectorAll("[data-consent-open]").forEach(function (a) {
+      a.addEventListener("click", function (e) { e.preventDefault(); e.stopPropagation(); dlg.showModal(); document.documentElement.classList.add("is-modal"); });
+    });
+    dlg.addEventListener("close", function () { document.documentElement.classList.remove("is-modal"); });
+    dlg.querySelectorAll("[data-consent-close]").forEach(function (b) { b.addEventListener("click", function () { dlg.close(); }); });
+    dlg.querySelector("[data-consent-accept]").addEventListener("click", function () { box.checked = true; lbl.classList.remove("is-error"); dlg.close(); });
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+  }
 })();
 
 /* Плашка cookie: показываем через секунду, «Хорошо» — запоминаем */

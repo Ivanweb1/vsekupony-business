@@ -2501,3 +2501,51 @@ html.is-modal{overflow:hidden}
 @media (max-width:720px){.br-dt{display:none}#demand .feed__bottom .feed__foot{white-space:normal !important;line-height:1.5 !important}}
 /* Первый экран не обрезает низ: сноска под цифрами выезжает при появлении */
 .hero{overflow:visible;overflow-x:clip}
+
+/* 8 городов области: лица сверху, города ниже во всю ширину */
+.dstat__who{flex-wrap:wrap;justify-content:flex-start;gap:10px}
+.dstat__cities{flex-basis:100%;gap:5px}
+.dstat__cities i{padding:3px 9px}
+/* Подпись ленты переносится сама и не залезает под кнопку */
+#demand .feed__bottom .feed__foot{flex:1 1 auto;white-space:normal;line-height:1.5;overflow:visible}
+#demand .feed__bottom .br-dt{display:none}
+
+/* Дата старта пилота — заметно: красная плашка слева и строка под заголовком */
+.pilot__k--date{background:var(--brand);color:#fff}
+.pilot__start{display:inline-flex;align-items:center;gap:10px;margin:20px 0 0;padding:10px 18px;border-radius:var(--r-pill);background:var(--brand-50);color:var(--ink);font-size:18px;font-weight:600}
+.pilot__start::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px rgba(224,64,58,.18)}
+.pilot__start b{color:var(--brand)}
+@media (max-width:720px){.pilot__start{font-size:16px;padding:8px 14px}}
+.ask__btns .btn{flex:1 1 auto}
+
+/* Подвал: только о сервисе и контакты */
+.ft .ft__grid{grid-template-columns:minmax(0,1fr) auto;gap:32px 40px}
+.ft .ft__ct{min-width:220px}
+@media (max-width:720px){.ft .ft__grid{grid-template-columns:1fr}}
+
+/* Финал: дата старта пилота вместо кнопки регистрации */
+.final__start{display:inline-flex;align-items:center;gap:10px;flex:none;margin:0;padding:12px 20px;border-radius:var(--r-pill);background:#fff;color:var(--ink);font-size:17px;font-weight:600;white-space:nowrap}
+.final__start::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 4px rgba(224,64,58,.18)}
+.final__start b{color:var(--brand)}
+
+/* Форма: выпадающие списки, пара «форма + название», текст ошибки */
+.form__sel{position:relative;display:block;min-width:0}
+.form__sel::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;margin-top:-6px;border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);transform:rotate(45deg);pointer-events:none}
+.form select{width:100%;height:52px;padding:0 38px 0 16px;border-radius:var(--r-sm);border:2px solid var(--line);background:var(--surface);outline:none;font:inherit;font-size:16px;color:var(--ink);appearance:none;-webkit-appearance:none;cursor:pointer}
+.form select:focus{border-color:var(--brand);background:#fff}
+.form__pair{display:flex;gap:8px;min-width:0}
+.form__pair .form__sel{flex:none;width:138px}
+.form__pair input{flex:1 1 auto}
+.form__err{min-height:0;font-style:normal;font-size:12px;line-height:1.3;color:var(--brand)}
+.form__err:empty{display:none}
+@media (max-width:560px){.form__pair .form__sel{width:124px}}
+
+/* Поп-ап с текстом согласия */
+.qd--doc{width:min(640px,calc(100% - 32px))}
+.qd--doc .qd__head{padding-left:30px}
+.qd__doc{padding:20px 30px 4px;font-size:14.5px;line-height:1.55;color:var(--ink-2)}
+.qd__doc h4{margin:16px 0 4px;font-size:15px;font-weight:700;color:var(--ink)}
+.qd__doc a{color:var(--brand)}
+.qd__foot--end{justify-content:flex-end}
+@media (max-width:720px){.qd__doc{padding:16px 20px 0}}
+.form .form__wide{grid-column:1/-1}
