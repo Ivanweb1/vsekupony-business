@@ -320,7 +320,7 @@
 .mx-chv{display:flex;flex-direction:column;gap:10px}
 /* подписи каналов: значок по верхней строке, у всех трёх на одной высоте */
 .mx-chs .ch__t{align-items:flex-start}
-.mx-chs .ch h3{line-height:26px;padding-top:12px}
+.mx-chs .ch h3{line-height:26px;padding-top:0;margin-top:-3px}
 .mx-chs .ch p{margin-top:2px}
 /* витрина: две карточки, наша — в красной рамке */
 .mx-shop{display:flex;flex-direction:column;gap:8px}
@@ -383,19 +383,19 @@
 .mx-fmp__l{display:flex;align-items:center;gap:18px}
 .mx-fmp__l img{height:14px;width:auto}
 
-/* Шаги пилота: номер и мини-визуал в одной строке, текст под ними */
+/* Шаги пилота: номер и мини-плашка в одной строке, текст под ними.
+   Плашки одного вида — белые, одной высоты, тянутся на всю ширину шага */
 .mx-psteps li{gap:14px}
 .mx-psh{display:flex;align-items:center;gap:10px}
 .mx-psh em{flex:none}
-.mx-psteps .mx-psv{display:flex;align-items:center;gap:6px;min-width:0;height:30px;padding:0 10px;border-radius:9px;background:#fff;font-size:12px;font-weight:600;line-height:1;color:var(--ink-2);white-space:nowrap;box-shadow:0 6px 14px -10px rgba(0,0,0,.35)}
-.mx-psv--link{overflow:hidden;text-overflow:ellipsis}
-.mx-psv--link img{flex:none;width:16px;height:16px;border-radius:4px}
-.mx-psv--code{border:1.5px dashed var(--brand);box-shadow:none !important;background:var(--brand-50) !important;color:var(--ink) !important;font-weight:800 !important;letter-spacing:.05em}
-.mx-psv--code i{display:flex;color:var(--brand)}.mx-psv--code svg{width:13px;height:13px}
-.mx-psv--code b{padding:2px 5px;border-radius:5px;background:var(--brand);color:#fff;letter-spacing:0}
-.mx-psv--ok{background:var(--brand) !important;color:#fff !important}
-.mx-psv--ok b{font-size:14px;font-weight:800}
-.mx-psv--ok i{display:flex}.mx-psv--ok svg{width:15px;height:15px}
+.mx-psteps .mx-psv{flex:1;display:flex;align-items:center;gap:7px;min-width:0;height:32px;padding:0 10px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font-size:12.5px;font-weight:700;line-height:1;color:var(--ink);white-space:nowrap;overflow:hidden}
+.mx-psv img{flex:none;width:16px;height:16px;border-radius:4px}
+.mx-psv i{display:flex;flex:none;color:var(--brand)}.mx-psv svg{width:15px;height:15px}
+.mx-psv--link{font-weight:500 !important;color:var(--ink-2) !important;text-overflow:ellipsis}
+.mx-psv--code{letter-spacing:.05em}
+.mx-psv--code b{margin-left:auto;padding:3px 6px;border-radius:6px;background:var(--brand);color:#fff;font-size:11.5px;letter-spacing:0}
+.mx-psv--ok b{font-size:14px;font-weight:800;color:var(--brand)}
+.mx-psv--ok i{margin-left:auto}
 
 /* ==========================================================================
    Адаптив
