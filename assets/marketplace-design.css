@@ -184,7 +184,8 @@
 .mx-geo i{display:flex;color:var(--brand)}.mx-geo svg{width:16px;height:16px}
 .mx-geo b{margin-left:auto;font-size:14px;color:var(--ink)}
 .mx-geo b::after{content:" ✓";color:var(--brand)}
-.mx-chl ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.mx-chl ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.mx-chl li span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mx-chl li{display:flex;align-items:center;gap:8px;height:38px;padding:0 10px;border-radius:10px;background:#fff;font-size:13px;font-weight:600}
 .mx-chl li:first-child{grid-column:1/-1}
 .mx-chl li i{display:block;flex:none;width:22px;height:22px;border-radius:50%;overflow:hidden}
@@ -192,7 +193,7 @@
 .mx-chl li .mx-chl__site{display:grid;place-items:center;border-radius:7px;background:var(--brand-50);color:var(--brand)}
 .mx-chl li .mx-chl__site svg{width:14px;height:14px}
 /* переключатель «включено» справа в строке канала */
-.mx-chl li::after{content:"";margin-left:auto;width:28px;height:16px;border-radius:8px;background:var(--brand) radial-gradient(circle 6px at calc(100% - 8px) 50%,#fff 98%,#0000) no-repeat}
+.mx-chl li::after{content:"";flex:none;margin-left:auto;width:28px;height:16px;border-radius:8px;background:var(--brand) radial-gradient(circle 6px at calc(100% - 8px) 50%,#fff 98%,#0000) no-repeat}
 .mx-go{display:flex;align-items:center;justify-content:center;height:46px;margin-top:auto;border-radius:var(--r-pill);background:var(--brand);color:#fff;font-size:14px;font-weight:600}
 
 /* 4 — покупатель: код → карточка товара */
@@ -425,10 +426,9 @@
   .mx-ready em{margin-left:22px}
   .mx-pull{grid-template-columns:96px minmax(0,1fr)}
   .mx-pull__ph{min-height:0}
-  .mx-pull li:nth-child(4){display:none}
-  .mx-pub{grid-template-columns:1fr}
+  .mx-pub{grid-template-columns:minmax(0,1fr)}
   .mx-cpn{flex-direction:row}
-  .mx-cpn__ph{flex:none;width:110px;min-height:0}
+  .mx-cpn__ph{flex:none;min-height:0}
   .mx-cpn__b{border-top:0;border-left:2px dashed var(--line-strong)}
   .mx-buy{grid-template-columns:1fr}
   .mx-buy__arr{justify-self:center;transform:rotate(90deg)}
@@ -439,6 +439,21 @@
   .mx-pdp--big .mx-pdp__in{gap:10px}
   .mx-pdp--big .mx-pdp__ph{width:84px}
   .mx-pdp__promo{font-size:11px}
+  /* окно шагов одной высоты (как на лендинге для бизнеса) — поэтому высокие
+     экраны 3 и 4 ужаты, чтобы у коротких не оставалось пустоты снизу */
+  .mx-buy{gap:8px}
+  .mx-take{gap:6px}
+  .mx-take__ph{width:52px;height:52px}
+  .mx-take__btn,.mx-pdp--big .mx-pdp__stars,.mx-pdp--big .mx-pdp__dl{display:none}
+  .mx-buy__arr{width:28px;height:28px}
+  .mx-buy__arr svg{width:15px;height:15px}
+  .mx-pdp--big .mx-pdp__in{padding:12px}
+  .mx-pdp--big .mx-pdp__in > div{gap:5px}
+  .mx-pdp--big .mx-pdp__in b{font-size:19px}
+  .mx-pdp--big .mx-pdp__btn{padding:7px 0}
+  .mx-geo,.mx-go{height:42px}
+  .mx-chl li{height:34px}
+  .mx-cpn__ph{width:96px}
 
   .mx-stat__n b{font-size:28px}
   .mx-stat__t p{font-size:14.5px}
@@ -467,6 +482,9 @@
   .mx-mp img{height:10px}
 }
 @media (max-width:400px){
+  /* факты первого экрана: подпись в одну строку — логотипов два */
+  .mx-nums .mx-mps img:nth-child(n+3){display:none}
+  .mx-nums li:first-child > span:last-child{font-size:12px;white-space:nowrap}
   h2{font-size:28px !important}
   .mx-stat__n{padding:16px}
   .mx-stat__n b{font-size:24px}
@@ -475,5 +493,12 @@
   .mx-cp__ph{width:80px}
   .mx-cp__b b{font-size:13px}
   .mx-pdp__in b{font-size:15px}
-  .mx-types span{padding:7px 11px;font-size:12.5px}
+  /* экран 2: три типа купона поровну, в списке — только значения */
+  .mx-types{align-self:stretch;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+  .mx-types span{padding:7px 2px;font-size:11.5px;text-align:center;white-space:nowrap}
+  .mx-pull{grid-template-columns:80px minmax(0,1fr)}
+  .mx-pull li{padding-left:34px;justify-content:flex-start}
+  .mx-pull li > span{display:none}
+  /* экран 4: плашка промокода без процента */
+  .mx-pdp__promo em{display:none}
 }
