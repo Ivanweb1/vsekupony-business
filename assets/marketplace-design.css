@@ -321,7 +321,14 @@
 /* подписи каналов: значок по верхней строке, у всех трёх на одной высоте */
 .mx-chs .ch__t{align-items:flex-start}
 .mx-chs .ch h3{line-height:26px;padding-top:0;margin-top:-3px}
-.mx-chs .ch p{margin-top:2px}
+.mx-chs .ch p{margin-top:2px;font-size:15px;line-height:22px}
+/* На широком экране поиску — чуть больше места, чтобы подпись SEO
+   уложилась в две строки и не вытягивала соседние карточки */
+@media (min-width:1241px){
+  .mx-chs > .ch{grid-column:span 3}
+  .mx-chs > .ch:nth-child(2){grid-column:span 4}
+  .mx-chs > .ch--wide{grid-column:span 5}
+}
 /* витрина: две карточки, наша — в красной рамке */
 .mx-shop{display:flex;flex-direction:column;gap:8px}
 .mx-shop__tabs{display:flex;gap:5px}
@@ -353,7 +360,11 @@
 .mx-post2__code .chv__btn{margin:0 0 0 auto}
 .mx-post2__re{display:flex;gap:14px;font-size:12px;font-weight:600;color:var(--ink-3)}
 .mx-post2__re i{font-style:normal;margin-right:4px;color:var(--brand)}
-.mx-post2 .chv__img{position:relative}
+.mx-post2 .chv__img{position:relative;width:34%}
+.mx-post2 .chv__post p{font-size:13.5px;line-height:1.4}
+.mx-post2 .chv__btn{white-space:nowrap;padding:7px 12px;font-size:12.5px}
+.mx-post2__code{gap:8px;padding:5px 5px 5px 10px}
+.mx-post2__code img{height:10px}
 .mx-post2 .chv__img em{position:absolute;left:10px;bottom:10px;padding:3px 9px;border-radius:8px;background:var(--brand);color:#fff;font-style:normal;font-size:14px;font-weight:800}
 
 /* ---------- FAQ и финал ---------- */
