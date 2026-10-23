@@ -13,6 +13,10 @@
 
   var wiz = document.querySelector("[data-wiz]");
   if (wiz) {
+    // Дизайн-версия подставляет свой товар под фото: data-nm, data-pr, data-ct
+    if (wiz.dataset.nm) CARD.nm = wiz.dataset.nm;
+    if (wiz.dataset.pr) CARD.pr = +wiz.dataset.pr;
+    if (wiz.dataset.ct) CARD.ct = wiz.dataset.ct;
     var form = wiz.querySelector("[data-wiz-form]");
     var input = wiz.querySelector("[data-wiz-input]");
     var mpSel = wiz.querySelector("[data-wiz-mp]");
@@ -94,9 +98,11 @@
       });
       return ok;
     };
+    var bar = lead.querySelector("[data-form-bar]");
     var go = function (n) {
       steps.forEach(function (s) { s.hidden = s.dataset.formStep !== String(n); });
       num.textContent = n;
+      if (bar) bar.style.width = n * 50 + "%";
     };
     lead.querySelector("[data-form-next]").addEventListener("click", function () { if (check(steps[0])) go(2); });
     lead.querySelector("[data-form-back]").addEventListener("click", function () { go(1); });

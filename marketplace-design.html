@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ВСЕКУПОНЫ для селлеров маркетплейсов — дизайн лендинга</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/business-design.css?v=20261019c">
+<link rel="stylesheet" href="assets/marketplace-design.css?v=20261023a">
+<link rel="icon" href="assets/brand/logo-red.png">
+</head>
+<body>
+
+<!-- ===================================================================
+     Лендинг для селлеров маркетплейсов — дизайн. Тексты и структура один
+     в один с Ч/Б прототипом marketplace.html (правки 23.10.2026), визуальный
+     язык и компоненты — с лендинга для бизнеса (index.html): фирменный
+     #DD443C, слово-«ценник» в заголовке, купоны с вырезами, мини-интерфейсы.
+     Общие стили и скрипты — business-design.css / business-design.js,
+     свои блоки — marketplace-design.css, демо мастера и форма в два шага —
+     marketplace.js (общий с прототипом), плашки первого экрана —
+     marketplace-design.js. Товары, цены и цифры в мини-интерфейсах — пример.
+     =================================================================== -->
+
+<!-- Шапка -->
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="logo" href="#top" aria-label="ВСЕКУПОНЫ для селлеров маркетплейсов">
+      <img class="logo__mark" src="assets/brand/logo-red.png" alt="" width="26" height="44">
+      <span class="logo__word">Все<br>купоны</span>
+    </a>
+    <span class="logo__tag">Для селлеров<br>маркетплейсов</span>
+
+    <nav class="hd__nav" aria-label="Разделы">
+      <a href="#why">Зачем селлеру</a>
+      <a href="#steps">Как работает</a>
+      <a href="#easy">Что размещаем</a>
+      <a href="#price">Сколько стоит</a>
+      <a href="#channels">Каналы</a>
+      <a href="#pilot">Пилот</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+
+    <div class="hd__contacts">
+      <a class="hd__phone" href="tel:88002228567">8-800-222-8-567</a>
+      <a class="hd__mail" href="mailto:info@vsekupony.ru">info@vsekupony.ru</a>
+    </div>
+    <span class="hd__soc">
+      <a href="https://vk.ru/vsekupony_biz" target="_blank" rel="noopener" title="ВКонтакте" aria-label="ВКонтакте" data-soc="vk"></a>
+      <a href="https://t.me/vsekupony_bizz" target="_blank" rel="noopener" title="Telegram" aria-label="Telegram" data-soc="tg"></a>
+      <a href="https://ok.ru/group/70000060912009" target="_blank" rel="noopener" title="Одноклассники" aria-label="Одноклассники" data-soc="ok"></a>
+      <a href="https://max.ru/join/2eN5_3E8tOdDaSFXM5LEZzfrvuWgDR_QiqPF8-xUmv8" target="_blank" rel="noopener" title="MAX" aria-label="MAX" data-soc="max"></a>
+    </span>
+    <a class="btn btn--soft hd__pilot" href="#pilot">На пилот</a>
+    <a class="btn btn--red hd__cta" href="#final">Разместить купон маркетплейса</a>
+    <span class="hd__msoc"><a href="https://t.me/vsekupony_bizz" target="_blank" rel="noopener" aria-label="Telegram" data-soc="tg"></a><a href="https://max.ru/join/2eN5_3E8tOdDaSFXM5LEZzfrvuWgDR_QiqPF8-xUmv8" target="_blank" rel="noopener" aria-label="MAX" data-soc="max"></a></span>
+    <button class="hd__burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mnav" data-burger><i></i><i></i><i></i></button>
+  </div>
+
+  <!-- Мобильное меню: разделы, контакты и кнопки -->
+  <div class="mnav" id="mnav" hidden data-mnav>
+    <nav class="mnav__links" aria-label="Разделы (мобильное меню)">
+      <a href="#why">Зачем селлеру</a>
+      <a href="#steps">Как работает</a>
+      <a href="#easy">Что размещаем</a>
+      <a href="#price">Сколько стоит</a>
+      <a href="#channels">Каналы</a>
+      <a href="#pilot">Пилот</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <div class="mnav__ct">
+      <a class="mnav__phone" href="tel:88002228567">8-800-222-8-567</a>
+      <a class="mnav__mail" href="mailto:info@vsekupony.ru">info@vsekupony.ru</a>
+      <span class="mnav__soc"><a href="https://vk.ru/vsekupony_biz" target="_blank" rel="noopener" aria-label="ВКонтакте" data-soc="vk"></a><a href="https://t.me/vsekupony_bizz" target="_blank" rel="noopener" aria-label="Telegram" data-soc="tg"></a><a href="https://ok.ru/group/70000060912009" target="_blank" rel="noopener" aria-label="Одноклассники" data-soc="ok"></a><a href="https://max.ru/join/2eN5_3E8tOdDaSFXM5LEZzfrvuWgDR_QiqPF8-xUmv8" target="_blank" rel="noopener" aria-label="MAX" data-soc="max"></a></span>
+    </div>
+    <div class="mnav__btns">
+      <a class="btn btn--soft" href="#pilot">На пилот</a>
+      <a class="btn btn--red" href="#final">Разместить купон маркетплейса</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Первый экран: «Быстрый аргумент» -->
+  <section class="hero">
+    <div class="wrap hero__in">
+      <div class="hero__text">
+        <h1>Доведите покупателя до&nbsp;вашей карточки <span class="tag">через спецпредложение</span></h1>
+        <p class="lead">«Всекупоны» — внешний канал для селлеров: вы размещаете купон в&nbsp;разделе «Маркетплейс», покупатель забирает код бесплатно и&nbsp;переходит к&nbsp;вам на&nbsp;карточку товара.</p>
+        <p class="mx-lead2">Вы платите за&nbsp;размещение на&nbsp;1&nbsp;месяц — не&nbsp;за&nbsp;продажу купона человеку.</p>
+        <div class="hero__cta">
+          <a class="btn btn--red btn--lg" href="#final">Разместить первое предложение</a>
+          <a class="hero__link" href="#steps"><i data-ic="down"></i>Как это работает</a>
+        </div>
+        <!-- Факты первого экрана — те же фразы, что в прототипе, разложены карточками -->
+        <ul class="hero__nums mx-nums">
+          <li>
+            <span class="mx-mps"><img src="assets/brand/mp/wildberries.svg" alt=""><img src="assets/brand/mp/ozon.svg" alt=""><img src="assets/brand/mp/yandex-market.svg" alt=""><img src="assets/brand/mp/megamarket.svg" alt=""></span>
+            <b>Маркетплейсы</b>
+            <span>WB, Ozon, Яндекс Маркет и&nbsp;другие площадки</span>
+          </li>
+          <li>
+            <span class="hn__ch"><i class="hn__site" data-ic="site"></i><span class="hn__soc"><i data-soc="vk"></i><i data-soc="tg"></i><i data-soc="ok"></i><i data-soc="max"></i></span></span>
+            <b>Внешний канал</b>
+            <span>покупатель забирает <br>код бесплатно</span>
+          </li>
+          <li>
+            <span class="hn__price mx-cal"><i data-ic="cal"></i><em>1&nbsp;месяц</em></span>
+            <b>Вся Россия</b>
+            <span>одно размещение&nbsp;— <br>все города сервиса</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Справа — раздел «Маркетплейс» на витрине: лента купонов селлеров
+           прокручивается сама (business-design.js), поверх — покупатель забирает
+           промокод и переходит на карточку (marketplace-design.js) -->
+      <div class="hero__vis hx mx-hx" aria-hidden="true">
+        <div class="hx__stage">
+          <div class="hx__win">
+            <div class="hx__bar"><i></i><i></i><i></i><span><b>vsekupony.ru</b>/marketplace</span></div>
+            <div class="hx__app">
+              <div class="hx__top">
+                <span class="hx__brand"><img class="hx__logo" src="assets/brand/logo-red.png" alt=""><b>Все<br>купоны</b></span>
+                <span class="hx__city"><i data-ic="pin"></i>Вся Россия<em data-ic="chev"></em></span>
+                <span class="hx__search"><i data-ic="search"></i>Промокоды WB, Ozon, Яндекс Маркет…</span>
+              </div>
+              <div class="hx__cats"><span class="is-on">Маркетплейс</span><span>Одежда</span><span>Дом</span><span>Красота</span><span>Детям</span><span>Электроника</span></div>
+              <div class="hx__feed" data-hx-feed>
+                <div class="hx__track">
+                  <div class="hx__grid">
+                    <div class="hx__c is-hot" data-mx-card="0">
+                      <div class="hx__ph" style="background-image:url('assets/products/towels.jpg');background-position:center 40%"><em>−15%</em><img class="mx-mp" src="assets/brand/mp/wildberries.svg" alt=""></div>
+                      <b>Набор полотенец, 3&nbsp;шт.</b><span class="mx-pr"><s>1&nbsp;290&nbsp;₽</s>1&nbsp;097&nbsp;₽</span>
+                      <small><i data-ic="ticket"></i>забрали код <u data-mx-count="0">184</u></small>
+                    </div>
+                    <div class="hx__c" data-mx-card="1">
+                      <div class="hx__ph" style="background-image:url('assets/products/serum.jpg');background-position:center 45%"><em>−20%</em><img class="mx-mp" src="assets/brand/mp/ozon.svg" alt=""></div>
+                      <b>Сыворотка для&nbsp;лица</b><span class="mx-pr"><s>990&nbsp;₽</s>792&nbsp;₽</span>
+                      <small><i data-ic="ticket"></i>забрали код <u data-mx-count="1">142</u></small>
+                    </div>
+                    <div class="hx__c" data-mx-card="2">
+                      <div class="hx__ph" style="background-image:url('assets/products/coat.jpg');background-position:center 45%"><em>−25%</em><img class="mx-mp" src="assets/brand/mp/wildberries.svg" alt=""></div>
+                      <b>Пальто шерстяное</b><span class="mx-pr"><s>8&nbsp;900&nbsp;₽</s>6&nbsp;675&nbsp;₽</span>
+                      <small><i data-ic="ticket"></i>забрали код <u data-mx-count="2">97</u></small>
+                    </div>
+                    <div class="hx__c" data-mx-card="3">
+                      <div class="hx__ph" style="background-image:url('assets/products/toys.jpg');background-position:center 55%"><em>−10%</em><img class="mx-mp" src="assets/brand/mp/yandex-market.svg" alt=""></div>
+                      <b>Деревянный конструктор</b><span class="mx-pr"><s>1&nbsp;450&nbsp;₽</s>1&nbsp;305&nbsp;₽</span>
+                      <small><i data-ic="ticket"></i>забрали код <u data-mx-count="3">76</u></small>
+                    </div>
+                    <div class="hx__c" data-mx-card="4">
+                      <div class="hx__ph" style="background-image:url('assets/products/mugs.jpg');background-position:center 40%"><em>−15%</em><img class="mx-mp" src="assets/brand/mp/ozon.svg" alt=""></div>
+                      <b>Набор кружек, 2&nbsp;шт.</b><span class="mx-pr"><s>1&nbsp;190&nbsp;₽</s>1&nbsp;012&nbsp;₽</span>
+                      <small><i data-ic="ticket"></i>забрали код <u data-mx-count="4">131</u></small>
+                    </div>
+                    <div class="hx__c" data-mx-card="5">
+                      <div class="hx__ph" style="background-image:url('assets/products/manicure.jpg');background-position:center 50%"><em>−30%</em><img class="mx-mp" src="assets/brand/mp/megamarket.svg" alt=""></div>
+                      <b>Набор для&nbsp;маникюра</b><span class="mx-pr"><s>1&nbsp;700&nbsp;₽</s>1&nbsp;190&nbsp;₽</span>
+                      <small><i data-ic="ticket"></i>забрали код <u data-mx-count="5">88</u></small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hx__ev hx__ev--top" data-mx-ev="1">
+            <span class="ava mx-ev__mp" style="background-image:url('assets/brand/mp/wildberries.svg')"></span>
+            <div><b>Переход на&nbsp;карточку</b><span>Wildberries · только что</span></div>
+            <i class="hx__ok" data-ic="check"></i>
+          </div>
+          <div class="hx__ev" data-mx-ev="0">
+            <span class="ava" style="background-image:url('social-kit/photos/people/anna.jpg')"></span>
+            <div><b>Анна забрала промокод</b><span>−15% на&nbsp;полотенца · только что</span></div>
+            <i class="hx__ok" data-ic="check"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Зачем селлеру: сценарий из четырёх звеньев — мини-интерфейс на каждом -->
+  <section class="sec" id="why">
+    <div class="wrap">
+      <div class="hrow mx-why__h">
+        <div class="head">
+          <h2>Внутренняя реклама дорожает и&nbsp;ограничена посетителями маркетплейса. Приводите внешний трафик из&nbsp;<span class="tag">честного и&nbsp;понятного канала</span></h2>
+        </div>
+        <p class="text">«Всекупоны» даёт простой сценарий: ваш промокод из&nbsp;любого маркетплейса → размещение на&nbsp;сервисе → ретрансляция в&nbsp;социальные сети → переход на&nbsp;вашу карточку / магазин.</p>
+      </div>
+
+      <ol class="path path--ui mx-path">
+        <li>
+          <div class="pv">
+            <div class="pv__code"><i data-ic="ticket"></i><b>SALE15</b></div>
+            <div class="mx-mps mx-mps--sm"><img src="assets/brand/mp/wildberries.svg" alt=""><img src="assets/brand/mp/ozon.svg" alt=""><img src="assets/brand/mp/yandex-market.svg" alt=""><img src="assets/brand/mp/megamarket.svg" alt=""></div>
+          </div>
+          <div class="path__t"><span class="path__n">1</span><p><b>Ваш промокод</b><br>из&nbsp;любого маркетплейса</p></div>
+        </li>
+        <li>
+          <div class="pv">
+            <div class="mx-tile">
+              <span class="mx-tile__ph" style="background-image:url('assets/products/towels.jpg')"><b>−15%</b></span>
+              <div><b>Набор полотенец</b><span>Маркетплейс · вся Россия</span></div>
+            </div>
+          </div>
+          <div class="path__t"><span class="path__n">2</span><p><b>Размещение</b><br>на&nbsp;сервисе</p></div>
+        </li>
+        <li>
+          <div class="pv">
+            <div class="pv__soc mx-soc"><i data-soc="vk"></i><i data-soc="tg"></i><i data-soc="ok"></i><i data-soc="max"></i></div>
+            <div class="pv__free"><span>пост с&nbsp;купоном</span><span>ссылка на&nbsp;карточку</span></div>
+          </div>
+          <div class="path__t"><span class="path__n">3</span><p><b>Ретрансляция</b><br>в&nbsp;социальные сети</p></div>
+        </li>
+        <li>
+          <div class="pv">
+            <div class="pv__ok"><i data-ic="check"></i>Переход на&nbsp;карточку</div>
+            <div class="pv__shop"><i data-ic="site"></i>wildberries.ru/catalog/…</div>
+          </div>
+          <div class="path__t"><span class="path__n">4</span><p><b>Переход</b><br>на&nbsp;вашу карточку / магазин</p></div>
+        </li>
+      </ol>
+
+      <div class="launch__foot mx-foot">
+        <p class="text">Получайте внешний трафик <b>дёшево и&nbsp;предсказуемо.</b></p>
+        <div class="mx-btns">
+          <a class="btn btn--soft" href="#final">Проверить, подходит ли мой товар</a>
+          <a class="btn btn--red" href="#final">Оставить заявку</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Как это работает: четыре шага из ТЗ слева, живое демо мастера справа
+       (marketplace.js — ссылка «впечатывается» сама, карточка подтягивается) -->
+  <section class="sec sec--red" id="steps">
+    <div class="wrap">
+      <div class="hrow">
+        <div class="head">
+          <h2>От&nbsp;карточки до&nbsp;кода&nbsp;— <span class="tag tag--w">четыре шага</span></h2>
+        </div>
+        <p class="text">Не&nbsp;нужно делать баннер, писать текст и&nbsp;загружать фото. Нейросеть берёт всё из&nbsp;вашей карточки на&nbsp;маркетплейсе. От&nbsp;вас&nbsp;— площадка, ссылка и&nbsp;промокод.</p>
+      </div>
+
+      <div class="mx-easy">
+        <ol class="mx-flow">
+          <li><em>1</em><p>Регистрируетесь на&nbsp;сервисе.</p></li>
+          <li class="is-key">
+            <em>2</em>
+            <div>
+              <p>В&nbsp;личном кабинете выбираете тип «Маркетплейс», указываете площадку, ссылку на&nbsp;карточку или артикул. Нейросеть сама извлечёт из&nbsp;маркетплейса изображение карточки и&nbsp;информацию о&nbsp;ней.</p>
+              <div class="mx-auto">
+                <span class="mx-auto__k"><i data-ic="spark"></i>Сервис сам</span>
+                <ul>
+                  <li>забирает фото товара</li>
+                  <li>берёт название и&nbsp;цену</li>
+                  <li>ставит категорию на&nbsp;витрине</li>
+                  <li>пишет текст купона</li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li><em>3</em><p>Публикуете на&nbsp;всю Россию, а&nbsp;сервис автоматически ретранслирует ваше предложение в&nbsp;социальные сети, максимально увеличив охват.</p></li>
+          <li><em>4</em><p>Покупатель забирает код там, где ему удобно, и&nbsp;переходит на&nbsp;вашу карточку товара.</p></li>
+        </ol>
+
+        <!-- Демо мастера /seller/coupons/new/marketplace/ -->
+        <div class="mw" id="easy" data-wiz data-nm="Набор полотенец, 3 шт." data-pr="1290" data-ct="Товары для дома">
+          <div class="mw__top"><i data-ic="spark"></i><b>Мастер «Маркетплейс»</b><span class="mw__url">vsekupony.ru/seller/coupons/new/marketplace/</span></div>
+          <div class="mw__body">
+            <p class="mw__step"><em>Шаг 1</em>Площадка и&nbsp;ссылка на&nbsp;карточку или артикул</p>
+            <form class="mw__url-f" data-wiz-form>
+              <span class="mw__sel"><select aria-label="Площадка" data-wiz-mp>
+                <option value="Wildberries|WB">Wildberries</option>
+                <option value="Ozon|Ozon">Ozon</option>
+                <option value="Яндекс Маркет|ЯМ">Яндекс Маркет</option>
+                <option value="Другая площадка|МП">Другая</option>
+              </select></span>
+              <input type="text" value="" placeholder="Вставьте ссылку на карточку товара" aria-label="Ссылка на карточку или артикул" data-wiz-input>
+              <button class="btn btn--red" type="submit">Подтянуть</button>
+            </form>
+
+            <div class="mw__grid">
+              <ul class="mw__pull" data-wiz-pull>
+                <li data-k="ph"><span>Фото карточки</span><b>3 фото</b></li>
+                <li data-k="nm"><span>Название</span><b data-v="nm">—</b></li>
+                <li data-k="pr"><span>Цена</span><b data-v="pr">—</b></li>
+                <li data-k="ct"><span>Категория</span><b data-v="ct">—</b></li>
+                <li data-k="ds"><span>Описание</span><b data-v="ds">—</b></li>
+                <li data-k="tx"><span>Текст купона</span><b>написала нейросеть</b></li>
+              </ul>
+
+              <!-- Готовый купон — как он будет выглядеть на витрине -->
+              <div class="mw__cpn" data-wiz-cpn>
+                <div class="mw__ph" style="background-image:url('assets/products/towels.jpg')"><em data-v="mp">WB</em><span>−15%</span></div>
+                <div class="mw__b">
+                  <b data-v="nm">Название товара</b>
+                  <span class="mw__pr"><s data-v="pr">—</s> <strong data-v="pr2">—</strong></span>
+                  <span class="mw__code"><i data-ic="ticket"></i>Промокод <u data-wiz-code>SALE15</u></span>
+                  <span class="mw__geo">Показ: вся Россия · сайт + 4 соцсети</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="mw__step mw__step--2"><em>Шаг 2</em>Промокод и&nbsp;скидка&nbsp;— и&nbsp;публикуете</p>
+            <div class="mw__go">
+              <span class="mw__fld">SALE15</span>
+              <span class="mw__fld">−15%</span>
+              <span class="btn btn--red mw__pub">Опубликовать на&nbsp;всю Россию</span>
+            </div>
+          </div>
+          <p class="mw__note" data-wiz-note>Демо: выберите площадку и&nbsp;вставьте ссылку со&nbsp;своей карточки. Данные карточки в&nbsp;прототипе примерные.</p>
+        </div>
+      </div>
+
+      <!-- Статистика в кабинете: какие цифры видит селлер -->
+      <div class="mx-stat">
+        <p class="mx-stat__t"><span class="dot"></span>В&nbsp;личном кабинете вы&nbsp;в&nbsp;режиме онлайн можете наблюдать за&nbsp;статистикой просмотров и&nbsp;переходов.</p>
+        <div class="mx-stat__n"><b>12 480</b><span>просмотры</span></div>
+        <div class="mx-stat__n"><b>874</b><span>переходы</span></div>
+        <div class="mx-stat__bars" aria-hidden="true"><i style="--h:34%"></i><i style="--h:48%"></i><i style="--h:40%"></i><i style="--h:58%"></i><i style="--h:66%"></i><i style="--h:82%"></i><i style="--h:100%"></i></div>
+        <p class="mx-stat__note">Цифры&nbsp;— пример для прототипа</p>
+      </div>
+
+      <div class="launch__foot">
+        <p class="text"><b>Площадка, ссылка и&nbsp;промокод</b>&nbsp;— больше ничего готовить не&nbsp;нужно.</p>
+        <a class="btn btn--white" href="#final">Открыть мастер маркетплейса</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Сколько стоит: месяц размещения против дня внутренней рекламы.
+       Цены в ТЗ нет — в купоне место под цифру -->
+  <section class="sec sec--gray" id="price">
+    <div class="wrap">
+      <div class="hrow">
+        <div class="head">
+          <h2>Дешевле, чем <span class="tag">один день</span> внутренней рекламы</h2>
+        </div>
+        <p class="text">Ваше размещение увидят во&nbsp;всех городах присутствия сервиса, а&nbsp;мы&nbsp;усилим охваты через наши специализированные сообщества в&nbsp;ВК, MAX, Telegram, ОК. Внешние переходы&nbsp;— элемент «поведенческого фактора», как и&nbsp;лайки и&nbsp;корзины,&nbsp;— это стимулирует ранжирование карточки.</p>
+      </div>
+
+      <!-- Календарь на месяц: слева закрашен один день, справа — все тридцать -->
+      <div class="mx-cmp">
+        <div class="mx-cmp__c">
+          <span class="mx-cmp__k">Внутренняя реклама маркетплейса</span>
+          <b class="mx-cmp__big">1 день</b>
+          <div class="mx-days" data-days="1" aria-hidden="true"></div>
+          <ul>
+            <li>оплата за&nbsp;показы или клики</li>
+            <li>только посетители площадки</li>
+            <li>ставки растут вместе с&nbsp;конкурентами</li>
+          </ul>
+        </div>
+        <div class="mx-cmp__c mx-cmp__c--us">
+          <span class="mx-cmp__k"><img src="assets/brand/logo-white.png" alt="">Купон на&nbsp;«Всекупонах»</span>
+          <b class="mx-cmp__big">1 месяц</b>
+          <div class="mx-days" data-days="30" aria-hidden="true"></div>
+          <ul>
+            <li>фиксированная цена за&nbsp;размещение</li>
+            <li>все города присутствия сервиса</li>
+            <li>сайт + ВК, ОК, Telegram, MAX</li>
+            <li>код покупателю&nbsp;— бесплатно</li>
+          </ul>
+          <span class="mx-cmp__sum">[цена размещения, ₽ за&nbsp;месяц]</span>
+        </div>
+      </div>
+
+      <div class="mx-btns mx-btns--row">
+        <a class="btn btn--red" href="#final">Рассчитать в&nbsp;кабинете</a>
+        <a class="btn btn--soft" href="#pilot">Сначала пилот</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Где видно + каналы: одно и то же предложение в трёх местах -->
+  <section class="sec" id="channels">
+    <div class="wrap">
+      <div class="head mx-ch__h">
+        <h2>Раздел «Маркетплейс» + <span class="tag">пакет каналов</span></h2>
+        <p class="text mx-kick">Где видно купон:</p>
+      </div>
+      <div class="chs chs--ui">
+        <div class="ch">
+          <div class="chv">
+            <div class="chv__bar"><i></i><i></i><i></i><span>vsekupony.ru/marketplace</span></div>
+            <div class="chv__tile">
+              <span class="chv__ph" style="background-image:url('assets/products/towels.jpg')"><b>−15%</b></span>
+              <div><b>Набор полотенец, 3&nbsp;шт.</b><span>Wildberries · вся Россия</span></div>
+            </div>
+          </div>
+          <div class="ch__t"><span class="ch__ic" data-ic="site"></span><div><h3>Раздел «Маркетплейс» на&nbsp;vsekupony.ru</h3></div></div>
+        </div>
+        <div class="ch">
+          <div class="chv">
+            <div class="chv__q"><i data-ic="search"></i>полотенца промокод wb</div>
+            <div class="chv__res"><small>vsekupony.ru › marketplace › dom</small><b>Набор полотенец −15% по&nbsp;промокоду на&nbsp;Wildberries</b><span>Код бесплатно. Переход на&nbsp;карточку товара.</span></div>
+          </div>
+          <div class="ch__t"><span class="ch__ic" data-ic="search"></span><div><h3>SEO</h3><p>Сайт адаптирован увеличивать просмотр благодаря качественному SEO.</p></div></div>
+        </div>
+        <div class="ch ch--wide">
+          <div class="chv chv--post">
+            <div class="chv__post">
+              <div class="chv__au"><img src="assets/brand/logo-red.png" alt=""><div><b>ВСЕКУПОНЫ · Маркетплейс</b><span>только что</span></div></div>
+              <p>Набор полотенец −15% на&nbsp;Wildberries. Промокод&nbsp;— бесплатно, переход сразу на&nbsp;карточку.</p>
+              <span class="chv__btn">Забрать код</span>
+            </div>
+            <span class="chv__img" style="background-image:url('assets/products/towels.jpg')"></span>
+          </div>
+          <div class="ch__t">
+            <span class="ch__ic" data-ic="chat"></span>
+            <div><h3>Пакет соцсетей</h3>
+              <div class="ch__soc"><span><i data-soc="vk"></i>ВК</span><span><i data-soc="ok"></i>ОК</span><span><i data-soc="tg"></i>Telegram</span><span><i data-soc="max"></i>MAX</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="launch__foot ch__foot">
+        <p class="text"><b>Куда уходит человек после кода</b>&nbsp;— на&nbsp;вашу карточку/магазин по&nbsp;ссылке, которую вы указали.</p>
+        <a class="btn btn--red" href="#final">Запустить размещение</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Пилот — большой купон -->
+  <section class="sec sec--red" id="pilot">
+    <div class="wrap">
+      <div class="pilot">
+        <div class="pilot__l">
+          <span class="pilot__k">Пилот</span>
+          <div class="pilot__num"><b>0&nbsp;₽</b><span>первое размещение бесплатно</span></div>
+        </div>
+        <div class="pilot__r">
+          <h2>Первое размещение&nbsp;— <span class="tag">по&nbsp;условиям пилота</span></h2>
+          <p class="text">Для новых клиентов&nbsp;— первое размещение бесплатно.</p>
+          <a class="btn btn--red btn--lg" href="#final">Подать товар на&nbsp;пилот</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ — лист «FAQ» из ТЗ, глазами селлера (правки 23.10.2026) -->
+  <section class="sec" id="faq">
+    <div class="wrap faq">
+      <div class="faq__aside">
+        <div class="head">
+          <h2>Вопросы и&nbsp;<span class="tag">ответы</span></h2>
+        </div>
+        <div class="ask">
+          <b>Не&nbsp;нашли ответ?</b>
+          <p>Позвоните или напишите&nbsp;— расскажем, как разместить купон маркетплейса.</p>
+          <ul class="ask__ct">
+            <li><a href="tel:88002228567"><i data-ic="phone"></i><b>8-800-222-8-567</b></a></li>
+            <li><a href="mailto:info@vsekupony.ru"><i data-ic="mail"></i><span>info@vsekupony.ru</span></a></li>
+          </ul>
+          <div class="ask__msg">
+            <a href="https://vk.ru/vsekupony_biz" target="_blank" rel="noopener"><i data-soc="vk"></i>ВКонтакте</a>
+            <a href="https://t.me/vsekupony_bizz" target="_blank" rel="noopener"><i data-soc="tg"></i>Telegram</a>
+            <a href="https://ok.ru/group/70000060912009" target="_blank" rel="noopener"><i data-soc="ok"></i>Одноклассники</a>
+            <a href="https://max.ru/join/2eN5_3E8tOdDaSFXM5LEZzfrvuWgDR_QiqPF8-xUmv8" target="_blank" rel="noopener"><i data-soc="max"></i>MAX</a>
+          </div>
+          <div class="ask__btns mx-ask__btns">
+            <a class="btn btn--soft" href="#final">Задать вопрос</a>
+            <a class="btn btn--red" href="#final">Разместиться</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__list" data-faq>
+        <details>
+          <summary>Это реклама внутри Wildberries или Ozon?</summary>
+          <p>Нет. Вы&nbsp;размещаете предложение на&nbsp;«Всекупонах». Покупатель забирает код у&nbsp;нас и&nbsp;переходит на&nbsp;вашу карточку по&nbsp;ссылке.</p>
+        </details>
+        <details>
+          <summary>С&nbsp;какими площадками можно работать?</summary>
+          <p>Сценарий для селлеров маркетплейсов: WB, Ozon, Яндекс Маркет и&nbsp;другие&nbsp;— в&nbsp;рамках пилота. Точный список площадок подтверждаем перед стартом.</p>
+        </details>
+        <details>
+          <summary>Покупатель платит за&nbsp;купон?</summary>
+          <p>Нет. Код бесплатный. Размещение оплачивает рекламодатель.</p>
+        </details>
+        <details>
+          <summary>Вы гарантируете продажи и&nbsp;рост позиций?</summary>
+          <p>Нет. Мы&nbsp;даём показ, код и&nbsp;переход. Заказы и&nbsp;место в&nbsp;выдаче площадки&nbsp;— уже ваша карточка, цена, остаток и&nbsp;правила МП.</p>
+        </details>
+        <details>
+          <summary>Это будет дешевле внутренней рекламы маркетплейса?</summary>
+          <p>Не&nbsp;обещаем. После теста сравните сами: что ушло на&nbsp;размещение и&nbsp;что получили по&nbsp;переходам и&nbsp;заборам кода.</p>
+        </details>
+        <details>
+          <summary>Какие цифры я&nbsp;увижу?</summary>
+          <p>В&nbsp;кабинете «Всекупоны»: просмотры, переходы, сколько раз забрали код. Корзину и&nbsp;заказ на&nbsp;площадке смотрите у&nbsp;себя.</p>
+        </details>
+        <details>
+          <summary>Кто может размещать?</summary>
+          <p>ООО и&nbsp;ИП. Самозанятым&nbsp;— нет.</p>
+        </details>
+        <details>
+          <summary>Можно несколько товаров?</summary>
+          <p>Да, отдельными купонами&nbsp;— в&nbsp;рамках пилота и&nbsp;модерации.</p>
+        </details>
+        <details>
+          <summary>С&nbsp;чего начать прямо сейчас?</summary>
+          <p>Кидайте заявку со&nbsp;ссылкой на&nbsp;карточку или регистрируйтесь в&nbsp;/seller/ и&nbsp;создавайте купон типа «Маркетплейс».</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Финал: заявка в два шага из ТЗ (marketplace.js) -->
+  <section class="sec sec--gray" id="final">
+    <div class="wrap final">
+      <div class="final__text">
+        <h2>Разместите купон маркетплейса <span class="tag tag--w">на&nbsp;«Всекупоны»</span></h2>
+        <ul class="final__ct">
+          <li><a href="mailto:info@vsekupony.ru"><i data-ic="mail"></i><div><span>Почта</span><b>info@vsekupony.ru</b></div></a></li>
+          <li><a href="tel:88002228567"><i data-ic="phone"></i><div><span>Телефон</span><b>8-800-222-8-567</b></div></a></li>
+          <li class="final__socli"><span>Мы в&nbsp;соцсетях</span><span class="final__soc"><a href="https://vk.ru/vsekupony_biz" target="_blank" rel="noopener" aria-label="ВКонтакте" data-soc="vk"></a><a href="https://t.me/vsekupony_bizz" target="_blank" rel="noopener" aria-label="Telegram" data-soc="tg"></a><a href="https://ok.ru/group/70000060912009" target="_blank" rel="noopener" aria-label="Одноклассники" data-soc="ok"></a><a href="https://max.ru/join/2eN5_3E8tOdDaSFXM5LEZzfrvuWgDR_QiqPF8-xUmv8" target="_blank" rel="noopener" aria-label="MAX" data-soc="max"></a></span></li>
+        </ul>
+        <div class="mx-reg">
+          <p>Или сразу регистрация в&nbsp;/seller/ → мастер «Маркетплейс».</p>
+          <a class="btn btn--white" href="https://ivanweb1.github.io/coupon-prototype/register.html">Зарегистрироваться</a>
+        </div>
+        <div class="final__cta">
+          <p class="small">Размещение только для&nbsp;ООО и&nbsp;ИП.<br>Код для&nbsp;покупателя&nbsp;— всегда бесплатно.</p>
+        </div>
+      </div>
+
+      <form class="form mx-form" id="mpForm" novalidate>
+        <div class="form__head">
+          <p class="form__title">Оставьте заявку</p>
+          <p class="mx-form__step"><span class="mx-form__bar"><i data-form-bar></i></span>Шаг <b data-form-n>1</b> из&nbsp;2</p>
+        </div>
+        <fieldset class="mx-form__fs" data-form-step="1">
+          <label><span>Имя</span><input name="name" required placeholder="Как к&nbsp;вам обращаться" autocomplete="name" maxlength="40"></label>
+          <label><span>Компания</span><input name="company" required placeholder="ООО или ИП" autocomplete="organization" maxlength="80"></label>
+          <label><span>Телефон / Telegram</span><input name="contact" required placeholder="+7 или @username" maxlength="40"></label>
+          <label><span>Email</span><input name="email" type="email" inputmode="email" placeholder="name@mail.ru" autocomplete="email" maxlength="80"></label>
+          <button class="btn btn--red btn--lg" type="button" data-form-next>Дальше</button>
+        </fieldset>
+        <fieldset class="mx-form__fs" data-form-step="2" hidden>
+          <label><span>Площадка</span>
+            <span class="form__sel"><select name="mp" required>
+              <option value="">Выберите</option>
+              <option>Wildberries</option><option>Ozon</option><option>Яндекс Маркет</option><option>Другая</option>
+            </select></span>
+          </label>
+          <label><span>Ссылка на&nbsp;карточку или магазин</span><input name="url" required placeholder="https://"></label>
+          <label><span>Категория</span><input name="cat" placeholder="Например, товары для дома"></label>
+          <label><span>Цель теста</span><input name="goal" placeholder="Например, внешний трафик на новинку"></label>
+          <label class="form__agree"><input type="checkbox" name="agree" data-agree><i></i><span>Соглашаюсь с&nbsp;<a href="#consent" data-consent-open>обработкой персональных данных</a></span></label>
+          <div class="mx-form__btns">
+            <button class="btn btn--soft btn--lg" type="button" data-form-back>Назад</button>
+            <button class="btn btn--red btn--lg" type="submit">Отправить заявку</button>
+          </div>
+        </fieldset>
+        <div class="form__done bz-form__done" hidden>
+          <i data-ic="check"></i>
+          <b>Заявка отправлена</b>
+          <span>Свяжемся с&nbsp;вами и&nbsp;поможем разместить первый купон маркетплейса.</span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- Подвал -->
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft__grid">
+      <div class="ft__about">
+        <a class="logo logo--w" href="#top"><img src="assets/brand/logo-white.png" alt="" width="24" height="40"><span class="logo__t"><b>ВСЕКУПОНЫ</b><span>Для селлеров маркетплейсов</span></span></a>
+        <p>Купон маркетплейса размещается из&nbsp;кабинета /seller/. Код покупателю бесплатно.</p>
+        <a class="btn btn--red" href="#final">Разместить купон маркетплейса</a>
+      </div>
+      <nav class="ft__col ft__nav" aria-label="Селлерам (подвал)">
+        <b>Селлерам</b>
+        <a href="#why">Зачем селлеру</a>
+        <a href="#steps">Как работает</a>
+        <a href="#price">Сколько стоит</a>
+        <a href="#channels">Каналы</a>
+        <a href="#pilot">Пилот</a>
+        <a href="#faq">Вопросы</a>
+      </nav>
+      <nav class="ft__col ft__nav" aria-label="Сервис (подвал)">
+        <b>Сервис</b>
+        <a href="index.html">Региональное размещение</a>
+        <a href="https://ivanweb1.github.io/coupon-prototype/catalog.html?city=lipetsk&amp;l1=for-business">B2B</a>
+        <a href="https://ivanweb1.github.io/coupon-prototype/index.html">Витрина</a>
+        <a href="https://ivanweb1.github.io/coupon-prototype/pricing.html">Тарифы</a>
+        <a href="https://ivanweb1.github.io/coupon-prototype/docs.html">Документы</a>
+      </nav>
+      <div class="ft__col ft__ct">
+        <b>Связаться</b>
+        <a class="ft__phone" href="tel:88002228567">8-800-222-8-567</a>
+        <a href="mailto:info@vsekupony.ru">info@vsekupony.ru</a>
+        <span class="ft__soc"><a href="https://vk.ru/vsekupony_biz" target="_blank" rel="noopener" aria-label="ВКонтакте" data-soc="vk"></a><a href="https://t.me/vsekupony_bizz" target="_blank" rel="noopener" aria-label="Telegram" data-soc="tg"></a><a href="https://ok.ru/group/70000060912009" target="_blank" rel="noopener" aria-label="Одноклассники" data-soc="ok"></a><a href="https://max.ru/join/2eN5_3E8tOdDaSFXM5LEZzfrvuWgDR_QiqPF8-xUmv8" target="_blank" rel="noopener" aria-label="MAX" data-soc="max"></a></span>
+      </div>
+    </div>
+    <div class="ft__bottom">
+      <span>© ВСЕКУПОНЫ, 2026</span>
+      <a class="ft__up" href="#top">Наверх</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Поп-ап: согласие на обработку персональных данных (152-ФЗ) -->
+<dialog class="qd qd--doc" id="consent" aria-labelledby="cnTitle">
+  <div class="qd__box">
+    <button class="qd__x" type="button" aria-label="Закрыть" data-consent-close><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <div class="qd__head"><div><h3 id="cnTitle">Согласие на&nbsp;обработку персональных данных</h3></div></div>
+    <div class="qd__doc">
+      <p>Отправляя заявку на&nbsp;сайте, я&nbsp;свободно, своей волей и&nbsp;в&nbsp;своём интересе даю согласие сервису ВСЕКУПОНЫ (далее&nbsp;— Оператор) на&nbsp;обработку моих персональных данных в&nbsp;соответствии с&nbsp;Федеральным законом от&nbsp;27.07.2006 №&nbsp;152-ФЗ «О&nbsp;персональных данных».</p>
+      <h4>Какие данные</h4>
+      <p>Имя, номер телефона или имя пользователя в&nbsp;Telegram, адрес электронной почты, название и&nbsp;форма организации, площадка, ссылка на&nbsp;карточку или магазин.</p>
+      <h4>Цели обработки</h4>
+      <p>Обработка заявки, связь со&nbsp;мной по&nbsp;телефону, в&nbsp;мессенджере и&nbsp;по&nbsp;электронной почте, регистрация на&nbsp;платформе, консультация и&nbsp;размещение купона.</p>
+      <h4>Действия с&nbsp;данными</h4>
+      <p>Сбор, запись, систематизация, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, блокирование, удаление и&nbsp;уничтожение&nbsp;— с&nbsp;использованием средств автоматизации и&nbsp;без них. Оператор не&nbsp;передаёт данные третьим лицам, кроме случаев, предусмотренных законодательством РФ.</p>
+      <h4>Срок и&nbsp;отзыв согласия</h4>
+      <p>Согласие действует до&nbsp;достижения целей обработки или до&nbsp;его отзыва. Отозвать согласие можно, направив письмо на&nbsp;<a href="mailto:info@vsekupony.ru">info@vsekupony.ru</a>. После отзыва данные будут удалены в&nbsp;течение 30&nbsp;дней, если иное не&nbsp;требуется по&nbsp;закону.</p>
+    </div>
+    <div class="qd__foot qd__foot--end">
+      <button class="btn btn--red" type="button" data-consent-accept>Понятно, согласен</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- Плашка cookie -->
+<div class="ck" data-cookie hidden role="region" aria-label="Cookie">
+  <p>Мы используем cookie, чтобы сайт работал удобнее. Оставаясь на&nbsp;сайте, вы&nbsp;соглашаетесь с&nbsp;их&nbsp;использованием.</p>
+  <button class="btn btn--red" type="button" data-cookie-ok>Хорошо</button>
+</div>
+
+<script src="assets/business-design.js?v=20261019c"></script>
+<script src="assets/marketplace.js?v=20261023a"></script>
+<script src="assets/marketplace-design.js?v=20261023a"></script>
+</body>
+</html>
