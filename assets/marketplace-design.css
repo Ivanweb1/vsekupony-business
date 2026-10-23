@@ -113,6 +113,7 @@
 /* ---------- Как это работает: вкладки-шаги + экран кабинета ----------
    Каркас — .aix с лендинга для бизнеса; на красном фоне — белые карточки */
 .mx-aix{margin-top:8px}
+.mx-aix.is-paused .aix__bar,.mx-aix.is-paused .aix__segs i{animation-play-state:paused !important}
 .mx-aix .aix__tabs button{background:#fff;box-shadow:none}
 .mx-aix .aix__tabs button:hover{background:#fff}
 .mx-aix .aix__tabs button[aria-selected="true"]{background:#fff;box-shadow:inset 0 0 0 2px var(--ink)}
@@ -205,8 +206,20 @@
 .mx-buy__arr{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff}
 .mx-buy__arr svg{width:18px;height:18px}
 .mx-sc--buy .mx-pdp{box-shadow:0 16px 30px -20px rgba(0,0,0,.4)}
-.mx-sc--buy .mx-pdp__ph{width:96px}
-.mx-sc--buy .mx-pdp__in b{font-size:18px}
+/* Большая карточка товара на площадке — экран 4 */
+.mx-pdp--big .mx-pdp__bar{height:36px;padding-right:200px;background:#fff;border-bottom:1px solid var(--line)}
+.mx-pdp--big .mx-pdp__bar span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mx-pdp--big .mx-pdp__in{gap:14px;padding:14px 14px 16px}
+.mx-pdp--big .mx-pdp__ph{width:118px;align-self:flex-start}
+.mx-pdp--big .mx-pdp__in > div{gap:6px;flex:1}
+.mx-pdp__t{font-size:14px;font-weight:600;line-height:1.3;color:var(--ink)}
+.mx-pdp--big .mx-pdp__in b{font-size:22px}
+.mx-pdp__promo{display:inline-flex;white-space:nowrap;align-items:center;gap:6px;padding:4px 6px 4px 9px;border-radius:8px;border:1.5px dashed var(--brand);background:var(--brand-50);font-size:12px;font-weight:700}
+.mx-pdp__promo i{display:flex;color:var(--brand)}.mx-pdp__promo svg{width:13px;height:13px}
+.mx-pdp__promo em{font-style:normal;padding:1px 6px;border-radius:5px;background:var(--brand);color:#fff}
+.mx-pdp--big .mx-pdp__btn{align-self:stretch;text-align:center;padding:9px 0;font-size:13px}
+.mx-pdp__dl{font-size:11.5px;color:var(--g-ink)}
+.mx-pdp--big .mx-pdp__badge{top:6px;bottom:auto;right:8px}
 
 /* Статистика */
 .mx-stat{margin-top:18px}
@@ -216,6 +229,9 @@
 }
 @media (max-width:720px){
   .mx-sc{padding:16px !important}
+  .mx-pdp--big .mx-pdp__ph{width:84px}
+  .mx-pdp--big .mx-pdp__in{gap:10px}
+  .mx-pdp__promo{font-size:11px}
   .mx-org{flex-wrap:wrap}
   .mx-mpline{margin-left:40px}
   .mx-ready{flex-wrap:wrap}
@@ -292,7 +308,7 @@
 .mx-cmp__c--us li{background:rgba(255,255,255,.14);color:#fff}
 .mx-cmp__c--us li > i{color:var(--brand)}
 .mx-cmp__soc{display:flex;gap:4px;margin-left:auto}
-.mx-cmp__soc i{display:block;width:22px;height:22px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px rgba(255,255,255,.6)}
+.mx-cmp__soc i{display:block;width:22px;height:22px;border-radius:50%;overflow:hidden}
 .mx-cmp__soc svg,.mx-cmp__soc img{display:block;width:100%;height:100%}
 .mx-cmp__sum{align-self:flex-start;margin-top:22px;padding:10px 18px;border-radius:var(--r-pill);border:2px dashed rgba(255,255,255,.7);font-size:14px;font-weight:600}
 
@@ -302,6 +318,10 @@
 @media (min-width:721px){.mx-chs .chv{height:262px;justify-content:flex-start}}
 .mx-chs .chv--post{justify-content:center}
 .mx-chv{display:flex;flex-direction:column;gap:10px}
+/* подписи каналов: значок по верхней строке, у всех трёх на одной высоте */
+.mx-chs .ch__t{align-items:flex-start}
+.mx-chs .ch h3{line-height:26px;padding-top:12px}
+.mx-chs .ch p{margin-top:2px}
 /* витрина: две карточки, наша — в красной рамке */
 .mx-shop{display:flex;flex-direction:column;gap:8px}
 .mx-shop__tabs{display:flex;gap:5px}

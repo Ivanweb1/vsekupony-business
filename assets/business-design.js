@@ -178,6 +178,15 @@
   function next() { show((cur + 1) % tabs.length); }
   function prev() { show((cur - 1 + tabs.length) % tabs.length); }
   function start() { clearInterval(timer); if (reduce || !seen) return; timer = setInterval(next, DUR); }
+  // data-aix-hover: пока курсор над блоком — шаги не переключаются, полоска стоит;
+  // курсор ушёл — текущий шаг идёт заново
+  if (box.hasAttribute("data-aix-hover")) {
+    box.addEventListener("mouseenter", function () { clearInterval(timer); box.classList.add("is-paused"); });
+    box.addEventListener("mouseleave", function () { box.classList.remove("is-paused"); show(cur); start(); });
+  }
+  function hovered() { return box.classList.contains("is-paused"); }
+  var _start = start;
+  start = function () { if (hovered()) return; _start(); };
   tabs.forEach(function (t, i) { t.addEventListener("click", function () { show(i); start(); }); });
   segs.forEach(function (sg, i) { sg.addEventListener("click", function () { show(i); start(); }); });
   // свайп по окну влево/вправо

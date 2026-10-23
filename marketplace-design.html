@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/business-design.css?v=20261019c">
-<link rel="stylesheet" href="assets/marketplace-design.css?v=20261023i">
+<link rel="stylesheet" href="assets/marketplace-design.css?v=20261023n">
 <link rel="icon" href="assets/brand/logo-red.png">
 </head>
 <body>
@@ -280,7 +280,7 @@
       <!-- Четыре шага из ТЗ — вкладки слева, справа экран кабинета на этом шаге.
            Переключаются сами и по клику (business-design.js, как AI-помощник);
            это показ, а не рабочая форма: товар, ИНН и цифры — пример -->
-      <div class="aix mx-aix" id="easy" data-aix>
+      <div class="aix mx-aix" id="easy" data-aix data-aix-hover>
         <div class="aix__l">
           <ol class="aix__tabs" role="tablist">
             <li><button type="button" role="tab" aria-selected="true"><em>1</em><span>Регистрируетесь на&nbsp;сервисе.</span><i class="aix__ic" data-ic="users"></i><i class="aix__bar"></i></button></li>
@@ -356,17 +356,20 @@
                 <span class="mx-take__btn">Перейти на&nbsp;карточку</span>
               </div>
               <i class="mx-buy__arr" data-ic="spark"></i>
-              <div class="mx-pdp">
-                <div class="mx-pdp__bar"><img src="assets/brand/mp/wildberries.svg" alt=""><span>wildberries.ru/catalog/…</span></div>
+              <div class="mx-pdp mx-pdp--big">
+                <div class="mx-pdp__bar"><img src="assets/brand/mp/wildberries.svg" alt=""><span>wildberries.ru/catalog/184239517</span></div>
                 <div class="mx-pdp__in">
                   <span class="mx-pdp__ph" style="background-image:url('assets/products/towels.jpg')"></span>
                   <div>
+                    <small class="mx-pdp__t">Набор полотенец, 3&nbsp;шт.</small>
+                    <span class="mx-pdp__stars">★★★★★ <small>4,9 · 1&nbsp;284 оценки</small></span>
                     <b>1&nbsp;097&nbsp;₽ <s>1&nbsp;290&nbsp;₽</s></b>
-                    <span class="mx-pdp__stars">★★★★★ <small>4,9</small></span>
+                    <span class="mx-pdp__promo"><i data-ic="ticket"></i>SALE15 применён<em>−15%</em></span>
                     <span class="mx-pdp__btn">В&nbsp;корзину</span>
+                    <span class="mx-pdp__dl">Доставка завтра</span>
                   </div>
                 </div>
-                <span class="mx-pdp__badge"><i data-ic="check"></i>+1 переход</span>
+                <span class="mx-pdp__badge"><i data-ic="check"></i>+1 переход с&nbsp;«Всекупонов»</span>
               </div>
             </div>
           </div>
@@ -737,7 +740,7 @@
   <button class="btn btn--red" type="button" data-cookie-ok>Хорошо</button>
 </div>
 
-<script src="assets/business-design.js?v=20261019c"></script>
+<script src="assets/business-design.js?v=20261023a"></script>
 <script src="assets/marketplace.js?v=20261023a"></script>
 <script src="assets/marketplace-design.js?v=20261023a"></script>
 </body>
