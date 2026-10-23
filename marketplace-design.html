@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/business-design.css?v=20261019c">
-<link rel="stylesheet" href="assets/marketplace-design.css?v=20261023n">
+<link rel="stylesheet" href="assets/marketplace-design.css?v=20261023p">
 <link rel="icon" href="assets/brand/logo-red.png">
 </head>
 <body>
@@ -39,9 +39,9 @@
       <a href="#steps">Как работает</a>
       <a href="#easy">Что размещаем</a>
       <a href="#price">Сколько стоит</a>
-      <a href="#channels">Каналы</a>
+      <a href="#channels">Каналы публикации</a>
       <a href="#pilot">Пилот</a>
-      <a href="#faq">Вопросы</a>
+      <a href="#faq">Вопросы и&nbsp;ответы</a>
     </nav>
 
     <div class="hd__contacts">
@@ -67,9 +67,9 @@
       <a href="#steps">Как работает</a>
       <a href="#easy">Что размещаем</a>
       <a href="#price">Сколько стоит</a>
-      <a href="#channels">Каналы</a>
+      <a href="#channels">Каналы публикации</a>
       <a href="#pilot">Пилот</a>
-      <a href="#faq">Вопросы</a>
+      <a href="#faq">Вопросы и&nbsp;ответы</a>
     </nav>
     <div class="mnav__ct">
       <a class="mnav__phone" href="tel:88002228567">8-800-222-8-567</a>
@@ -539,10 +539,10 @@
         <div class="pilot__r">
           <h2>Первое размещение&nbsp;— <span class="tag">по&nbsp;условиям пилота</span></h2>
           <p class="text">Для новых клиентов&nbsp;— первое размещение бесплатно.</p>
-          <ol class="pilot__steps">
-            <li><em>1</em><span>Вставьте ссылку на&nbsp;карточку</span></li>
-            <li><em>2</em><span>Укажите промокод</span></li>
-            <li><em>3</em><span>Проверьте канал без&nbsp;вложений</span></li>
+          <ol class="pilot__steps mx-psteps">
+            <li><div class="mx-psh"><em>1</em><span class="mx-psv mx-psv--link"><img src="assets/brand/mp/wildberries.svg" alt="">wildberries.ru/…</span></div><span>Вставьте ссылку на&nbsp;карточку</span></li>
+            <li><div class="mx-psh"><em>2</em><span class="mx-psv mx-psv--code"><i data-ic="ticket"></i>SALE15<b>−15%</b></span></div><span>Укажите промокод</span></li>
+            <li><div class="mx-psh"><em>3</em><span class="mx-psv mx-psv--ok"><b>0&nbsp;₽</b><i data-ic="check"></i></span></div><span>Проверьте канал без&nbsp;вложений</span></li>
           </ol>
           <a class="btn btn--red btn--lg" href="#final">Подать товар на&nbsp;пилот</a>
         </div>
@@ -640,7 +640,7 @@
       <form class="form mx-form" id="mpForm" novalidate>
         <div class="form__head">
           <p class="form__title">Оставьте заявку</p>
-          <p class="mx-form__step"><span class="mx-form__bar"><i data-form-bar></i></span>Шаг <b data-form-n>1</b> из&nbsp;2</p>
+          <div class="mx-ftabs"><span class="is-on" data-ftab="1"><em>1</em>Контакты</span><span data-ftab="2"><em>2</em>Площадка и&nbsp;карточка</span></div>
         </div>
         <fieldset class="mx-form__fs" data-form-step="1">
           <label><span>Имя</span><input name="name" required placeholder="Как к&nbsp;вам обращаться" autocomplete="name" maxlength="40"></label>
@@ -665,6 +665,10 @@
             <button class="btn btn--red btn--lg" type="submit">Отправить заявку</button>
           </div>
         </fieldset>
+        <div class="mx-fmp">
+          <span>WB, Ozon, Яндекс Маркет и&nbsp;другие площадки</span>
+          <span class="mx-fmp__l"><img src="assets/brand/mp/wildberries-full.svg" alt="Wildberries"><img src="assets/brand/mp/ozon-full.svg" alt="Ozon"><img src="assets/brand/mp/yandex-market-full.svg" alt="Яндекс Маркет"></span>
+        </div>
         <div class="form__done bz-form__done" hidden>
           <i data-ic="check"></i>
           <b>Заявка отправлена</b>
@@ -694,9 +698,9 @@
       </nav>
       <nav class="ft__col ft__nav" aria-label="Селлерам (подвал)">
         <b>Селлерам</b>
-        <a href="#channels">Каналы</a>
+        <a href="#channels">Каналы публикации</a>
         <a href="#pilot">Пилот</a>
-        <a href="#faq">Вопросы</a>
+        <a href="#faq">Вопросы и&nbsp;ответы</a>
       </nav>
       <div class="ft__col ft__ct">
         <b>Связаться</b>
@@ -741,7 +745,7 @@
 </div>
 
 <script src="assets/business-design.js?v=20261023a"></script>
-<script src="assets/marketplace.js?v=20261023a"></script>
+<script src="assets/marketplace.js?v=20261023b"></script>
 <script src="assets/marketplace-design.js?v=20261023a"></script>
 </body>
 </html>

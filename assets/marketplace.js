@@ -98,11 +98,14 @@
       });
       return ok;
     };
-    var bar = lead.querySelector("[data-form-bar]");
     var go = function (n) {
       steps.forEach(function (s) { s.hidden = s.dataset.formStep !== String(n); });
-      num.textContent = n;
-      if (bar) bar.style.width = n * 50 + "%";
+      if (num) num.textContent = n;
+      // дизайн-версия: вкладки шагов над формой
+      lead.querySelectorAll("[data-ftab]").forEach(function (t) {
+        t.classList.toggle("is-on", +t.dataset.ftab === n);
+        t.classList.toggle("is-done", +t.dataset.ftab < n);
+      });
     };
     lead.querySelector("[data-form-next]").addEventListener("click", function () { if (check(steps[0])) go(2); });
     lead.querySelector("[data-form-back]").addEventListener("click", function () { go(1); });

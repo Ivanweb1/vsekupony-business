@@ -362,19 +362,40 @@
 .mx-reg{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-top:22px;padding:18px 20px;border-radius:var(--r-md);background:rgba(255,255,255,.14)}
 .mx-reg p{font-size:15px;line-height:1.45;color:#fff}
 
-/* Форма в два шага */
-.mx-form{align-content:start}
-.mx-form .form__head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.mx-form__step{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-3)}
-.mx-form__step b{color:var(--ink)}
-.mx-form__bar{width:80px;height:6px;border-radius:3px;background:var(--surface-2);overflow:hidden}
-.mx-form__bar i{display:block;width:50%;height:100%;border-radius:3px;background:var(--brand);transition:width .35s var(--ease)}
-.mx-form__fs{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0;padding:0;border:0;min-width:0}
+/* Форма в два шага: вкладки шагов сверху, площадки снизу */
+.mx-form{display:flex !important;flex-direction:column;gap:18px}
+.mx-form .form__head{display:flex;flex-direction:column;align-items:stretch;gap:14px;margin:0}
+.mx-ftabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;border-radius:var(--r-pill);background:var(--surface)}
+.mx-ftabs span{display:flex;align-items:center;justify-content:center;gap:8px;height:42px;border-radius:var(--r-pill);font-size:14px;font-weight:600;color:var(--ink-3);transition:background .25s var(--ease),color .25s var(--ease)}
+.mx-ftabs em{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#fff;font-style:normal;font-size:12px;font-weight:700;color:var(--ink-3)}
+.mx-ftabs .is-on{background:var(--brand);color:#fff}
+.mx-ftabs .is-on em{color:var(--brand)}
+.mx-ftabs .is-done{color:var(--ink)}
+.mx-ftabs .is-done em{background:var(--brand);color:#fff}
+.mx-form__fs{display:grid;grid-template-columns:1fr 1fr;gap:16px 14px;margin:0;padding:0;border:0;min-width:0}
 .mx-form__fs[hidden]{display:none}
 .mx-form__fs > .btn{grid-column:1/-1;margin-top:6px}
+.mx-form input,.mx-form select{height:56px}
 .mx-form select.is-error{border-color:var(--brand);background:var(--brand-50)}
 .mx-form__btns{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:10px;margin-top:6px}
-.mx-form__btns .btn{margin:0}
+.mx-form__btns .btn{margin:0;grid-column:auto}
+.mx-fmp{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;margin-top:auto;padding:16px 18px;border-radius:var(--r-md);background:var(--surface);font-size:13px;color:var(--ink-3)}
+.mx-fmp__l{display:flex;align-items:center;gap:18px}
+.mx-fmp__l img{height:14px;width:auto}
+
+/* Шаги пилота: номер и мини-визуал в одной строке, текст под ними */
+.mx-psteps li{gap:14px}
+.mx-psh{display:flex;align-items:center;gap:10px}
+.mx-psh em{flex:none}
+.mx-psteps .mx-psv{display:flex;align-items:center;gap:6px;min-width:0;height:30px;padding:0 10px;border-radius:9px;background:#fff;font-size:12px;font-weight:600;line-height:1;color:var(--ink-2);white-space:nowrap;box-shadow:0 6px 14px -10px rgba(0,0,0,.35)}
+.mx-psv--link{overflow:hidden;text-overflow:ellipsis}
+.mx-psv--link img{flex:none;width:16px;height:16px;border-radius:4px}
+.mx-psv--code{border:1.5px dashed var(--brand);box-shadow:none !important;background:var(--brand-50) !important;color:var(--ink) !important;font-weight:800 !important;letter-spacing:.05em}
+.mx-psv--code i{display:flex;color:var(--brand)}.mx-psv--code svg{width:13px;height:13px}
+.mx-psv--code b{padding:2px 5px;border-radius:5px;background:var(--brand);color:#fff;letter-spacing:0}
+.mx-psv--ok{background:var(--brand) !important;color:#fff !important}
+.mx-psv--ok b{font-size:14px;font-weight:800}
+.mx-psv--ok i{display:flex}.mx-psv--ok svg{width:15px;height:15px}
 
 /* ==========================================================================
    Адаптив
@@ -400,5 +421,7 @@
   .mx-btns,.mx-foot .mx-btns{flex-direction:column;align-items:stretch}
   .mx-btns .btn{width:100%}
   .mx-form__fs{grid-template-columns:1fr}
+  .mx-psteps .mx-psv{display:none}
+  .mx-ftabs span{font-size:12.5px}
   .mx-reg .btn{align-self:stretch}
 }
