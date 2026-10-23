@@ -12,7 +12,7 @@
 
 /* Логотипы площадок кружками-квадратами (первый экран) */
 .mx-mps{display:flex;align-items:center;height:30px}
-.mx-mps img{display:block;width:30px;height:30px;border-radius:9px;margin-left:-6px;box-shadow:0 0 0 2px var(--surface)}
+.mx-mps img{display:block;width:30px;height:30px;border-radius:50%;margin-left:-8px;box-shadow:0 0 0 2px var(--surface);background:#fff}
 .mx-mps img:first-child{margin-left:0}
 
 /* ---------- Первый экран ---------- */
@@ -20,11 +20,11 @@
 .mx-nums li > b{white-space:normal;font-size:20px;line-height:1.15}
 .mx-nums li:first-child > b{color:var(--ink)}
 .hero__nums li > .mx-mps{display:flex}
-/* белый круг сайта на светлой карточке без края казался меньше цветных
-   соцсетей того же размера — тонкий контур и +2px компенсируют на глаз */
-.mx-nums .hn__ch .hn__site{width:30px;height:30px;box-shadow:inset 0 0 0 1px rgba(17,17,17,.08)}
+/* белый круг сайта на светлой карточке без края кажется меньше цветных
+   соцсетей того же размера — поэтому он на 4px больше, без обводки */
+.mx-nums .hn__ch .hn__site{width:32px;height:32px}
 @media (max-width:560px){
-  .mx-nums .hn__ch .hn__site{width:26px;height:26px}
+  .mx-nums .hn__ch .hn__site{width:28px;height:28px}
 }
 .mx-cal{gap:8px}
 .mx-cal i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;color:var(--brand)}
@@ -411,10 +411,11 @@
   .mx-btns,.mx-foot .mx-btns{flex-direction:column;align-items:stretch}
   .mx-btns .btn{width:100%}
 
-  /* первый экран: значки справа по центру карточки, логотипы без наложения */
+  /* первый экран: значки справа по центру карточки */
   .mx-nums li > b{font-size:17px}
   .hero__nums li > .mx-mps{grid-column:2;grid-row:1 / span 2;justify-self:end}
-  .mx-nums .mx-mps img{width:24px;height:24px;margin-left:4px;border-radius:7px;box-shadow:none}
+  /* логотипы площадок — кружками внахлёст, как соцсети в соседней карточке */
+  .mx-nums .mx-mps img{width:24px;height:24px;margin-left:-8px}
   .mx-nums .mx-mps img:first-child{margin-left:0}
   .mx-cal i{display:none}
   .hx__ev div > span{white-space:normal}
