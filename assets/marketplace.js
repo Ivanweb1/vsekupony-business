@@ -13,10 +13,6 @@
 
   var wiz = document.querySelector("[data-wiz]");
   if (wiz) {
-    // Дизайн-версия подставляет свой товар под фото: data-nm, data-pr, data-ct
-    if (wiz.dataset.nm) CARD.nm = wiz.dataset.nm;
-    if (wiz.dataset.pr) CARD.pr = +wiz.dataset.pr;
-    if (wiz.dataset.ct) CARD.ct = wiz.dataset.ct;
     var form = wiz.querySelector("[data-wiz-form]");
     var input = wiz.querySelector("[data-wiz-input]");
     var mpSel = wiz.querySelector("[data-wiz-mp]");

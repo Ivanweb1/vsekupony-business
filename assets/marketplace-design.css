@@ -1,51 +1,53 @@
 /* ==========================================================================
    Лендинг «ВСЕКУПОНЫ — для селлеров маркетплейсов». Дизайн.
    Подключается после business-design.css: шапка, секции, кнопки, «ценник»,
-   шаги, каналы, пилот, FAQ, форма и подвал — оттуда. Здесь только то,
-   чего на лендинге для бизнеса нет: площадки, мастер купона, календари
-   «1 день / 1 месяц», статистика и форма в два шага.
+   шаги, каналы, пилот, FAQ, форма и подвал — оттуда. Здесь — только блоки
+   этой страницы, по порядку на странице; адаптив — в конце файла.
    ========================================================================== */
 
-/* ---------- Логотипы площадок ---------- */
-.mx-mps,.hero__nums li > .mx-mps{display:flex;align-items:center;height:30px}
+/* ---------- Общее ---------- */
+.mx-btns{display:flex;flex-wrap:wrap;gap:10px}
+.mx-foot .mx-btns{flex:none}
+@keyframes mxUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* Логотипы площадок кружками-квадратами (первый экран) */
+.mx-mps{display:flex;align-items:center;height:30px}
 .mx-mps img{display:block;width:30px;height:30px;border-radius:9px;margin-left:-6px;box-shadow:0 0 0 2px var(--surface)}
 .mx-mps img:first-child{margin-left:0}
-.mx-mps--sm img{width:32px;height:32px;margin-left:6px;box-shadow:none}
-.mx-mps--sm img:first-child{margin-left:4px}
 
 /* ---------- Первый экран ---------- */
 .mx-lead2{order:2;max-width:600px;margin-top:12px;font-size:15px;line-height:1.5;color:var(--ink-3)}
-.mx-nums li > b{white-space:normal;font-size:20px !important;line-height:1.15}
+.mx-nums li > b{white-space:normal;font-size:20px;line-height:1.15}
 .mx-nums li:first-child > b{color:var(--ink)}
+.hero__nums li > .mx-mps{display:flex}
 .mx-cal{gap:8px}
 .mx-cal i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;color:var(--brand)}
 .mx-cal svg{width:17px;height:17px}
 .mx-cal em{font-style:normal;padding:4px 10px;border-radius:var(--r-pill);background:var(--brand);color:#fff;font-size:13px;font-weight:700}
 
-/* Купон селлера в ленте: значок площадки в углу фото, цена до/после */
+/* Купон селлера в ленте: логотип площадки на фото, цена до/после,
+   внизу — промокод пунктиром и сколько забрали */
 .mx-mp{position:absolute;left:6px;top:6px;display:flex;align-items:center;height:24px;max-width:calc(100% - 12px);padding:0 9px;border-radius:7px;background:#fff;box-shadow:0 4px 12px -6px rgba(0,0,0,.45)}
 .mx-mp img{display:block;width:auto;height:12px;max-width:100%}
-/* Нижняя строка карточки: промокод площадки пунктиром, справа — сколько забрали */
+.hx__c > .mx-pr{display:flex;align-items:baseline;gap:6px;color:var(--ink);font-weight:700}
+.mx-pr s{font-weight:400;color:var(--ink-4)}
 .hx__c small.mx-code{justify-content:space-between;gap:6px}
-.mx-code em{font-style:normal;white-space:nowrap}
-@media (max-width:560px){.mx-code em{display:none}.mx-mp{height:21px;padding:0 7px}.mx-mp img{height:10px}}
 .mx-code > span{display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:6px;border:1.5px dashed var(--brand);font-weight:700;letter-spacing:.04em;color:var(--ink)}
 .mx-code > span svg{width:12px;height:12px;color:var(--brand)}
-.mx-pr{display:flex !important;align-items:baseline;gap:6px;color:var(--ink) !important;font-weight:700}
-.mx-pr s{font-weight:400;color:var(--ink-4)}
-.mx-ev__mp{border-radius:12px !important;background-size:cover !important;background-position:center !important}
+.mx-code em{font-style:normal;white-space:nowrap}
+.hx__ev .mx-ev__mp{border-radius:12px;background-size:cover;background-position:center}
 
 /* ---------- Зачем селлеру: четыре звена ---------- */
 .mx-path .path__t p b{font-weight:700}
-/* Мини-интерфейсы шагов: выше, чем на лендинге для бизнеса, с наложениями */
-.mx-path .pv.mx-pv{position:relative;height:210px !important;padding:18px;justify-content:center;overflow:hidden}
-.mx-pv > :first-child,.mx-pv > :last-child{height:auto !important}
-.mx-pv > .mx-codes{height:150px !important}
-.mx-pv > .mx-fan{height:170px !important}
-.mx-pdp,.mx-pv > .mx-pdp{display:block !important}
+/* мини-интерфейсы выше, чем на лендинге для бизнеса, и с наложениями */
+.mx-path .pv.mx-pv{position:relative;height:210px;padding:18px;justify-content:center;overflow:hidden}
+.mx-path .mx-pv > *{height:auto}
+.mx-path .mx-pv > .mx-codes{height:150px}
+.mx-path .mx-pv > .mx-fan{height:170px}
+.mx-path .mx-pv > .mx-pdp{display:block}
 
 /* 1 — стопка купонов-промокодов разных площадок */
-.mx-codes{position:relative;height:150px !important}
+.mx-codes{position:relative}
 .mx-cd{position:absolute;left:50%;top:var(--t);display:flex;align-items:center;gap:10px;width:min(100%,250px);height:52px;padding:0 14px;border-radius:14px;background:#fff;
   box-shadow:0 12px 24px -16px rgba(0,0,0,.45),inset 0 0 0 1px var(--line);transform:translateX(-50%) rotate(var(--r))}
 .mx-cd::before,.mx-cd::after{content:"";position:absolute;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--surface)}
@@ -71,7 +73,7 @@
 .mx-cp__st .dot{width:7px;height:7px}
 
 /* 3 — посты в соцсетях веером */
-.mx-fan{position:relative;height:170px !important}
+.mx-fan{position:relative}
 .mx-post{position:absolute;top:14px;left:50%;width:104px;padding:6px 6px 8px;border-radius:13px;background:#fff;box-shadow:0 14px 26px -16px rgba(0,0,0,.45),inset 0 0 0 1px var(--line);transform:translateX(calc(-50% + var(--x))) rotate(var(--r));transform-origin:50% 120%}
 .mx-post > i{position:absolute;left:-6px;top:-6px;z-index:1;display:block;width:24px;height:24px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px #fff}
 .mx-post > i svg,.mx-post > i img{display:block;width:100%;height:100%}
@@ -83,8 +85,8 @@
 .mx-post:nth-child(3){--x:20px;--r:5deg}
 .mx-post.is-top{--x:62px;--r:13deg}
 
-/* 4 — карточка товара на площадке */
-.mx-pdp{position:relative;align-self:stretch;border-radius:16px;background:#fff;color:var(--ink);box-shadow:0 16px 30px -18px rgba(0,0,0,.45),inset 0 0 0 1px var(--line);overflow:hidden}
+/* 4 — карточка товара на площадке (здесь маленькая, на экране 4 «Как работает» — большая) */
+.mx-pdp{position:relative;display:block;align-self:stretch;border-radius:16px;background:#fff;color:var(--ink);box-shadow:0 16px 30px -18px rgba(0,0,0,.45),inset 0 0 0 1px var(--line);overflow:hidden}
 .mx-pdp__bar{display:flex;align-items:center;gap:7px;height:32px;padding:0 104px 0 10px;background:var(--surface);font-size:11px;color:var(--ink-3)}
 .mx-pdp__bar img{flex:none;width:16px;height:16px;border-radius:4px}
 .mx-pdp__bar span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -99,7 +101,7 @@
 .mx-pdp__badge{position:absolute;right:6px;top:5px;display:flex;align-items:center;gap:4px;padding:4px 9px 4px 6px;border-radius:var(--r-pill);background:var(--brand);color:#fff;font-size:11px;font-weight:700;box-shadow:0 8px 16px -8px rgba(120,20,10,.6)}
 .mx-pdp__badge i{display:flex}.mx-pdp__badge svg{width:13px;height:13px}
 
-/* Веер и стопка чуть раскрываются при наведении на шаг */
+/* стопка и веер чуть раскрываются при наведении на шаг */
 @media (hover:hover) and (prefers-reduced-motion:no-preference){
   .mx-cd,.mx-post{transition:transform .35s var(--ease),top .35s var(--ease)}
   .mx-path li:hover .mx-cd:nth-child(1){--r:-11deg;--t:0px}
@@ -108,11 +110,9 @@
   .mx-path li:hover .mx-post.is-top{--x:72px;--r:17deg}
 }
 
-.mx-btns{display:flex;flex-wrap:wrap;gap:10px}
-.mx-foot .mx-btns{flex:none}
-
 /* ---------- Как это работает: вкладки-шаги + экран кабинета ----------
-   Каркас — .aix с лендинга для бизнеса; на красном фоне — белые карточки */
+   Каркас — .aix с лендинга для бизнеса; на красном фоне — белые карточки.
+   При наведении автосмена стоит (data-aix-hover в business-design.js) */
 .mx-aix{margin-top:8px}
 .mx-aix.is-paused .aix__bar,.mx-aix.is-paused .aix__segs i{animation-play-state:paused !important}
 .mx-aix .aix__tabs button{background:#fff;box-shadow:none}
@@ -122,18 +122,17 @@
 .mx-aix .aix__win{background:#fff;color:var(--ink);box-shadow:0 40px 70px -44px rgba(60,5,0,.55)}
 .mx-aix .aix__top{background:var(--ink)}
 .mx-aix .aix__ask{background:rgba(255,255,255,.14)}
-.mx-sc{justify-content:center;gap:14px !important;padding:26px 28px !important;background:var(--surface)}
+.mx-aix .mx-sc{justify-content:center;gap:14px;padding:26px 28px;background:var(--surface)}
 /* элементы экрана появляются по очереди, когда шаг становится активным */
 .mx-sc.is-on > *{animation:mxUp .5s var(--ease) both}
 .mx-sc.is-on > :nth-child(2){animation-delay:.12s}
 .mx-sc.is-on > :nth-child(3){animation-delay:.24s}
 .mx-sc.is-on > :nth-child(4){animation-delay:.36s}
-@keyframes mxUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* 1 — регистрация */
 .mx-inn{display:flex;align-items:center;gap:12px;height:56px;padding:0 8px 0 18px;border-radius:var(--r-md);background:#fff;box-shadow:inset 0 0 0 2px var(--brand)}
 .mx-inn span{font-size:13px;color:var(--ink-3)}
-.mx-inn b{flex:1;font-size:18px;font-weight:700;letter-spacing:.04em}
+.mx-inn b{flex:1;font-size:18px;font-weight:700;letter-spacing:.04em;white-space:nowrap}
 .mx-inn em{font-style:normal;padding:9px 18px;border-radius:12px;background:var(--brand);color:#fff;font-size:14px;font-weight:600}
 .mx-org{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:var(--r-md);background:#fff}
 .mx-org > i{display:flex;color:var(--brand)}.mx-org > i svg{width:26px;height:26px}
@@ -156,7 +155,7 @@
 .mx-link i{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff}
 .mx-link svg{width:17px;height:17px}
 .mx-pull{display:grid;grid-template-columns:140px minmax(0,1fr);gap:12px}
-.mx-pull__ph{position:relative;border-radius:var(--r-md);background:center 40%/cover no-repeat;min-height:170px}
+.mx-pull__ph{position:relative;min-height:170px;border-radius:var(--r-md);background:center 40%/cover no-repeat}
 .mx-pull__ph em{position:absolute;left:8px;bottom:8px;padding:3px 9px;border-radius:8px;background:#fff;font-style:normal;font-size:12px;font-weight:700}
 .mx-pull ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
 .mx-pull li{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;flex:1;min-height:38px;padding:0 14px 0 38px;border-radius:12px;background:#fff;font-size:13px;color:var(--ink-3)}
@@ -168,8 +167,8 @@
 .mx-sc.is-on .mx-pull li:nth-child(2){animation-delay:.7s}
 .mx-sc.is-on .mx-pull li:nth-child(3){animation-delay:.95s}
 .mx-sc.is-on .mx-pull li:nth-child(4){animation-delay:1.2s}
-.mx-sc .mx-auto__k{display:flex;align-items:flex-start;gap:8px;margin:0;text-transform:none;letter-spacing:0;font-size:13px;font-weight:600;line-height:1.4}
-.mx-sc .mx-auto__k svg{flex:none;margin-top:1px}
+.mx-self{display:flex;align-items:flex-start;gap:8px;font-size:13px;font-weight:600;line-height:1.4;color:var(--brand)}
+.mx-self i{display:flex;flex:none;margin-top:1px}.mx-self svg{width:16px;height:16px}
 
 /* 3 — публикация */
 .mx-pub{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1fr);gap:14px;align-items:stretch}
@@ -192,65 +191,34 @@
 .mx-chl li i svg,.mx-chl li i img{display:block;width:100%;height:100%}
 .mx-chl li .mx-chl__site{display:grid;place-items:center;border-radius:7px;background:var(--brand-50);color:var(--brand)}
 .mx-chl li .mx-chl__site svg{width:14px;height:14px}
+/* переключатель «включено» справа в строке канала */
 .mx-chl li::after{content:"";margin-left:auto;width:28px;height:16px;border-radius:8px;background:var(--brand) radial-gradient(circle 6px at calc(100% - 8px) 50%,#fff 98%,#0000) no-repeat}
 .mx-go{display:flex;align-items:center;justify-content:center;height:46px;margin-top:auto;border-radius:var(--r-pill);background:var(--brand);color:#fff;font-size:14px;font-weight:600}
 
-/* 4 — покупатель: код → карточка */
+/* 4 — покупатель: код → карточка товара */
 .mx-buy{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.15fr);gap:12px;align-items:center}
 .mx-take{display:flex;flex-direction:column;align-items:stretch;gap:8px;padding:10px 10px 12px;border-radius:var(--r-md);background:#fff;box-shadow:0 16px 30px -20px rgba(0,0,0,.4)}
 .mx-take__ph{height:120px;border-radius:12px;background:center 40%/cover no-repeat}
-.mx-take > b{font-size:14px;font-weight:700;padding:0 2px}
+.mx-take > b{padding:0 2px;font-size:14px;font-weight:700}
 .mx-take__code{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;border-radius:10px;border:1.5px dashed var(--brand);background:var(--brand-50)}
 .mx-take__code u{text-decoration:none;font-weight:800;letter-spacing:.06em}
 .mx-take__code em{font-style:normal;font-size:11.5px;font-weight:600;color:var(--brand)}
 .mx-take__btn{padding:9px 0;border-radius:var(--r-pill);background:var(--brand);color:#fff;font-size:12.5px;font-weight:600;text-align:center}
 .mx-buy__arr{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff}
 .mx-buy__arr svg{width:18px;height:18px}
-.mx-sc--buy .mx-pdp{box-shadow:0 16px 30px -20px rgba(0,0,0,.4)}
-/* Большая карточка товара на площадке — экран 4 */
+.mx-pdp--big{box-shadow:0 16px 30px -20px rgba(0,0,0,.4)}
 .mx-pdp--big .mx-pdp__bar{height:36px;padding-right:200px;background:#fff;border-bottom:1px solid var(--line)}
-.mx-pdp--big .mx-pdp__bar span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mx-pdp--big .mx-pdp__in{gap:14px;padding:14px 14px 16px}
 .mx-pdp--big .mx-pdp__ph{width:118px;align-self:flex-start}
-.mx-pdp--big .mx-pdp__in > div{gap:6px;flex:1}
-.mx-pdp__t{font-size:14px;font-weight:600;line-height:1.3;color:var(--ink)}
+.mx-pdp--big .mx-pdp__in > div{flex:1;gap:6px}
 .mx-pdp--big .mx-pdp__in b{font-size:22px}
-.mx-pdp__promo{display:inline-flex;white-space:nowrap;align-items:center;gap:6px;padding:4px 6px 4px 9px;border-radius:8px;border:1.5px dashed var(--brand);background:var(--brand-50);font-size:12px;font-weight:700}
+.mx-pdp--big .mx-pdp__btn{align-self:stretch;padding:9px 0;font-size:13px;text-align:center}
+.mx-pdp--big .mx-pdp__badge{top:6px;right:8px}
+.mx-pdp__t{font-size:14px;font-weight:600;line-height:1.3;color:var(--ink)}
+.mx-pdp__promo{display:inline-flex;align-items:center;gap:6px;padding:4px 6px 4px 9px;border-radius:8px;border:1.5px dashed var(--brand);background:var(--brand-50);font-size:12px;font-weight:700;white-space:nowrap}
 .mx-pdp__promo i{display:flex;color:var(--brand)}.mx-pdp__promo svg{width:13px;height:13px}
 .mx-pdp__promo em{font-style:normal;padding:1px 6px;border-radius:5px;background:var(--brand);color:#fff}
-.mx-pdp--big .mx-pdp__btn{align-self:stretch;text-align:center;padding:9px 0;font-size:13px}
 .mx-pdp__dl{font-size:11.5px;color:var(--g-ink)}
-.mx-pdp--big .mx-pdp__badge{top:6px;right:8px}
-
-/* Статистика */
-.mx-stat{margin-top:18px}
-
-@media (max-width:1000px){
-  .mx-aix .aix__win{min-height:0}
-}
-@media (max-width:720px){
-  .mx-sc{padding:16px !important}
-  .mx-pdp--big .mx-pdp__ph{width:84px}
-  .mx-pdp--big .mx-pdp__in{gap:10px}
-  .mx-pdp__promo{font-size:11px}
-  .mx-org{flex-wrap:wrap}
-  .mx-mpline{margin-left:40px}
-  .mx-ready{flex-wrap:wrap}
-  .mx-ready em{margin-left:22px}
-  .mx-pull{grid-template-columns:96px minmax(0,1fr)}
-  .mx-pull__ph{min-height:0}
-  .mx-pull li:nth-child(4){display:none}
-  .mx-pub{grid-template-columns:1fr}
-  .mx-cpn{flex-direction:row}
-  .mx-cpn__ph{flex:none;width:110px;min-height:0}
-  .mx-cpn__b{border-top:0;border-left:2px dashed var(--line-strong)}
-  .mx-buy{grid-template-columns:1fr}
-  .mx-buy__arr{justify-self:center;transform:rotate(90deg)}
-  .mx-take{flex-direction:row;flex-wrap:wrap;align-items:center}
-  .mx-take__ph{width:64px;height:64px}
-  .mx-take > b{flex:1}
-  .mx-take__code,.mx-take__btn{flex:1 1 100%}
-}
 
 /* Статистика в кабинете: плашка «онлайн», две цифры, график за неделю */
 .mx-stat{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr) minmax(0,.7fr) minmax(0,1.2fr);gap:10px;margin-top:18px;padding:10px;border-radius:var(--r-lg);background:#fff;color:var(--ink)}
@@ -262,7 +230,7 @@
 .mx-stat__n{display:flex;flex-direction:column;justify-content:space-between;gap:14px;padding:18px 20px}
 .mx-stat__n > i{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#fff;color:var(--ink-2)}
 .mx-stat__n > i svg{width:20px;height:20px}
-.mx-stat__n b{display:block;font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.mx-stat__n b{display:block;font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
 .mx-stat__n span{display:block;margin-top:5px;font-size:13px;color:var(--ink-3)}
 .mx-stat__n.is-red{background:var(--brand);color:#fff}
 .mx-stat__n.is-red > i{background:rgba(255,255,255,.18);color:#fff}
@@ -278,58 +246,51 @@
    Два купона: сверху срок крупно, под перфорацией — график показов
    за 30 дней (всплеск на день против ровной линии), ниже — пункты */
 .mx-cmp{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.mx-cmp__c{--cut:168px;--notch:16px;display:flex;flex-direction:column;padding:30px 32px 32px;border-radius:var(--r-lg);background:#fff;color:var(--ink);
+.mx-cmp__c{--cut:168px;--notch:16px;display:flex;flex-direction:column;padding:0 32px 32px;border-radius:var(--r-lg);background:#fff;color:var(--ink);
   -webkit-mask:radial-gradient(circle var(--notch) at 0 var(--cut),#0000 98%,#000) left/51% 100% no-repeat,
                radial-gradient(circle var(--notch) at 100% var(--cut),#0000 98%,#000) right/51% 100% no-repeat;
           mask:radial-gradient(circle var(--notch) at 0 var(--cut),#0000 98%,#000) left/51% 100% no-repeat,
                radial-gradient(circle var(--notch) at 100% var(--cut),#0000 98%,#000) right/51% 100% no-repeat}
 .mx-cmp__c--us{background:var(--brand);color:#fff}
+/* верх купона — ровно до вырезов, поэтому перфорация (border-top графика) проходит через их центр */
+.mx-cmp__top{display:flex;flex-direction:column;justify-content:center;height:calc(var(--cut) - 1px)}
 .mx-cmp__k{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--ink-2)}
 .mx-cmp__k img{height:26px;width:auto;rotate:-6deg}
 .mx-cmp__c--us .mx-cmp__k{color:#fff}
-.mx-cmp__big{display:block;margin-top:10px;font-size:clamp(48px,5vw,76px);font-weight:800;letter-spacing:-.05em;line-height:1}
-.mx-cmp__c:not(.mx-cmp__c--us) .mx-cmp__big{color:var(--ink-3)}
-
-.mx-cmp__ch{position:relative;margin-top:22px;padding:30px 0 0;border-top:2px dashed var(--line-strong)}
-.mx-cmp__c--us .mx-cmp__ch{border-color:rgba(255,255,255,.45)}
+.mx-cmp__big{display:block;margin-top:10px;font-size:clamp(48px,5vw,76px);font-weight:800;letter-spacing:-.05em;line-height:1;color:var(--ink-3)}
+.mx-cmp__c--us .mx-cmp__big{color:#fff}
+.mx-cmp__ch{position:relative;padding:30px 0 0;border-top:2px dashed var(--line-strong)}
 .mx-cmp__ch svg{display:block;width:100%;height:110px;overflow:visible}
 .mx-ch__a{fill:var(--ink-4);opacity:.22}
 .mx-ch__l{fill:none;stroke:var(--ink-3);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke}
-.mx-cmp__c--us .mx-ch__a{fill:#fff;opacity:.2}
-.mx-cmp__c--us .mx-ch__l{stroke:#fff}
 .mx-cmp__pin{position:absolute;top:14px;transform:translateX(-50%);padding:3px 10px;border-radius:var(--r-pill);background:var(--surface-2);font-size:12px;font-weight:700;color:var(--ink-2);white-space:nowrap}
-.mx-cmp__c--us .mx-cmp__pin{background:#fff;color:var(--brand)}
 .mx-cmp__ax{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:var(--ink-4)}
-.mx-cmp__c--us .mx-cmp__ax{color:rgba(255,255,255,.7)}
-
 .mx-cmp__c ul{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
 .mx-cmp__c li{display:flex;align-items:center;gap:12px;min-height:44px;padding:6px 14px 6px 6px;border-radius:14px;background:var(--surface);font-size:15.5px;line-height:1.35;color:var(--ink-2)}
 .mx-cmp__c li > i{display:grid;place-items:center;flex:none;width:32px;height:32px;border-radius:10px;background:#fff;color:var(--ink-3)}
 .mx-cmp__c li > i svg{width:17px;height:17px}
-.mx-cmp__c--us li{background:rgba(255,255,255,.14);color:#fff}
-.mx-cmp__c--us li > i{color:var(--brand)}
 .mx-cmp__soc{display:flex;gap:4px;margin-left:auto}
 .mx-cmp__soc i{display:block;width:22px;height:22px;border-radius:50%;overflow:hidden}
 .mx-cmp__soc svg,.mx-cmp__soc img{display:block;width:100%;height:100%}
 .mx-cmp__sum{align-self:flex-start;margin-top:22px;padding:10px 18px;border-radius:var(--r-pill);border:2px dashed rgba(255,255,255,.7);font-size:14px;font-weight:600}
+/* красный купон: всё белое */
+.mx-cmp__c--us .mx-cmp__ch{border-color:rgba(255,255,255,.45)}
+.mx-cmp__c--us .mx-ch__a{fill:#fff;opacity:.2}
+.mx-cmp__c--us .mx-ch__l{stroke:#fff}
+.mx-cmp__c--us .mx-cmp__pin{background:#fff;color:var(--brand)}
+.mx-cmp__c--us .mx-cmp__ax{color:rgba(255,255,255,.7)}
+.mx-cmp__c--us li{background:rgba(255,255,255,.14);color:#fff}
+.mx-cmp__c--us li > i{color:var(--brand)}
 
 /* ---------- Каналы ---------- */
 .mx-ch__h{margin-bottom:28px}
-.mx-kick{margin-top:18px;font-weight:600;color:var(--ink) !important}
-@media (min-width:721px){.mx-chs .chv{height:262px;justify-content:flex-start}}
-.mx-chs .chv--post{justify-content:center}
+.mx-ch__h .mx-kick{margin-top:18px;font-weight:600;color:var(--ink)}
 .mx-chv{display:flex;flex-direction:column;gap:10px}
-/* подписи каналов: значок по верхней строке, у всех трёх на одной высоте */
+.mx-chs .chv--post{justify-content:center}
+/* подписи: значок по верхней строке, у всех трёх на одной высоте */
 .mx-chs .ch__t{align-items:flex-start}
-.mx-chs .ch h3{line-height:26px;padding-top:0;margin-top:-3px}
+.mx-chs .ch h3{margin-top:-3px;padding-top:0;line-height:26px}
 .mx-chs .ch p{margin-top:2px;font-size:15px;line-height:22px}
-/* На широком экране поиску — чуть больше места, чтобы подпись SEO
-   уложилась в две строки и не вытягивала соседние карточки */
-@media (min-width:1241px){
-  .mx-chs > .ch{grid-column:span 3}
-  .mx-chs > .ch:nth-child(2){grid-column:span 4}
-  .mx-chs > .ch--wide{grid-column:span 5}
-}
 /* витрина: две карточки, наша — в красной рамке */
 .mx-shop{display:flex;flex-direction:column;gap:8px}
 .mx-shop__tabs{display:flex;gap:5px}
@@ -353,20 +314,30 @@
 .mx-serp__r u + u{width:60%}
 .mx-serp__r.is-me{background:#fff;box-shadow:inset 0 0 0 2px var(--brand)}
 .mx-serp__r.is-me em{background:var(--brand);color:#fff}
-/* пост: код площадки, реакции */
+/* пост: промокод площадки, реакции */
 .mx-post2 .chv__post{display:flex;flex-direction:column;gap:10px}
-.mx-post2__code{display:flex;align-items:center;gap:10px;padding:6px 6px 6px 12px;border-radius:12px;border:1.5px dashed var(--brand);background:var(--brand-50)}
-.mx-post2__code img{height:11px;width:auto}
-.mx-post2__code u{text-decoration:none;font-size:13px;font-weight:800;letter-spacing:.06em}
-.mx-post2__code .chv__btn{margin:0 0 0 auto}
-.mx-post2__re{display:flex;gap:14px;font-size:12px;font-weight:600;color:var(--ink-3)}
-.mx-post2__re i{font-style:normal;margin-right:4px;color:var(--brand)}
-.mx-post2 .chv__img{position:relative;width:34%}
 .mx-post2 .chv__post p{font-size:13.5px;line-height:1.4}
-.mx-post2 .chv__btn{white-space:nowrap;padding:7px 12px;font-size:12.5px}
-.mx-post2__code{gap:8px;padding:5px 5px 5px 10px}
-.mx-post2__code img{height:10px}
+.mx-post2 .chv__btn{margin:0 0 0 auto;padding:7px 12px;font-size:12.5px;white-space:nowrap}
+.mx-post2 .chv__img{position:relative;width:34%}
 .mx-post2 .chv__img em{position:absolute;left:10px;bottom:10px;padding:3px 9px;border-radius:8px;background:var(--brand);color:#fff;font-style:normal;font-size:14px;font-weight:800}
+.mx-post2__code{display:flex;align-items:center;gap:8px;padding:5px 5px 5px 10px;border-radius:12px;border:1.5px dashed var(--brand);background:var(--brand-50)}
+.mx-post2__code img{height:10px;width:auto}
+.mx-post2__code u{text-decoration:none;font-size:13px;font-weight:800;letter-spacing:.06em}
+.mx-post2__re{display:flex;gap:14px;font-size:12px;font-weight:600;color:var(--ink-3)}
+.mx-post2__re i{margin-right:4px;font-style:normal;color:var(--brand)}
+
+/* ---------- Пилот: номер и мини-плашка в строке, текст под ними ---------- */
+.mx-psteps li{gap:14px}
+.mx-psh{display:flex;align-items:center;gap:10px}
+.mx-psh em{flex:none}
+.mx-psteps .mx-psv{flex:1;display:flex;align-items:center;gap:7px;min-width:0;height:32px;padding:0 10px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font-size:12.5px;font-weight:700;line-height:1;color:var(--ink);white-space:nowrap;overflow:hidden}
+.mx-psv img{flex:none;width:16px;height:16px;border-radius:4px}
+.mx-psv i{display:flex;flex:none;color:var(--brand)}.mx-psv svg{width:15px;height:15px}
+.mx-psteps .mx-psv--link{font-weight:500;color:var(--ink-2);text-overflow:ellipsis}
+.mx-psv--code{letter-spacing:.05em}
+.mx-psv--code b{margin-left:auto;padding:3px 6px;border-radius:6px;background:var(--brand);color:#fff;font-size:11.5px;letter-spacing:0}
+.mx-psv--ok b{font-size:14px;font-weight:800;color:var(--brand)}
+.mx-psv--ok i{margin-left:auto}
 
 /* ---------- FAQ и финал ---------- */
 .mx-ask__btns{display:flex;flex-wrap:wrap;gap:10px}
@@ -375,45 +346,40 @@
 .mx-reg p{font-size:15px;line-height:1.45;color:#fff}
 
 /* Форма в два шага: вкладки шагов сверху, площадки снизу */
-.mx-form{display:flex !important;flex-direction:column;gap:18px}
+.form.mx-form{display:flex;flex-direction:column;gap:18px}
 .mx-form .form__head{display:flex;flex-direction:column;align-items:stretch;gap:14px;margin:0}
 .mx-ftabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;border-radius:var(--r-pill);background:var(--surface)}
 .mx-ftabs span{display:flex;align-items:center;justify-content:center;gap:8px;height:42px;border-radius:var(--r-pill);font-size:14px;font-weight:600;color:var(--ink-3);transition:background .25s var(--ease),color .25s var(--ease)}
-.mx-ftabs em{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#fff;font-style:normal;font-size:12px;font-weight:700;color:var(--ink-3)}
+.mx-ftabs em{display:grid;place-items:center;width:24px;height:24px;line-height:1;font-variant-numeric:tabular-nums;border-radius:50%;background:#fff;font-style:normal;font-size:12px;font-weight:700;color:var(--ink-3)}
 .mx-ftabs .is-on{background:var(--brand);color:#fff}
 .mx-ftabs .is-on em{color:var(--brand)}
 .mx-ftabs .is-done{color:var(--ink)}
 .mx-ftabs .is-done em{background:var(--brand);color:#fff}
-.mx-form__fs{display:grid;grid-template-columns:1fr 1fr;gap:16px 14px;margin:0;padding:0;border:0;min-width:0}
+.mx-form__fs{display:grid;grid-template-columns:1fr 1fr;gap:16px 14px;min-width:0;margin:0;padding:0;border:0}
 .mx-form__fs[hidden]{display:none}
 .mx-form__fs > .btn{grid-column:1/-1;margin-top:6px}
 .mx-form input,.mx-form select{height:56px}
 .mx-form select.is-error{border-color:var(--brand);background:var(--brand-50)}
 .mx-form__btns{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr;gap:10px;margin-top:6px}
-.mx-form__btns .btn{margin:0;grid-column:auto}
-.mx-fmp{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;margin-top:auto;padding:16px 18px;border-radius:var(--r-md);background:var(--surface);font-size:13px;color:var(--ink-3)}
+.mx-form .mx-form__btns .btn{grid-column:auto;margin:0}
+.mx-fmp{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 20px;margin-top:auto;padding:16px 18px;border-radius:var(--r-md);background:var(--surface);font-size:13px;color:var(--ink-3)}
 .mx-fmp__l{display:flex;align-items:center;gap:18px}
 .mx-fmp__l img{height:14px;width:auto}
-
-/* Шаги пилота: номер и мини-плашка в одной строке, текст под ними.
-   Плашки одного вида — белые, одной высоты, тянутся на всю ширину шага */
-.mx-psteps li{gap:14px}
-.mx-psh{display:flex;align-items:center;gap:10px}
-.mx-psh em{flex:none}
-.mx-psteps .mx-psv{flex:1;display:flex;align-items:center;gap:7px;min-width:0;height:32px;padding:0 10px;border-radius:10px;background:#fff;box-shadow:inset 0 0 0 1px var(--line);font-size:12.5px;font-weight:700;line-height:1;color:var(--ink);white-space:nowrap;overflow:hidden}
-.mx-psv img{flex:none;width:16px;height:16px;border-radius:4px}
-.mx-psv i{display:flex;flex:none;color:var(--brand)}.mx-psv svg{width:15px;height:15px}
-.mx-psv--link{font-weight:500 !important;color:var(--ink-2) !important;text-overflow:ellipsis}
-.mx-psv--code{letter-spacing:.05em}
-.mx-psv--code b{margin-left:auto;padding:3px 6px;border-radius:6px;background:var(--brand);color:#fff;font-size:11.5px;letter-spacing:0}
-.mx-psv--ok b{font-size:14px;font-weight:800;color:var(--brand)}
-.mx-psv--ok i{margin-left:auto}
 
 /* ==========================================================================
    Адаптив
    ========================================================================== */
+@media (min-width:1241px){
+  /* каналы: поиску чуть больше места, соцсетям — меньше */
+  .mx-chs > .ch{grid-column:span 3}
+  .mx-chs > .ch:nth-child(2){grid-column:span 4}
+  .mx-chs > .ch--wide{grid-column:span 5}
+}
+@media (min-width:721px){
+  .mx-chs .chv{height:262px;justify-content:flex-start}
+}
 @media (min-width:721px) and (max-width:1240px){
-  .mx-nums li > b{font-size:16px !important}
+  .mx-nums li > b{font-size:16px}
   .mx-nums li > span:last-child{font-size:12px}
   .mx-nums .mx-mps img{width:24px;height:24px}
 }
@@ -423,59 +389,91 @@
 }
 @media (max-width:1000px){
   .mx-cmp{grid-template-columns:1fr}
-}
-@media (max-width:720px){
-  .mx-nums li > b{font-size:17px !important}
-  .mx-cmp__c{--cut:140px;padding:24px 20px 26px}
-  .mx-cmp__c li{font-size:14.5px}
-  .mx-cmp__soc{display:none}
-  .mx-stat__n b{font-size:28px}
-  .mx-btns,.mx-foot .mx-btns{flex-direction:column;align-items:stretch}
-  .mx-btns .btn{width:100%}
-  .mx-form__fs{grid-template-columns:1fr}
-  .mx-psteps .mx-psv{display:none}
-  .mx-ftabs span{font-size:12.5px}
-  .mx-reg .btn{align-self:stretch}
+  .mx-aix .aix__win{min-height:0}
 }
 
-/* ---------- Телефоны: проверено на 320–430 ---------- */
+/* ---------- Телефоны (проверено на 320–430) ---------- */
 @media (max-width:720px){
-  /* длинные «ценники» в заголовках переносятся, а не уходят за экран */
-  h1 .tag,h2 .tag{white-space:normal}
-  /* первый экран: логотипы площадок рядом, без наложения */
-  .mx-nums .mx-mps img{width:24px;height:24px;margin-left:4px;border-radius:7px;box-shadow:none}
-  .mx-nums .mx-mps img:first-child{margin-left:0}
-  .hx__ev div > span{white-space:normal}
-  /* экран кабинета: содержимое сверху, без пустоты над ним */
-  .mx-sc{justify-content:flex-start}
-  .mx-inn{height:50px;padding-left:14px}
-  .mx-inn b{font-size:15px;white-space:nowrap}
-  .mx-inn em{padding:8px 14px}
-  .mx-mpline{margin-left:40px}
-  .mx-ready b{font-size:15px}
-  /* статистика: цифры в одну строку */
-  .mx-stat__n b{white-space:nowrap}
-  .mx-stat__t p{font-size:14.5px}
-  /* форма: вкладки и площадки */
-  .mx-fmp{padding:14px}
-  .mx-fmp__l{flex-wrap:wrap;gap:10px 16px}
-  .mx-fmp__l img{height:12px}
-  .final__socli{flex-wrap:wrap;gap:10px}
   /* одинаковые отступы: заголовок блока → содержимое 28px, содержимое → полоса с кнопками 18px */
   main .hrow,.mx-ch__h{margin-bottom:28px !important}
   .mx-path,.mx-aix,.mx-cmp,.mx-chs{margin-top:0 !important}
   .mx-foot,.mx-stat,#steps .launch__foot,#channels .launch__foot{margin-top:18px !important}
-  .mx-kick{margin-top:14px}
+  /* длинный «ценник» переносится построчно, каждая строка — своей плашкой */
+  h1 .tag,h2 .tag{white-space:normal}
+  h2 .tag--long{display:inline;rotate:none;line-height:inherit;padding:0 .14em}
+  .mx-btns,.mx-foot .mx-btns{flex-direction:column;align-items:stretch}
+  .mx-btns .btn{width:100%}
+
+  /* первый экран: значки справа по центру карточки, логотипы без наложения */
+  .mx-nums li > b{font-size:17px}
+  .hero__nums li > .mx-mps{grid-column:2;grid-row:1 / span 2;justify-self:end}
+  .mx-nums .mx-mps img{width:24px;height:24px;margin-left:4px;border-radius:7px;box-shadow:none}
+  .mx-nums .mx-mps img:first-child{margin-left:0}
+  .mx-cal i{display:none}
+  .hx__ev div > span{white-space:normal}
+
+  /* экран кабинета: содержимое сверху, крупное — компактнее */
+  .mx-aix .mx-sc{justify-content:flex-start;padding:16px}
+  .mx-inn{height:50px;padding-left:14px}
+  .mx-inn b{font-size:15px}
+  .mx-inn em{padding:8px 14px}
+  .mx-org{flex-wrap:wrap}
+  .mx-mpline{margin-left:40px;gap:4px}
+  .mx-mpline img{width:26px;height:26px;margin-left:0;box-shadow:none}
+  .mx-ready{flex-wrap:wrap}
+  .mx-ready b{font-size:15px}
+  .mx-ready em{margin-left:22px}
+  .mx-pull{grid-template-columns:96px minmax(0,1fr)}
+  .mx-pull__ph{min-height:0}
+  .mx-pull li:nth-child(4){display:none}
+  .mx-pub{grid-template-columns:1fr}
+  .mx-cpn{flex-direction:row}
+  .mx-cpn__ph{flex:none;width:110px;min-height:0}
+  .mx-cpn__b{border-top:0;border-left:2px dashed var(--line-strong)}
+  .mx-buy{grid-template-columns:1fr}
+  .mx-buy__arr{justify-self:center;transform:rotate(90deg)}
+  .mx-take{flex-direction:row;flex-wrap:wrap;align-items:center}
+  .mx-take__ph{width:64px;height:64px}
+  .mx-take > b{flex:1}
+  .mx-take__code,.mx-take__btn{flex:1 1 100%}
+  .mx-pdp--big .mx-pdp__in{gap:10px}
+  .mx-pdp--big .mx-pdp__ph{width:84px}
+  .mx-pdp__promo{font-size:11px}
+
+  .mx-stat__n b{font-size:28px}
+  .mx-stat__t p{font-size:14.5px}
+  .mx-cmp__c{--cut:150px;padding:0 20px 26px}
+  .mx-cmp__c li{font-size:14.5px}
+  .mx-cmp__soc{display:none}
+  .mx-ch__h .mx-kick{margin-top:14px}
+  .mx-psteps .mx-psv{display:none}
+
+  .mx-form__fs{grid-template-columns:1fr}
+  .mx-ftabs span{font-size:13px}
+  .mx-fmp{padding:14px}
+  .mx-fmp__l{flex-wrap:wrap;gap:10px 16px}
+  .mx-fmp__l img{height:12px}
+  .mx-reg .btn{align-self:stretch}
+  .final__socli{flex-wrap:wrap;gap:10px}
+}
+@media (max-width:560px){
+  /* соцсети в подписи канала — значки в ряд, блок по высоте плашки-значка слева */
+  .mx-chs .ch--wide .ch__t{align-items:center}
+  .mx-chs .ch__soc{gap:6px;margin-top:4px}
+  .mx-chs .ch__soc span{margin-left:0}
+  .mx-chs .ch__soc i{width:24px;height:24px;box-shadow:none}
+  .mx-code em{display:none}
+  .mx-mp{height:21px;padding:0 7px}
+  .mx-mp img{height:10px}
 }
 @media (max-width:400px){
   h2{font-size:28px !important}
   .mx-stat__n{padding:16px}
   .mx-stat__n b{font-size:24px}
   .mx-fan{transform:scale(.86);transform-origin:50% 40%}
-  .mx-codes{transform:scale(.92);transform-origin:50% 50%}
+  .mx-codes{transform:scale(.92)}
   .mx-cp__ph{width:80px}
   .mx-cp__b b{font-size:13px}
   .mx-pdp__in b{font-size:15px}
-  .mx-ftabs span{font-size:13px}
-  .mx-sc--pull .mx-types span{padding:7px 11px;font-size:12.5px}
+  .mx-types span{padding:7px 11px;font-size:12.5px}
 }

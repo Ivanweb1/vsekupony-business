@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/business-design.css?v=20261019c">
-<link rel="stylesheet" href="assets/marketplace-design.css?v=20261023v">
+<link rel="stylesheet" href="assets/marketplace-design.css?v=20261024c">
 <link rel="icon" href="assets/brand/logo-red.png">
 </head>
 <body>
@@ -20,8 +20,8 @@
      язык и компоненты — с лендинга для бизнеса (index.html): фирменный
      #DD443C, слово-«ценник» в заголовке, купоны с вырезами, мини-интерфейсы.
      Общие стили и скрипты — business-design.css / business-design.js,
-     свои блоки — marketplace-design.css, демо мастера и форма в два шага —
-     marketplace.js (общий с прототипом), плашки первого экрана —
+     свои блоки — marketplace-design.css, шаги формы заявки — marketplace.js
+     (общий с прототипом), плашки первого экрана и согласие —
      marketplace-design.js. Товары, цены и цифры в мини-интерфейсах — пример.
      =================================================================== -->
 
@@ -189,7 +189,7 @@
     <div class="wrap">
       <div class="hrow">
         <div class="head">
-          <h2>Приводите внешний трафик из&nbsp;<span class="tag">честного и&nbsp;понятного канала</span></h2>
+          <h2>Приводите внешний трафик&nbsp;из <span class="tag tag--long">честного и&nbsp;понятного канала</span></h2>
         </div>
         <div class="hrow__txt">
           <p class="text"><b>Внутренняя реклама дорожает и&nbsp;ограничена посетителями маркетплейса.</b></p>
@@ -266,8 +266,7 @@
     </div>
   </section>
 
-  <!-- Как это работает: четыре шага из ТЗ слева, живое демо мастера справа
-       (marketplace.js — ссылка «впечатывается» сама, карточка подтягивается) -->
+  <!-- Как это работает: четыре шага из ТЗ и экран кабинета на каждом шаге -->
   <section class="sec sec--red" id="steps">
     <div class="wrap">
       <div class="hrow">
@@ -318,7 +317,7 @@
                 <li><span>Текст купона</span><b>написала нейросеть</b></li>
               </ul>
             </div>
-            <p class="mx-auto__k"><i data-ic="spark"></i>Сервис сам: забирает фото, берёт название и&nbsp;цену, ставит категорию, пишет текст</p>
+            <p class="mx-self"><i data-ic="spark"></i>Сервис сам: забирает фото, берёт название и&nbsp;цену, ставит категорию, пишет текст</p>
           </div>
 
           <!-- 3. Публикация на всю Россию + каналы -->
@@ -412,11 +411,13 @@
         <p class="text">Ваше размещение увидят во&nbsp;всех городах присутствия сервиса, а&nbsp;мы&nbsp;усилим охваты через наши специализированные сообщества в&nbsp;ВК, MAX, Telegram, ОК. Внешние переходы&nbsp;— элемент «поведенческого фактора», как и&nbsp;лайки и&nbsp;корзины,&nbsp;— это стимулирует ранжирование карточки.</p>
       </div>
 
-      <!-- Календарь на месяц: слева закрашен один день, справа — все тридцать -->
+      <!-- Два купона: срок крупно, график показов за 30 дней, пункты из ТЗ -->
       <div class="mx-cmp">
         <div class="mx-cmp__c">
-          <span class="mx-cmp__k">Внутренняя реклама маркетплейса</span>
-          <b class="mx-cmp__big">1 день</b>
+          <div class="mx-cmp__top">
+            <span class="mx-cmp__k">Внутренняя реклама маркетплейса</span>
+            <b class="mx-cmp__big">1 день</b>
+          </div>
           <div class="mx-cmp__ch" aria-hidden="true">
             <svg viewBox="0 0 300 100" preserveAspectRatio="none">
               <path class="mx-ch__a" d="M0 92 L 10 92 C 16 92, 18 18, 28 18 C 38 18, 40 92, 48 92 L 300 92 L 300 100 L 0 100 Z"/>
@@ -432,8 +433,10 @@
           </ul>
         </div>
         <div class="mx-cmp__c mx-cmp__c--us">
-          <span class="mx-cmp__k"><img src="assets/brand/logo-white.png" alt="">Купон на&nbsp;«Всекупонах»</span>
-          <b class="mx-cmp__big">1 месяц</b>
+          <div class="mx-cmp__top">
+            <span class="mx-cmp__k"><img src="assets/brand/logo-white.png" alt="">Купон на&nbsp;«Всекупонах»</span>
+            <b class="mx-cmp__big">1 месяц</b>
+          </div>
           <div class="mx-cmp__ch" aria-hidden="true">
             <svg viewBox="0 0 300 100" preserveAspectRatio="none">
               <path class="mx-ch__a" d="M0 40 C 30 32, 50 44, 80 36 S 130 28, 160 34 S 215 26, 240 30 S 280 24, 300 26 L 300 100 L 0 100 Z"/>
@@ -537,7 +540,7 @@
           </dl>
         </div>
         <div class="pilot__r">
-          <h2>Первое размещение&nbsp;— <span class="tag">по&nbsp;условиям пилота</span></h2>
+          <h2>Первое размещение&nbsp;— <span class="tag tag--long">по&nbsp;условиям пилота</span></h2>
           <p class="text">Для новых клиентов&nbsp;— первое размещение бесплатно.</p>
           <ol class="pilot__steps mx-psteps">
             <li><div class="mx-psh"><em>1</em><span class="mx-psv mx-psv--link"><img src="assets/brand/mp/wildberries.svg" alt="">wildberries.ru</span></div><span>Вставьте ссылку на&nbsp;карточку</span></li>
@@ -744,8 +747,8 @@
   <button class="btn btn--red" type="button" data-cookie-ok>Хорошо</button>
 </div>
 
-<script src="assets/business-design.js?v=20261023a"></script>
-<script src="assets/marketplace.js?v=20261023b"></script>
-<script src="assets/marketplace-design.js?v=20261023a"></script>
+<script src="assets/business-design.js?v=20261024a"></script>
+<script src="assets/marketplace.js?v=20261024a"></script>
+<script src="assets/marketplace-design.js?v=20261024a"></script>
 </body>
 </html>

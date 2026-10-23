@@ -1,18 +1,11 @@
-/* Лендинг для селлеров маркетплейсов — дизайн: плашки первого экрана,
-   календари «1 день / 1 месяц», согласие в форме заявки.
-   Иконки, лента, FAQ, бургер, cookie — business-design.js; демо мастера
-   и шаги формы — marketplace.js. */
+/* Лендинг для селлеров маркетплейсов — дизайн: плашки первого экрана
+   и согласие в форме заявки.
+   Иконки, лента, шаги «Как работает», FAQ, бургер, cookie — business-design.js;
+   шаги формы заявки — marketplace.js. */
 (function () {
   "use strict";
 
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  // Календарь на месяц: 30 клеток, закрашено data-days
-  document.querySelectorAll("[data-days]").forEach(function (el) {
-    var on = +el.dataset.days, html = "";
-    for (var d = 1; d <= 30; d++) html += "<i" + (d <= on ? ' class="is-on"' : "") + "></i>";
-    el.innerHTML = html;
-  });
 
   // Первый экран: покупатель забирает промокод на купон из ленты, следом —
   // переход на карточку этой площадки; купон подсвечивается, счётчик растёт
