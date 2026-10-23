@@ -23,7 +23,14 @@
 .mx-cal em{font-style:normal;padding:4px 10px;border-radius:var(--r-pill);background:var(--brand);color:#fff;font-size:13px;font-weight:700}
 
 /* Купон селлера в ленте: значок площадки в углу фото, цена до/после */
-.mx-mp{position:absolute;right:6px;top:6px;width:24px;height:24px;border-radius:7px;box-shadow:0 4px 10px -4px rgba(0,0,0,.4)}
+.mx-mp{position:absolute;left:6px;top:6px;display:flex;align-items:center;gap:5px;max-width:calc(100% - 12px);padding:3px 9px 3px 3px;border-radius:var(--r-pill);background:#fff;font-size:11px;font-weight:600;line-height:1;white-space:nowrap;box-shadow:0 4px 12px -6px rgba(0,0,0,.45)}
+.mx-mp img{flex:none;width:18px;height:18px;border-radius:5px}
+/* Нижняя строка карточки: промокод площадки пунктиром, справа — сколько забрали */
+.hx__c small.mx-code{justify-content:space-between;gap:6px}
+.mx-code em{font-style:normal;white-space:nowrap}
+@media (max-width:560px){.mx-code em{display:none}.mx-mp{font-size:10.5px}}
+.mx-code > span{display:inline-flex;align-items:center;gap:4px;padding:2px 7px;border-radius:6px;border:1.5px dashed var(--brand);font-weight:700;letter-spacing:.04em;color:var(--ink)}
+.mx-code > span svg{width:12px;height:12px;color:var(--brand)}
 .mx-pr{display:flex !important;align-items:baseline;gap:6px;color:var(--ink) !important;font-weight:700}
 .mx-pr s{font-weight:400;color:var(--ink-4)}
 .mx-ev__mp{border-radius:12px !important;background-size:cover !important;background-position:center !important}
