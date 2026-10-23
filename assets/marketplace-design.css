@@ -85,8 +85,9 @@
 
 /* 4 — карточка товара на площадке */
 .mx-pdp{position:relative;align-self:stretch;border-radius:16px;background:#fff;color:var(--ink);box-shadow:0 16px 30px -18px rgba(0,0,0,.45),inset 0 0 0 1px var(--line);overflow:hidden}
-.mx-pdp__bar{display:flex;align-items:center;gap:7px;padding:7px 10px;background:var(--surface);font-size:11px;color:var(--ink-3)}
-.mx-pdp__bar img{width:16px;height:16px;border-radius:4px}
+.mx-pdp__bar{display:flex;align-items:center;gap:7px;height:32px;padding:0 104px 0 10px;background:var(--surface);font-size:11px;color:var(--ink-3)}
+.mx-pdp__bar img{flex:none;width:16px;height:16px;border-radius:4px}
+.mx-pdp__bar span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mx-pdp__in{display:flex;gap:10px;padding:10px}
 .mx-pdp__ph{flex:none;width:72px;aspect-ratio:4/5;border-radius:9px;background:center/cover no-repeat}
 .mx-pdp__in > div{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:5px}
@@ -95,7 +96,7 @@
 .mx-pdp__stars{font-size:11px;letter-spacing:1px;color:#F5A623;white-space:nowrap}
 .mx-pdp__stars small{letter-spacing:0;color:var(--ink-3)}
 .mx-pdp__btn{margin-top:2px;padding:6px 14px;border-radius:9px;background:#A73AFD;color:#fff;font-size:11.5px;font-weight:700}
-.mx-pdp__badge{position:absolute;right:8px;bottom:8px;display:flex;align-items:center;gap:4px;padding:4px 9px 4px 6px;border-radius:var(--r-pill);background:var(--brand);color:#fff;font-size:11px;font-weight:700;box-shadow:0 8px 16px -8px rgba(120,20,10,.6)}
+.mx-pdp__badge{position:absolute;right:6px;top:5px;display:flex;align-items:center;gap:4px;padding:4px 9px 4px 6px;border-radius:var(--r-pill);background:var(--brand);color:#fff;font-size:11px;font-weight:700;box-shadow:0 8px 16px -8px rgba(120,20,10,.6)}
 .mx-pdp__badge i{display:flex}.mx-pdp__badge svg{width:13px;height:13px}
 
 /* Веер и стопка чуть раскрываются при наведении на шаг */
@@ -219,7 +220,7 @@
 .mx-pdp__promo em{font-style:normal;padding:1px 6px;border-radius:5px;background:var(--brand);color:#fff}
 .mx-pdp--big .mx-pdp__btn{align-self:stretch;text-align:center;padding:9px 0;font-size:13px}
 .mx-pdp__dl{font-size:11.5px;color:var(--g-ink)}
-.mx-pdp--big .mx-pdp__badge{top:6px;bottom:auto;right:8px}
+.mx-pdp--big .mx-pdp__badge{top:6px;right:8px}
 
 /* Статистика */
 .mx-stat{margin-top:18px}
@@ -435,4 +436,46 @@
   .mx-psteps .mx-psv{display:none}
   .mx-ftabs span{font-size:12.5px}
   .mx-reg .btn{align-self:stretch}
+}
+
+/* ---------- Телефоны: проверено на 320–430 ---------- */
+@media (max-width:720px){
+  /* длинные «ценники» в заголовках переносятся, а не уходят за экран */
+  h1 .tag,h2 .tag{white-space:normal}
+  /* первый экран: логотипы площадок рядом, без наложения */
+  .mx-nums .mx-mps img{width:24px;height:24px;margin-left:4px;border-radius:7px;box-shadow:none}
+  .mx-nums .mx-mps img:first-child{margin-left:0}
+  .hx__ev div > span{white-space:normal}
+  /* экран кабинета: содержимое сверху, без пустоты над ним */
+  .mx-sc{justify-content:flex-start}
+  .mx-inn{height:50px;padding-left:14px}
+  .mx-inn b{font-size:15px;white-space:nowrap}
+  .mx-inn em{padding:8px 14px}
+  .mx-mpline{margin-left:40px}
+  .mx-ready b{font-size:15px}
+  /* статистика: цифры в одну строку */
+  .mx-stat__n b{white-space:nowrap}
+  .mx-stat__t p{font-size:14.5px}
+  /* форма: вкладки и площадки */
+  .mx-fmp{padding:14px}
+  .mx-fmp__l{flex-wrap:wrap;gap:10px 16px}
+  .mx-fmp__l img{height:12px}
+  .final__socli{flex-wrap:wrap;gap:10px}
+  /* одинаковые отступы: заголовок блока → содержимое 28px, содержимое → полоса с кнопками 18px */
+  main .hrow,.mx-ch__h{margin-bottom:28px !important}
+  .mx-path,.mx-aix,.mx-cmp,.mx-chs{margin-top:0 !important}
+  .mx-foot,.mx-stat,#steps .launch__foot,#channels .launch__foot{margin-top:18px !important}
+  .mx-kick{margin-top:14px}
+}
+@media (max-width:400px){
+  h2{font-size:28px !important}
+  .mx-stat__n{padding:16px}
+  .mx-stat__n b{font-size:24px}
+  .mx-fan{transform:scale(.86);transform-origin:50% 40%}
+  .mx-codes{transform:scale(.92);transform-origin:50% 50%}
+  .mx-cp__ph{width:80px}
+  .mx-cp__b b{font-size:13px}
+  .mx-pdp__in b{font-size:15px}
+  .mx-ftabs span{font-size:13px}
+  .mx-sc--pull .mx-types span{padding:7px 11px;font-size:12.5px}
 }
