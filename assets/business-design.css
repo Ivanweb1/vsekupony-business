@@ -2615,3 +2615,6 @@ html.is-modal{overflow:hidden}
 @media (max-width:1100px){.ft .ft__grid{grid-template-columns:1fr 1fr auto}}
 @media (max-width:720px){.ft .ft__grid{grid-template-columns:1fr 1fr}.ft .ft__ct{grid-column:1/-1}}
 .ft__ct .ft__soc a{padding:0 !important;border-radius:10px;overflow:hidden}
+
+/* Пилот без левой части купона (правки 28.10) */
+.pilot--solo{grid-template-columns:1fr;-webkit-mask:none;mask:none}
