@@ -2616,5 +2616,28 @@ html.is-modal{overflow:hidden}
 @media (max-width:720px){.ft .ft__grid{grid-template-columns:1fr 1fr}.ft .ft__ct{grid-column:1/-1}}
 .ft__ct .ft__soc a{padding:0 !important;border-radius:10px;overflow:hidden}
 
-/* Пилот без левой части купона (правки 28.10) */
-.pilot--solo{grid-template-columns:1fr;-webkit-mask:none;mask:none}
+/* Пилот после правок 28.10: «500» и дата убраны, в корешок купона
+   переехали шаги столбиком, справа — заголовок, текст и кнопка */
+.pilot--steps .pilot__l{justify-content:center;padding:44px 40px}
+.pilot--steps .pilot__steps{grid-template-columns:1fr;gap:10px;margin:0;max-width:none}
+.pilot--steps .pilot__steps li{flex-direction:row;align-items:center;gap:14px;padding:14px 18px;background:#fff}
+.pilot--steps .pilot__steps li:not(:last-child)::after{display:none}
+.pilot--steps .pilot__l .pilot__steps span{margin:0}
+.pilot--steps .pilot__r .text{max-width:520px}
+@media (max-width:1000px){
+  .pilot--steps .pilot__r{order:1}
+  .pilot--steps .pilot__l{order:2;padding:32px 40px 40px;border-bottom:0;border-top:2px dashed var(--line-strong)}
+  .pilot--steps .pilot__steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:720px){
+  .pilot--steps .pilot__l{order:3;padding:22px !important}
+  .pilot--steps .pilot__steps{grid-template-columns:1fr}
+}
+
+/* Блок спроса без цифр (правки 28.10): подписи берут на себя роль цифры */
+.dstat--nonum .dstat__main > span{margin-top:10px;max-width:360px;font-size:clamp(24px,2.1vw,30px);font-weight:700;letter-spacing:-.025em;line-height:1.15}
+.dstat--nonum .dstat__sub > span{margin-top:10px;font-size:clamp(20px,1.7vw,24px);font-weight:700;letter-spacing:-.02em;line-height:1.2;color:var(--ink)}
+@media (max-width:720px){
+  .dstat--nonum .dstat__main > span{font-size:22px}
+  .dstat--nonum .dstat__sub > span{margin-top:0;font-size:18px}
+}
