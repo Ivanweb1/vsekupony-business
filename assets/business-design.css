@@ -2647,3 +2647,6 @@ html.is-modal{overflow:hidden}
 .pilot__note{grid-column:1/-1;margin:0;padding:20px 60px 24px;border-top:2px dashed var(--line-strong);font-size:13px;line-height:1.5;color:var(--ink-2);text-wrap:pretty}
 @media (max-width:1000px){.pilot__note{order:4;padding:18px 40px 22px}}
 @media (max-width:720px){.pilot__note{padding:16px 22px 20px;font-size:12px}}
+/* На телефоне правая часть купона раскладывается через display:contents,
+   у кнопки order:5 — примечание ставим после неё, в самый низ */
+@media (max-width:720px){.pilot__note{order:6}}
