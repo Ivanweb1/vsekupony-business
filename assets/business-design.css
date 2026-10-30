@@ -2641,3 +2641,9 @@ html.is-modal{overflow:hidden}
   .dstat--nonum .dstat__main > span{font-size:22px}
   .dstat--nonum .dstat__sub > span{margin-top:0;font-size:18px}
 }
+
+/* Примечание к акции «Первые 500» (30.10): на всю ширину купона внизу,
+   мелко, но площадью не меньше 7% блока */
+.pilot__note{grid-column:1/-1;margin:0;padding:20px 60px 24px;border-top:2px dashed var(--line-strong);font-size:13px;line-height:1.5;color:var(--ink-2);text-wrap:pretty}
+@media (max-width:1000px){.pilot__note{order:4;padding:18px 40px 22px}}
+@media (max-width:720px){.pilot__note{padding:16px 22px 20px;font-size:12px}}
